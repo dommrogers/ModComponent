@@ -18,7 +18,7 @@ It allows:
 
 [WulfMarius](https://github.com/WulfMarius) was the original creator of [ModComponent](https://github.com/WulfMarius/ModComponent) and [AssetLoader](https://github.com/WulfMarius/AssetLoader). I am very grateful for all the contributions he made to the modding community, and I'm honored to have adopted so many of his mods. Rebuilding and improving ModComponent has been incredibly fun despite all the time it's taken. Although much more than half of the code is my own now, this project was initially built on the framework he left behind.
 
-A huge THANK YOU to ds5678 who gave me the opportunity to work on this amazing project and ultimately take it over.
+A huge THANK YOU to [ds5678](https://github.com/ds5678) who gave me the opportunity to work on this amazing project and ultimately take it over.
 
 ## Installation
 
