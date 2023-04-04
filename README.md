@@ -1,6 +1,6 @@
 # ModComponent
 
-![](https://img.shields.io/github/downloads/ds5678/ModComponent/total.svg) ![](https://img.shields.io/github/downloads/ds5678/ModComponent/latest/total.svg)
+![](https://img.shields.io/github/downloads/dommrogers/ModComponent/total.svg) ![](https://img.shields.io/github/downloads/dommrogers/ModComponent/latest/total.svg)
 
 This is a library for modding **The Long Dark** by Hinterland Games Studio, Inc.
 
@@ -18,19 +18,17 @@ It allows:
 
 [WulfMarius](https://github.com/WulfMarius) was the original creator of [ModComponent](https://github.com/WulfMarius/ModComponent) and [AssetLoader](https://github.com/WulfMarius/AssetLoader). I am very grateful for all the contributions he made to the modding community, and I'm honored to have adopted so many of his mods. Rebuilding and improving ModComponent has been incredibly fun despite all the time it's taken. Although much more than half of the code is my own now, this project was initially built on the framework he left behind.
 
-## [Patreon](https://www.patreon.com/ds5678)
-
-I know many people might skip over this, but I hope you don't. You are so special, and I would appreciate your support. Modding takes lots of time, and I have expenses like food, internet, and rent. If you feel that I have improved your playing experience, please consider supporting me on my [Patreon](https://www.patreon.com/ds5678). Your support helps to ensure that I can continue making mods for you at the pace I am :)
+A huge THANK YOU to ds5678 who gave me the opportunity to work on this amazing project and ultimately take it over.
 
 ## Installation
 
 * If you haven't done so already, install MelonLoader by downloading and running [MelonLoader.Installer.exe](https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe)
-* Install the latest version of [ModComponent](https://github.com/ds5678/ModComponent/releases/latest) by placing it in the mods folder.
+* Install the latest version of [ModComponent](https://github.com/dommrogers/ModComponent/releases/latest) by placing it in the mods folder.
 * Install the dependencies:
   - [ModSettings](https://github.com/zeobviouslyfakeacc/ModSettings/releases/latest)
-  - [GearSpawner](https://github.com/ds5678/GearSpawner/releases/latest)
-  - [LocalizationUtilities](https://github.com/ds5678/LocalizationUtilities/releases/latest)
-  - [CraftingRevisions](https://github.com/ds5678/CraftingRevisions/releases/latest)
+  - [GearSpawner](https://github.com/dommrogers/GearSpawner/releases/latest)
+  - [LocalizationUtilities](https://github.com/dommrogers/LocalizationUtilities/releases/latest)
+  - [CraftingRevisions](https://github.com/dommrogers/CraftingRevisions/releases/latest)
 
 ## Alcohol
 
