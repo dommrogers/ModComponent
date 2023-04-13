@@ -70,7 +70,7 @@ internal static class AutoMapper
 			throw new NullReferenceException("In AutoMapper.MapModComponent, the mod component from the prefab was null.");
 		}
 
-		Logger.Log($"Mapping {prefab.name}");
+		Logger.LogDebug($"Mapping {prefab.name}");
 		ItemMapper.Map(prefab);
 	}
 
@@ -113,7 +113,7 @@ internal static class AutoMapper
 	/// </summary>
 	internal static void LoadPendingAssetBundles()
 	{
-		Logger.Log("Loading the pending asset bundles");
+		Logger.LogDebug("Loading the pending asset bundles");
 		foreach (string relativePath in pendingAssetBundles)
 		{
 			try

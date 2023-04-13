@@ -23,7 +23,7 @@ internal static class ComponentJson
 		}
 
 		string name = NameUtils.RemoveGearPrefix(prefab.name);
-		Logger.Log($"Initializing components for {name}");
+		Logger.LogDebug($"Initializing components for {name}");
 		string data = JsonHandler.GetJsonText(name);
 		if(string.IsNullOrEmpty(data))
 		{

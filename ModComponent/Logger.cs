@@ -12,7 +12,7 @@ internal static class Logger
 	static Logger()
 	{
 		GetHiddenLogMethods();
-		Log($"Reflection Successful: {reflectionSuccessful}");
+		LogDebug($"Reflection Successful: {reflectionSuccessful}");
 	}
 
 	#region Log Functions
@@ -48,9 +48,9 @@ internal static class Logger
 	//Debug Messages show only when in debug mode
 	internal static void LogDebug(string message)
 	{
-#if DEBUG
-		Log(message);
-#endif
+		if (Settings.instance.showDebugOutput) {
+			Log(message);
+		}
 	}
 	//Not Debug Messages show only when not in debug mode
 	internal static void LogNotDebug(string message)

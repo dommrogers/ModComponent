@@ -41,7 +41,8 @@ internal static class ZipFileLoader
 
 	private static void LoadZipFile(string zipFilePath)
 	{
-		Logger.LogGreen($"Reading zip file at: '{zipFilePath}'");
+		string zipFileName = Path.GetFileName(zipFilePath);
+		Logger.Log($"Reading zip file at: '{zipFileName}'");
 		FileStream fileStream = File.OpenRead(zipFilePath);
 
 		hashes.Add(SHA256.Create().ComputeHash(fileStream));
@@ -158,7 +159,7 @@ internal static class ZipFileLoader
 	{
 		try
 		{
-			Logger.Log($"Loading dll from zip at '{internalPath}'");
+			Logger.LogDebug($"Loading dll from zip at '{internalPath}'");
 			Assembly.Load(data);
 			return true;
 		}
@@ -174,7 +175,7 @@ internal static class ZipFileLoader
 	{
 		try
 		{
-			Logger.Log($"Loading bnk from zip at '{internalPath}'");
+			Logger.LogDebug($"Loading bnk from zip at '{internalPath}'");
 			ModComponent.AssetLoader.ModSoundBankManager.RegisterSoundBank(data);
 			return true;
 		}
@@ -195,12 +196,12 @@ internal static class ZipFileLoader
 			string filenameNoExtension = Path.GetFileNameWithoutExtension(internalPath);
 			if (internalPath.StartsWith(@"auto-mapped/"))
 			{
-				Logger.Log($"Reading automapped json from zip at '{internalPath}'");
+				Logger.LogDebug($"Reading automapped json from zip at '{internalPath}'");
 				JsonHandler.RegisterJsonText(filenameNoExtension, text);
 			}
 			else if (internalPath.StartsWith(@"blueprints/"))
 			{
-				Logger.Log($"Reading blueprint json from zip at '{internalPath}'");
+				Logger.LogDebug($"Reading blueprint json from zip at '{internalPath}'");
 				CraftingRevisions.BlueprintManager.AddBlueprintFromJson(text);
 			}
 			else if (internalPath.StartsWith(@"localizations/"))
@@ -210,9 +211,9 @@ internal static class ZipFileLoader
 			}
 			else if (internalPath.StartsWith(@"bundle/"))
 			{
-				Logger.Log($"Reading json catalog from zip at '{internalPath}'");
+				Logger.LogDebug($"Reading json catalog from zip at '{internalPath}'");
 				string catalogFilename = Path.GetFileName(internalPath);
-				AssetBundleProcessor.WriteCatalogToDisk(bundleName,catalogFilename, text);
+				AssetBundleProcessor.WriteCatalogToDisk(bundleName, catalogFilename, text);
 			}
 			else if (internalPath.ToLowerInvariant() == "buildinfo.json")
 			{
@@ -237,7 +238,13 @@ internal static class ZipFileLoader
 		ProxyObject? dict = (ProxyObject)JSON.Load(jsonText);
 		string modName = dict["Name"];
 		string version = dict["Version"];
-		Logger.Log($"Found: {modName} {version}");
+		Variant author;
+		if (dict.TryGetValue("Author", out author)) {
+			Logger.LogGreen($"Found: {modName} {version} by {author}");
+		} else
+		{
+			Logger.LogGreen($"Found: {modName} {version}");
+		}
 	}
 
 	private static bool TryHandleTxt(string zipFilePath, string internalPath, string text)
@@ -246,7 +253,7 @@ internal static class ZipFileLoader
 		{
 			try
 			{
-				Logger.Log($"Reading txt from zip at '{internalPath}'");
+				Logger.LogDebug($"Reading txt from zip at '{internalPath}'");
 				GearSpawner.SpawnManager.ParseSpawnInformation(text);
 				return true;
 			}
@@ -271,7 +278,7 @@ internal static class ZipFileLoader
 		string fullPath = Path.Combine(zipFilePath, internalPath);
 		if (internalPath.StartsWith(@"bundle/"))
 		{
-			Logger.Log($"Loading asset bundle from zip at '{internalPath}'");
+			Logger.LogDebug($"Loading asset bundle from zip at '{internalPath}'");
 
 			try
 			{

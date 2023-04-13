@@ -42,7 +42,7 @@ namespace ModComponent.Utils
 		{
 			if (!Directory.Exists(tempFolderPath))
 			{
-				MelonLoader.MelonLogger.Msg("Creating temp folder (" + tempFolderName + ")");
+				Logger.LogDebug("Creating temp folder (" + tempFolderName + ")");
 				Directory.CreateDirectory(tempFolderPath);
 			}
 		}
@@ -52,7 +52,7 @@ namespace ModComponent.Utils
 			string bundleFolder = Path.Combine(tempFolderPath, bundleName);
 			if (!Directory.Exists(bundleFolder))
 			{
-				MelonLoader.MelonLogger.Msg("Creating temp bundle folder (" + bundleFolder + ")");
+				Logger.LogDebug("Creating temp bundle folder (" + bundleFolder + ")");
 				Directory.CreateDirectory(bundleFolder);
 			}
 		}
@@ -93,7 +93,7 @@ namespace ModComponent.Utils
 				if (bundleFilePath != null && File.Exists(bundleFilePath))
 				{
 					string bundleFileName = Path.GetFileName(bundleFilePath);
-					MelonLoader.MelonLogger.Msg("Preloading (" + bundleFileName+")");
+					Logger.LogDebug("Preloading (" + bundleFileName+")");
 
 					List<string> assetList = new();
 					AssetBundle ab = AssetBundle.LoadFromFile(bundleFilePath);
@@ -120,7 +120,7 @@ namespace ModComponent.Utils
 			FileStream fs = File.Create(bundleFilePath);
 			fs.Write(data);
 			fs.Close();
-			MelonLoader.MelonLogger.Msg("Bundle Written (" + filename+")");
+			Logger.LogDebug("Bundle Written (" + filename+")");
 			if (!bundleFilePath.Contains("unitybuiltinshaders")) {
 				bundleFilePaths.Add(bundleFilePath);
 			}
@@ -143,12 +143,12 @@ namespace ModComponent.Utils
 			ModContentCatalog? contentCatalog = System.Text.Json.JsonSerializer.Deserialize<ModContentCatalog>(data);
 			if (contentCatalog == null)
 			{
-				MelonLoader.MelonLogger.Error("Catalog Failed - Could not deserialize json (" + catalogName + ")");
+				Logger.LogError("Catalog Failed - Could not deserialize json (" + catalogName + ")");
 				return;
 			}
 			if (contentCatalog.m_InternalIds == null || contentCatalog.m_InternalIds.Length <= 0)
 			{
-				MelonLoader.MelonLogger.Error("Catalog Failed - InternalIds empty (" + catalogName + ")");
+				Logger.LogError("Catalog Failed - InternalIds empty (" + catalogName + ")");
 				return;
 			}
 			for (int i = 0; i < contentCatalog.m_InternalIds.Length; i++)
@@ -169,12 +169,12 @@ namespace ModComponent.Utils
 				catalogBundleList.Add(catalogFilePath, catalogBundles);
 			}
 			contentCatalog.m_LocatorId = catalogName;
-			MelonLoader.MelonLogger.Msg("Catalog m_InternalIds Patched (" + catalogName + ")");
+			Logger.LogDebug("Catalog m_InternalIds Patched (" + catalogName + ")");
 
 			data = System.Text.Json.JsonSerializer.Serialize<ModContentCatalog>(contentCatalog);
 
 			File.WriteAllText(catalogFilePath, data);
-			MelonLoader.MelonLogger.Msg("Catalog Written (" + catalogName + ")");
+			Logger.LogDebug("Catalog Written (" + catalogName + ")");
 			catalogFilePaths.Add(catalogFilePath);
 			if (firstAsset != null && !catalogName.Contains("unitybuiltinshaders"))
 			{
@@ -205,7 +205,7 @@ namespace ModComponent.Utils
 		{
 			if (catalogFilePath == null || catalogFilePath == "")
 			{
-				MelonLoader.MelonLogger.Error("Catalog Loaded - No Catalog Path ");
+				Logger.LogError("Catalog Loaded - No Catalog Path");
 				return true;
 			}
 
@@ -214,7 +214,7 @@ namespace ModComponent.Utils
 
 			if (catalogExtension != ".json")
 			{
-				MelonLoader.MelonLogger.Error("Catalog Failed - Invalid extension (" + catalogExtension + ")");
+				Logger.LogError("Catalog Failed - Invalid extension (" + catalogExtension + ")");
 				return true;
 			}
 
@@ -223,13 +223,13 @@ namespace ModComponent.Utils
 				IResourceLocator catalogLocator = Addressables.LoadContentCatalogAsync(catalogFilePath).WaitForCompletion();
 				if (catalogLocator != null && catalogLocator.Keys != null)
 				{
-					MelonLoader.MelonLogger.Msg(ConsoleColor.Green, "Catalog Loaded (" + catalogName + ") ");
+					Logger.LogDebug("Catalog Loaded (" + catalogName + ") ");
 					return true;
 				}
 			}
 			catch (Exception e)
 			{
-				MelonLoader.MelonLogger.Error("Catalog Failed (" + catalogName + ") " + e.ToString());
+				Logger.LogError("Catalog Failed (" + catalogName + ") " + e.ToString());
 				return false;
 			}
 			return false;
@@ -252,11 +252,11 @@ namespace ModComponent.Utils
 						Texture2D? testObject = AssetBundleUtils.LoadAsset<Texture2D>(testAssetName);
 						if (testObject != null && testObject.name != null)
 						{
-							MelonLoader.MelonLogger.Msg(ConsoleColor.Green, "Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
+							Logger.LogDebug("Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
 							return true;
 						} else
 						{
-							MelonLoader.MelonLogger.Error("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
+							Logger.LogError("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
 							return false;
 						}
 
@@ -266,27 +266,27 @@ namespace ModComponent.Utils
 						GameObject? testObject = AssetBundleUtils.LoadAsset<GameObject>(testAssetName);
 						if (testObject != null && testObject.name != null)
 						{
-							MelonLoader.MelonLogger.Msg(ConsoleColor.Green, "Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
+							Logger.LogDebug("Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
 							return true;
 						}
 						else
 						{
-							MelonLoader.MelonLogger.Error("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
+							Logger.LogError("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
 							return false;
 						}
 					}
-					MelonLoader.MelonLogger.Error("Catalog Test Failed (" + catalogName + ") (" + testAssetName + assetExtension + ") Unknown asset extension");
+					Logger.LogError("Catalog Test Failed (" + catalogName + ") (" + testAssetName + assetExtension + ") Unknown asset extension");
 					return false;
 				}
 				catch (Exception e)
 				{
-					MelonLoader.MelonLogger.Error("Catalog Test Failed (" + catalogName + ") " + e.ToString());
+					Logger.LogError("Catalog Test Failed (" + catalogName + ") " + e.ToString());
 					return false;
 				}
 			}
 			else
 			{
-				MelonLoader.MelonLogger.Error("Catalog Test Failed (" + catalogName + ") No test found");
+				Logger.LogError("Catalog Test Failed (" + catalogName + ") No test found");
 				return false;
 			}
 		}

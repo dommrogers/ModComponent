@@ -13,4 +13,9 @@ internal class Settings : JsonModSettings
 	[Name("Disable Random Item Spawns")]
 	[Description("Set this to No. It's for new spawn point creation.")]
 	public bool disableRandomItemSpawns = false;
+
+	[Section("Extras")]
+	[Name("Debug Output")]
+	[Description("Shows extra output in the log to help with troubleshooting/debugging")]
+	public bool showDebugOutput = false;
 }
