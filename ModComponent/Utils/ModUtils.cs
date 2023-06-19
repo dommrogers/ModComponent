@@ -1,4 +1,5 @@
 ﻿using Il2Cpp;
+using ModComponent.Mapper;
 using System.Reflection;
 using UnityEngine;
 
@@ -121,6 +122,17 @@ internal static class ModUtils
 		if (gameObject == null)
 		{
 			throw new ArgumentException("Could not load '" + name + "'" + (reference != null ? " referenced by '" + reference + "'" : "") + ".");
+		}
+
+		bool isModComponentPrefab = AssetBundleProcessor.IsModComponentPrefab(name);
+		bool hasType = gameObject.GetComponentSafe<T>() != null;
+		string bundlePath = AssetBundleProcessor.GetPrefabBundlePath(name);
+
+		if (isModComponentPrefab && !hasType && bundlePath != null)
+		{
+			Logger.LogDebug("Mapping dependency " + name);
+			// if this a modded item and is yet to be mapped... map it now.
+			AutoMapper.AutoMapPrefab(Path.GetFileNameWithoutExtension(bundlePath), name);
 		}
 
 		T targetType = ComponentUtils.GetComponentSafe<T>(gameObject);

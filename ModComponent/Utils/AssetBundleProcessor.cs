@@ -12,6 +12,8 @@ namespace ModComponent.Utils
 		internal static string tempFolderPath { get; set; } = Path.Combine(MelonEnvironment.ModsDirectory, tempFolderName);
 
 		internal static List<string> catalogFilePaths { get; set; } = new();
+
+		internal static List<string> catalogsLoaded { get; set; } = new();
 		internal static Dictionary<string, List<string>> catalogBundleList { get; set; } = new();
 		internal static Dictionary<string, string> catalogTestList { get; set; } = new();
 
@@ -30,8 +32,11 @@ namespace ModComponent.Utils
 			// preload the bundles, populate bundleNames & bundleAssetList
 			PreloadAssetBundles();
 
-			// load & test the catalogs in a loop (prevent one from breaking all)
+			// load the catalogs in a loop (prevent one from breaking all)
 			LoadCatalogs();
+
+			// test the catalogs in a loop (prevent one from breaking all)
+			TestCatalogs();
 
 			// now lets map those prefabs
 			MapPrefabs();
@@ -93,7 +98,7 @@ namespace ModComponent.Utils
 				if (bundleFilePath != null && File.Exists(bundleFilePath))
 				{
 					string bundleFileName = Path.GetFileName(bundleFilePath);
-					Logger.LogDebug("Preloading (" + bundleFileName+")");
+					Logger.LogDebug("Preloading (" + bundleFileName + ")");
 
 					List<string> assetList = new();
 					AssetBundle ab = AssetBundle.LoadFromFile(bundleFilePath);
@@ -120,8 +125,9 @@ namespace ModComponent.Utils
 			FileStream fs = File.Create(bundleFilePath);
 			fs.Write(data);
 			fs.Close();
-			Logger.LogDebug("Bundle Written (" + filename+")");
-			if (!bundleFilePath.Contains("unitybuiltinshaders")) {
+			Logger.LogDebug("Bundle Written (" + filename + ")");
+			if (!bundleFilePath.Contains("unitybuiltinshaders"))
+			{
 				bundleFilePaths.Add(bundleFilePath);
 			}
 		}
@@ -165,7 +171,8 @@ namespace ModComponent.Utils
 					firstAsset = line;
 				}
 			}
-			if (!catalogName.Contains("unitybuiltinshaders")) {
+			if (!catalogName.Contains("unitybuiltinshaders"))
+			{
 				catalogBundleList.Add(catalogFilePath, catalogBundles);
 			}
 			contentCatalog.m_LocatorId = catalogName;
@@ -194,7 +201,7 @@ namespace ModComponent.Utils
 					bool catalogLoaded = LoadCatalog(catalogFilePath);
 					if (catalogLoaded == true)
 					{
-						bool catalogTest = TestCatalog(catalogFilePath);
+						catalogsLoaded.Add(catalogFilePath);
 					}
 
 				}
@@ -235,6 +242,14 @@ namespace ModComponent.Utils
 			return false;
 		}
 
+		internal static void TestCatalogs()
+		{
+			foreach (string catalogFilePath in catalogsLoaded)
+			{
+				bool catalogTest = TestCatalog(catalogFilePath);
+			}
+		}
+
 		internal static bool TestCatalog(string catalogFilePath)
 		{
 			string catalogName = Path.GetFileNameWithoutExtension(catalogFilePath);
@@ -254,7 +269,8 @@ namespace ModComponent.Utils
 						{
 							Logger.LogDebug("Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
 							return true;
-						} else
+						}
+						else
 						{
 							Logger.LogError("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
 							return false;
@@ -303,6 +319,37 @@ namespace ModComponent.Utils
 					}
 				}
 			}
+		}
+
+		internal static bool IsModComponentPrefab(string name)
+		{
+
+			foreach (KeyValuePair<string, List<string>> item in bundleAssetList)
+			{
+				foreach (string assetName in item.Value)
+				{
+					if (Path.GetFileNameWithoutExtension(assetName).ToLower() == name.ToLower())
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		internal static string? GetPrefabBundlePath(string name)
+		{
+
+			foreach (KeyValuePair<string, List<string>> item in bundleAssetList)
+			{
+				foreach (string assetName in item.Value)
+				{
+					if (Path.GetFileNameWithoutExtension(assetName).ToLower() == name.ToLower())
+					{
+						return item.Key;
+					}
+				}
+			}
+			return null;
 		}
 
 	}

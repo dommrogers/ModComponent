@@ -46,8 +46,8 @@
 	<!--This is the of packages that the mod references.-->
 	<ItemGroup>
 		<!--This package contains almost everything a person could possibly need to reference while modding.-->
-		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.0.0" />
-		<PackageReference Include="STBlade.Modding.TLD.GearSpawner" Version="2.3.0" />
+		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.0.1" />
+		<PackageReference Include="STBlade.Modding.TLD.GearSpawner" Version="2.3.1" />
 		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.10.0" />
 		<PackageReference Include="STBlade.Modding.TLD.LocalizationUtilities" Version="2.0.0" />
 		<PackageReference Include="STBlade.Modding.TLD.ModSettings" Version="1.9.0" />
