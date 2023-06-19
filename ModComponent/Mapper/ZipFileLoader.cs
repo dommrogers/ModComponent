@@ -28,7 +28,10 @@ internal static class ZipFileLoader
 			}
 		}
 
-		string[] files = Directory.GetFiles(directory);
+		string[] files = Directory.GetFiles(directory,"*.modcomponent");
+
+		Array.Sort(files);
+
 		foreach (string eachFile in files)
 		{
 			if (eachFile.ToLower().EndsWith(".modcomponent"))
