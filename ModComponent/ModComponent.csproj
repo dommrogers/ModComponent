@@ -27,7 +27,7 @@
 	<!--This is for NuGet.-->
 	<PropertyGroup>
 		<Authors>STBlade</Authors>
-		<Version>6.1.0</Version>
+		<Version>6.1.1</Version>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<PackageId>STBlade.Modding.TLD.ModComponent</PackageId>
 		<PackageTags>MelonLoader Modding TLD Asset Loading Utility Mod</PackageTags>

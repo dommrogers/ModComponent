@@ -151,6 +151,15 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_ConditionType = GetConditionTableType(modComponent);
 		gearItem.GearItemData.m_ScentIntensity = ScentMapper.GetScentIntensity(modComponent);
 
+		CookingPotItem? cookingPotItem = ModComponent.Utils.ComponentUtils.GetComponentSafe<CookingPotItem>(modComponent);
+		Bed? bed = ModComponent.Utils.ComponentUtils.GetComponentSafe<Bed>(modComponent);
+		if (cookingPotItem != null || bed != null)
+		{
+			gearItem.GearItemData.m_IsPlaceable = true;
+		}
+
+
+
 		gearItem.Awake();
 	}
 
