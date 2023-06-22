@@ -25,8 +25,8 @@ internal static class CookableMapper
 		cookable.m_PotableWaterRequiredLiters = modCookableComponent.CookingWaterRequired;
 		cookable.m_WarmUpNearFireRange = 1.5f;
 
-		cookable.m_CookAudio = ModComponent.Utils.ModUtils.DefaultIfEmpty(modCookableComponent.CookingAudio, GetDefaultCookAudio(modCookableComponent));
-		cookable.m_PutInPotAudio = ModComponent.Utils.ModUtils.DefaultIfEmpty(modCookableComponent.StartCookingAudio, GetDefaultStartCookingAudio(modCookableComponent));
+		cookable.m_CookEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.CookingAudio, GetDefaultCookAudio(modCookableComponent)));
+		cookable.m_PutInPotEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.StartCookingAudio, GetDefaultStartCookingAudio(modCookableComponent)));
 
 		GameObject? cookableObject = AssetBundleUtils.LoadAsset<GameObject>("GEAR_PinnacleCanPeaches");
 		Cookable template = ModComponent.Utils.ComponentUtils.GetComponentSafe<Cookable>(cookableObject);
@@ -73,9 +73,9 @@ internal static class CookableMapper
 	{
 		return modCookableComponent.Type switch
 		{
-			CookableType.Grub => "Play_AddSlopToPot",
+			CookableType.Grub => "PLAY_PUTINPOTSLOP",
 			CookableType.Meat => "Play_AddMeatPan",
-			_ => "Play_AddWaterToPot",
+			_ => "PLAY_PUTINPOTWATER",
 		};
 	}
 }

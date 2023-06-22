@@ -51,7 +51,7 @@ internal static class CookingPotMapper
 		cookingPotItem.m_GrubMeshFilter = grubMesh.GetComponent<MeshFilter>();
 		cookingPotItem.m_GrubMeshRenderer = grubMesh.GetComponent<MeshRenderer>();
 
-		PlaceableItem placeableItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<PlaceableItem>(modComponent);
+		//PlaceableItem placeableItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<PlaceableItem>(modComponent);
 		//placeableItem.m_Range = template.GetComponent<PlaceableItem>()?.m_Range ?? 3; //<============================================
 	}
 }

@@ -145,7 +145,7 @@ internal static class ItemMapper
 		Cookable? cookable = ModComponent.Utils.ComponentUtils.GetComponentSafe<Cookable>(modComponent);
 		if (cookable != null)
 		{
-			gearItem.GearItemData.m_CookingSlotPlacementAudio = ModUtils.MakeAudioEvent(cookable.m_PutInPotAudio);
+			gearItem.GearItemData.m_CookingSlotPlacementAudio = cookable.m_PutInPotEvent;
 		}
 
 		gearItem.GearItemData.m_ConditionType = GetConditionTableType(modComponent);

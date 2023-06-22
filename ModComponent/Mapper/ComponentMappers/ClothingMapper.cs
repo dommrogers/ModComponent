@@ -25,7 +25,8 @@ internal static class ClothingMapper
 		clothingItem.m_Region = ModComponent.Utils.EnumUtils.TranslateEnumValue<ClothingRegion, ModClothingComponent.BodyRegion>(modClothingItem.Region);
 		clothingItem.m_MaxLayer = modClothingItem.MaxLayer;
 		clothingItem.m_MinLayer = modClothingItem.MinLayer;
-		clothingItem.m_FootwearType = modClothingItem.Footwear;
+		// Made obsolete in 2.17
+		//clothingItem.m_FootwearType = modClothingItem.Footwear;
 
 		clothingItem.m_PaperDollTextureName = modClothingItem.MainTexture;
 		clothingItem.m_PaperDollBlendmapName = modClothingItem.BlendTexture;

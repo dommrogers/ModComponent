@@ -1,7 +1,9 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.Attributes;
+using Il2CppTLD.Gear;
 using MelonLoader.TinyJSON;
 using ModComponent.Utils;
+using UnityEngine;
 
 namespace ModComponent.API.Components;
 
@@ -11,7 +13,7 @@ public partial class ModPowderComponent : ModBaseComponent
 	/// <summary>
 	/// The type of powder this container holds. "Gunpowder"
 	/// </summary>
-	public GearPowderType PowderType = GearPowderType.Gunpowder;
+	public PowderType ModPowderType;
 
 	/// <summary>
 	/// The maximum weight this container can hold.
@@ -44,7 +46,7 @@ public partial class ModPowderComponent : ModBaseComponent
 	internal override void InitializeComponent(ProxyObject dict, string className = "ModPowderComponent")
 	{
 		base.InitializeComponent(dict, className);
-		this.PowderType = dict.GetEnum<GearPowderType>(className, "PowderType");
+		this.ModPowderType = ScriptableObject.CreateInstance<PowderType>();
 		this.CapacityKG = dict.GetVariant(className, "CapacityKG");
 		this.ChanceFull = dict.GetVariant(className, "ChanceFull");
 	}

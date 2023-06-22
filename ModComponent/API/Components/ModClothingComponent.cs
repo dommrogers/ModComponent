@@ -36,7 +36,7 @@ public partial class ModClothingComponent : ModBaseComponent
 	/// <summary>
 	/// The type footwear (as in Boots) this clothing item represents. Leave at 'None' if it is not a footwear item at all.
 	/// </summary>
-	public FootwearType Footwear;
+	//public FootwearType Footwear;
 
 	/// <summary>
 	/// Number of days it takes for this clothing item to decay from 100% to 0% while being worn and outside. 0 means 'Does not decay from being worn'.
@@ -192,7 +192,7 @@ public partial class ModClothingComponent : ModBaseComponent
 		this.MinLayer = dict.GetEnum<ClothingLayer>(className, "MinLayer");
 		this.MaxLayer = dict.GetEnum<ClothingLayer>(className, "MaxLayer");
 		this.MovementSound = dict.GetEnum<MovementSounds>(className, "MovementSound");
-		this.Footwear = dict.GetEnum<FootwearType>(className, "Footwear");
+//		this.Footwear = dict.GetEnum<FootwearType>(className, "Footwear");
 		this.DaysToDecayWornOutside = dict.GetVariant(className, "DaysToDecayWornOutside");
 		this.DaysToDecayWornInside = dict.GetVariant(className, "DaysToDecayWornInside");
 		this.Warmth = dict.GetVariant(className, "Warmth");
