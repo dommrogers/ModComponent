@@ -1,4 +1,4 @@
-﻿using Il2Cpp;
+using Il2Cpp;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
@@ -32,6 +32,8 @@ internal static class CookableMapper
 		Cookable template = ModComponent.Utils.ComponentUtils.GetComponentSafe<Cookable>(cookableObject);
 		cookable.m_MeshPotStyle = template?.m_MeshPotStyle;
 		cookable.m_MeshCanStyle = template?.m_MeshCanStyle;
+		cookable.m_MeshFryingPanStyle = template?.m_MeshFryingPanStyle;
+
 		cookable.m_LiquidMeshRenderer = template?.m_LiquidMeshRenderer;
 
 		// either just heat or convert, but not both
