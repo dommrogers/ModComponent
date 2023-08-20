@@ -74,7 +74,14 @@
 
                             "ContainsAlcohol" : false,
                             "AlcoholPercentage" : 0,
-                            "AlcoholUptakeMinutes" : 45
+                            "AlcoholUptakeMinutes" : 45,
+
+                            "AffectEnergyBoost" : false,
+                            "BoostDurationMinutes" : 0,
+                            "FatigueStartIncrease" : 0,
+                            "FatigueEndDecrease" : 0,
+                            "StaminaStartIncrease" : 0,
+                            "StaminaEndDecrease" : 0
                         }
 }
 ```
@@ -218,3 +225,27 @@ How much of the item's weight is alcohol?
 ## AlcoholUptakeMinutes
 *float*<br/>
 How many in-game minutes does it take for the alcohol to be fully absorbed? This is scaled by current hunger level (the hungrier the faster). The simulated blood alcohol level will slowly raise over this time. Real-life value is around 45 mins for liquids.
+
+## AffectEnergyBoost
+*bool*<br/>
+Does this item affect whether the 'EnergyBoost' affliction is applied to the player once consumed?
+
+## BoostDurationMinutes
+*float*<br/>
+Amount of in-game minutes the 'EnergyBoost' will be applied.
+
+## FatigueStartIncrease
+*float*<br/>
+How much 'Fatigue' is restored immediately after consuming the item. Represents change in percentage points. Negative values drain fatigue, positive values restore fatigue.
+
+## FatigueEndDecrease
+*float*<br/>
+How much 'Fatigue' is drained immediately after the 'EnergyBoost' affliction runs out. Represents change in percentage points. Negative values restore fatigue, positive values drain fatigue.
+
+## StaminaStartIncrease
+*float*<br/>
+How much 'Stamina' is restored immediately after consuming the item. Represents change in percentage points. Negative values drain stamina, positive values restore stamina.
+
+## StaminaEndDecrease
+*float*<br/>
+How much 'Stamina' is drained immediately after the 'EnergyBoost' affliction runs out. Represents change in percentage points. Negative values restore stamina, positive values drain stamina.

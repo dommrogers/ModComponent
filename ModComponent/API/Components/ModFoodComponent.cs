@@ -64,10 +64,16 @@ public class ModFoodComponent : ModCookableComponent
 	/// </summary>
 	public float[] ParasiteRiskIncrements = Array.Empty<float>();
 
-	/// <summary>
-	/// Is the food item naturally occurring meat or plant?
-	/// </summary>
-	public bool Natural;
+    /// <summary>
+    /// When eaten, does the player consume all of it?
+    /// </summary>
+    public bool MustConsumeAll;
+
+    #region FoodTypeVariables
+    /// <summary>
+    /// Is the food item naturally occurring meat or plant?
+    /// </summary>
+    public bool Natural;
 
 	/// <summary>
 	/// Is the food item raw or cooked?
@@ -97,12 +103,14 @@ public class ModFoodComponent : ModCookableComponent
 	/// Canned items will yield a 'Recycled Can' when opened properly.
 	/// </summary>
 	public bool Canned;
+    #endregion
 
-	/// <summary>
-	/// Does this item require a tool for opening it?<br/>
-	/// If not enabled, the other settings in this section will be ignored.
-	/// </summary>
-	public bool Opening;
+    #region OpeningVariables
+    /// <summary>
+    /// Does this item require a tool for opening it?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool Opening;
 
 	/// <summary>
 	/// Can it be opened with a can opener?
@@ -123,12 +131,14 @@ public class ModFoodComponent : ModCookableComponent
 	/// Can it be opened by smashing?
 	/// </summary>
 	public bool OpeningWithSmashing;
+    #endregion
 
-	/// <summary>
-	/// Does this item affect 'Condition' while sleeping?<br/>
-	/// If not enabled, the other settings in this section will be ignored.
-	/// </summary>
-	public bool AffectCondition;
+    #region ConditionVariables
+    /// <summary>
+    /// Does this item affect 'Condition' while sleeping?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool AffectCondition;
 
 	/// <summary>
 	/// How much additional condition is restored per hour?
@@ -139,12 +149,14 @@ public class ModFoodComponent : ModCookableComponent
 	/// Amount of in-game minutes the 'ConditionRestBonus' will be applied.
 	/// </summary>
 	public float ConditionRestMinutes = 360;
+    #endregion
 
-	/// <summary>
-	/// Does this item affect 'Rest'?<br/>
-	/// If not enabled, the other settings in this section will be ignored.
-	/// </summary>
-	public bool AffectRest;
+    #region RestVariables
+    /// <summary>
+    /// Does this item affect 'Rest'?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool AffectRest;
 
 	/// <summary>
 	/// How much 'Rest' is restored/drained immediately after consuming the item.<br/>
@@ -157,12 +169,14 @@ public class ModFoodComponent : ModCookableComponent
 	/// Amount of in-game minutes the 'RestFactor' will be applied.
 	/// </summary>
 	public int RestFactorMinutes = 60;
+	#endregion
 
-	/// <summary>
-	/// Does this item affect 'Cold'?<br/>
-	/// If not enabled, the other settings in this section will be ignored.
-	/// </summary>
-	public bool AffectCold;
+    #region ColdVariables
+    /// <summary>
+    /// Does this item affect 'Cold'?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool AffectCold;
 
 	/// <summary>
 	/// How much 'Cold' is restored/drained immediately after consuming the item.<br/>
@@ -175,12 +189,14 @@ public class ModFoodComponent : ModCookableComponent
 	/// Amount of in-game minutes the 'ColdFactor' will be applied.
 	/// </summary>
 	public int ColdFactorMinutes = 60;
+    #endregion
 
-	/// <summary>
-	/// Does this item contain Alcohol?<br/>
-	/// If not enabled, the other settings in this section will be ignored.
-	/// </summary>
-	public bool ContainsAlcohol;
+    #region AlcoholVariables
+    /// <summary>
+    /// Does this item contain Alcohol?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool ContainsAlcohol;
 
 	/// <summary>
 	/// How much of the item's weight is alcohol?
@@ -194,8 +210,43 @@ public class ModFoodComponent : ModCookableComponent
 	/// Real-life value is around 45 mins for liquids.
 	/// </summary>
 	public float AlcoholUptakeMinutes = 45;
+    #endregion
 
-	void Awake()
+    #region EnergyVariables
+
+    /// <summary>
+    /// Does this item apply the 'Energy Boost' affliction?<br/>
+    /// If not enabled, the other settings in this section will be ignored.
+    /// </summary>
+    public bool AffectEnergyBoost;
+
+    /// <summary>
+    /// The amount of in-game minutes the 'EnergyBoost' affliction will be applied.
+    /// </summary>
+    public float BoostDurationMinutes;
+
+    /// <summary>
+    /// How much fatigue is taken from the player once the 'EnergyBoost' affliction runs out.
+    /// </summary>
+    public float FatigueEndingIncrease;
+
+    /// <summary>
+    /// How much fatigue is given to the player once the 'EnergyBoost' affliction is active.
+    /// </summary>
+    public float FatigueInitialDecrease;
+
+    /// <summary>
+    /// How much stamina is taken from the player once the 'EnergyBoost' affliction runs out.
+    /// </summary>
+    public float StaminaEndingDecrease;
+
+    /// <summary>
+    /// How much stamina is given to the player once the 'EnergyBoost' affliction is active.
+    /// </summary>
+    public float StaminaInitialIncrease;
+
+    #endregion
+    void Awake()
 	{
 		CopyFieldHandler.UpdateFieldValues(this);
 	}
@@ -249,5 +300,14 @@ public class ModFoodComponent : ModCookableComponent
 		this.ContainsAlcohol = dict.GetVariant(className, "ContainsAlcohol");
 		this.AlcoholPercentage = dict.GetVariant(className, "AlcoholPercentage");
 		this.AlcoholUptakeMinutes = dict.GetVariant(className, "AlcoholUptakeMinutes");
-	}
+
+        this.MustConsumeAll = dict.GetVariant(className, "MustConsumeAll");
+
+        this.AffectEnergyBoost = dict.GetVariant(className, "AffectEnergyBoost");
+        this.BoostDurationMinutes = dict.GetVariant(className, "BoostDurationMinutes");
+        this.FatigueEndingIncrease = dict.GetVariant(className, "FatigueStartIncrease");
+        this.FatigueInitialDecrease = dict.GetVariant(className, "FatigueEndDecrease");
+        this.StaminaEndingDecrease = dict.GetVariant(className, "StaminaStartIncrease");
+        this.StaminaInitialIncrease = dict.GetVariant(className, "StaminaEndDecrease");
+    }
 }

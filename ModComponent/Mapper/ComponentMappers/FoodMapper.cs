@@ -16,7 +16,7 @@ internal static class FoodMapper
 			return;
 		}
 
-		FoodItem foodItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FoodItem>(modFoodComponent);
+		FoodItem foodItem = ComponentUtils.GetOrCreateComponent<FoodItem>(modFoodComponent);
 
 		foodItem.m_CaloriesTotal = modFoodComponent.Calories;
 		foodItem.m_CaloriesRemaining = modFoodComponent.Calories;
@@ -39,8 +39,8 @@ internal static class FoodMapper
 		foodItem.m_IsMeat = modFoodComponent.Meat;
 		foodItem.m_IsRawMeat = modFoodComponent.Raw;
 		foodItem.m_IsNatural = modFoodComponent.Natural;
-		foodItem.m_MustConsumeAll = false;
-		foodItem.m_ParasiteRiskPercentIncrease = ModComponent.Utils.ModUtils.NotNull(modFoodComponent.ParasiteRiskIncrements);
+		foodItem.m_MustConsumeAll = modFoodComponent.MustConsumeAll;
+        foodItem.m_ParasiteRiskPercentIncrease = ModUtils.NotNull(modFoodComponent.ParasiteRiskIncrements);
 
 		foodItem.m_PercentHeatLossPerMinuteIndoors = 1;
 		foodItem.m_PercentHeatLossPerMinuteOutdoors = 2;
@@ -54,7 +54,7 @@ internal static class FoodMapper
 
 			if (modFoodComponent.OpeningWithSmashing)
 			{
-				SmashableItem smashableItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<SmashableItem>(modFoodComponent);
+				SmashableItem smashableItem = ComponentUtils.GetOrCreateComponent<SmashableItem>(modFoodComponent);
 				smashableItem.m_MinPercentLoss = 10;
 				smashableItem.m_MaxPercentLoss = 30;
 				smashableItem.m_TimeToSmash = 6;
@@ -69,7 +69,7 @@ internal static class FoodMapper
 
 		if (modFoodComponent.AffectRest)
 		{
-			FatigueBuff fatigueBuff = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FatigueBuff>(modFoodComponent);
+			FatigueBuff fatigueBuff = ComponentUtils.GetOrCreateComponent<FatigueBuff>(modFoodComponent);
 			fatigueBuff.m_InitialPercentDecrease = modFoodComponent.InstantRestChange;
 			fatigueBuff.m_RateOfIncreaseScale = 0.5f;
 			fatigueBuff.m_DurationHours = modFoodComponent.RestFactorMinutes / 60f;
@@ -77,7 +77,7 @@ internal static class FoodMapper
 
 		if (modFoodComponent.AffectCold)
 		{
-			FreezingBuff freezingBuff = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FreezingBuff>(modFoodComponent);
+			FreezingBuff freezingBuff = ComponentUtils.GetOrCreateComponent<FreezingBuff>(modFoodComponent);
 			freezingBuff.m_InitialPercentDecrease = modFoodComponent.InstantColdChange;
 			freezingBuff.m_RateOfIncreaseScale = 0.5f;
 			freezingBuff.m_DurationHours = modFoodComponent.ColdFactorMinutes / 60f;
@@ -85,20 +85,32 @@ internal static class FoodMapper
 
 		if (modFoodComponent.AffectCondition)
 		{
-			ConditionRestBuff conditionRestBuff = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<ConditionRestBuff>(modFoodComponent);
+			ConditionRestBuff conditionRestBuff = ComponentUtils.GetOrCreateComponent<ConditionRestBuff>(modFoodComponent);
 			conditionRestBuff.m_ConditionRestBonus = modFoodComponent.ConditionRestBonus;
 			conditionRestBuff.m_NumHoursRestAffected = modFoodComponent.ConditionRestMinutes / 60f;
 		}
 
 		if (modFoodComponent.ContainsAlcohol)
 		{
-			AlcoholComponent alcohol = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<AlcoholComponent>(modFoodComponent);
+			AlcoholComponent alcohol = ComponentUtils.GetOrCreateComponent<AlcoholComponent>(modFoodComponent);
 			alcohol.AmountTotal = modFoodComponent.WeightKG * modFoodComponent.AlcoholPercentage * 0.01f;
 			alcohol.AmountRemaining = alcohol.AmountTotal;
 			alcohol.UptakeSeconds = modFoodComponent.AlcoholUptakeMinutes * 60;
 		}
 
-		HoverIconsToShow hoverIconsToShow = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<HoverIconsToShow>(modFoodComponent);
+        if (modFoodComponent.AffectEnergyBoost)
+        {
+            EnergyBoostItem energyBoost = ComponentUtils.GetOrCreateComponent<EnergyBoostItem>(modFoodComponent);
+			energyBoost.m_BoostDurationHours = modFoodComponent.BoostDurationMinutes / 60f;
+            energyBoost.m_FatigueEndingIncrease = modFoodComponent.FatigueEndingIncrease;
+            energyBoost.m_FatigueInitialDecrease = modFoodComponent.FatigueInitialDecrease;
+			energyBoost.m_PulseFrequencyEnd = 1.2f;
+			energyBoost.m_PulseFrequencyStart = 0.8f;
+            energyBoost.m_StaminaEndingDecrease = modFoodComponent.StaminaEndingDecrease;
+            energyBoost.m_StaminaInitialIncrease = modFoodComponent.StaminaInitialIncrease;
+        }
+
+        HoverIconsToShow hoverIconsToShow = ComponentUtils.GetOrCreateComponent<HoverIconsToShow>(modFoodComponent);
 		hoverIconsToShow.m_HoverIcons = new HoverIconsToShow.HoverIcons[] { HoverIconsToShow.HoverIcons.Food };
 	}
 }
