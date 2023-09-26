@@ -70,6 +70,13 @@
 
                             "ContainsAlcohol" : false,
                             "AlcoholPercentage" : 0,
-                            "AlcoholUptakeMinutes" : 45
+                            "AlcoholUptakeMinutes" : 45,
+
+                            "AffectEnergyBoost" : false,
+                            "BoostDurationMinutes" : 0,
+                            "FatigueStartIncrease" : 0,
+                            "FatigueEndDecrease" : 0,
+                            "StaminaStartIncrease" : 0,
+                            "StaminaEndDecrease" : 0
                         }
 }

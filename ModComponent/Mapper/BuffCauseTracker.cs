@@ -43,6 +43,29 @@ internal static class FagtigueBuffApplyPatch
 	}
 }
 
+[HarmonyPatch(typeof(EnergyBoost), nameof(EnergyBoost.ApplyEnergyBoost))] // Changes EnergyBoost affliction to name of the GEAR_Item consumed.
+internal static class EnergyBoostApplyPatch
+{
+    public static void Postfix(EnergyBoost __instance, EnergyBoostItem energyBoostItem)
+    {
+        if (energyBoostItem == null)
+        {
+            return;
+        }
+
+        GearItem gearItem = energyBoostItem.m_GearItem;
+
+        if (gearItem == null)
+        {
+            return;
+        }
+        else
+        {
+            BuffCauseTracker.SetCause(AfflictionType.EnergyBoost, gearItem.DisplayName);
+        }
+    }
+}
+
 [HarmonyPatch(typeof(AfflictionButton), nameof(AfflictionButton.SetCauseAndEffect))]//positive caller count
 internal static class AfflictionButtonSetCauseAndEffectPatch
 {
