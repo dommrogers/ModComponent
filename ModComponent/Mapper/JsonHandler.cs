@@ -1,4 +1,4 @@
-﻿namespace ModComponent.Mapper;
+namespace ModComponent.Mapper;
 
 internal static class JsonHandler
 {
@@ -24,8 +24,17 @@ internal static class JsonHandler
 
 	public static string GetJsonText(string itemName)
 	{
-		return itemJsons.TryGetValue(itemName.ToLower(), out string jsonData)
-			? jsonData
-			: throw new System.Exception($"Could not find json file for {itemName}");
+		Logger.Log($"Get JSON data for {itemName} {itemName.ToLower()}");
+
+		try
+		{
+			return itemJsons.TryGetValue(itemName.ToLowerInvariant(), out string jsonData)
+				? jsonData
+				: throw new System.Exception($"Could not find json file for {itemName}");
+		} catch (Exception e)
+		{
+			Logger.Log($"Exception {itemName} {itemName.ToLowerInvariant()} :: {e.ToString()}");
+			return null;
+		}
 	}
 }
