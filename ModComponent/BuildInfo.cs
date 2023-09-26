@@ -6,6 +6,6 @@ public static class BuildInfo
 	public const string Description = "A utility mod for custom item creation."; // Description for the Mod.  (Set as null if none)
 	public const string Author = "STBlade"; // Author of the Mod.  (MUST BE SET)
 	public const string Company = null; // Company that made the Mod.  (Set as null if none)
-	public const string Version = "6.1.1"; // Version of the Mod.  (MUST BE SET)
+	public const string Version = "6.2.0"; // Version of the Mod.  (MUST BE SET)
 	public const string DownloadLink = null; // Download Link for the Mod.  (Set as null if none)
 }

@@ -39,7 +39,7 @@ namespace ModComponent.Utils
 			TestCatalogs();
 
 			// now lets map those prefabs
-			MapPrefabs();
+			//MapPrefabs();
 
 		}
 
@@ -261,6 +261,22 @@ namespace ModComponent.Utils
 					string testAssetPath = catalogTestList[catalogFilePath];
 					string assetExtension = Path.GetExtension(testAssetPath);
 					string testAssetName = Path.GetFileNameWithoutExtension(testAssetPath);
+
+					if (assetExtension == ".mat")
+					{
+						Material? testObject = AssetBundleUtils.LoadAsset<Material>(testAssetName);
+						if (testObject != null && testObject.name != null)
+						{
+							Logger.LogDebug("Catalog Test (" + catalogName + ") (" + testAssetName + ") OK");
+							return true;
+						}
+						else
+						{
+							Logger.LogError("Catalog Test (" + catalogName + ") (" + testAssetName + ") Failed");
+							return false;
+						}
+
+					}
 
 					if (assetExtension == ".png" || assetExtension == ".jpg")
 					{
