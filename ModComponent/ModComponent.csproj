@@ -27,7 +27,7 @@
 	<!--This is for NuGet.-->
 	<PropertyGroup>
 		<Authors>STBlade</Authors>
-		<Version>6.1.1</Version>
+		<Version>6.2.0</Version>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<PackageId>STBlade.Modding.TLD.ModComponent</PackageId>
 		<PackageTags>MelonLoader Modding TLD Asset Loading Utility Mod</PackageTags>
@@ -41,12 +41,14 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\ModComponent.xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
+		<BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</BaseOutputPath>
+		<PackageOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</PackageOutputPath>
 	</PropertyGroup>
 
 	<!--This is the of packages that the mod references.-->
 	<ItemGroup>
 		<!--This package contains almost everything a person could possibly need to reference while modding.-->
-		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.0.1" />
+		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.2.0" />
 		<PackageReference Include="STBlade.Modding.TLD.GearSpawner" Version="2.3.1" />
 		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.23.0" />
 		<PackageReference Include="STBlade.Modding.TLD.LocalizationUtilities" Version="2.0.0" />

@@ -8,6 +8,7 @@ internal static class JsonHandler
 	{
 		if (string.IsNullOrEmpty(text))
 		{
+			Logger.Log($"JSON data empty for {itemName}");
 			return;
 		}
 
@@ -19,12 +20,13 @@ internal static class JsonHandler
 		else
 		{
 			itemJsons.Add(itemName, text);
+			Logger.LogDebug($"JSON added for {itemName}");
 		}
 	}
 
 	public static string GetJsonText(string itemName)
 	{
-		Logger.Log($"Get JSON data for {itemName} {itemName.ToLower()}");
+		Logger.LogDebug($"Get JSON data for {itemName} {itemName.ToLower()}");
 
 		try
 		{
