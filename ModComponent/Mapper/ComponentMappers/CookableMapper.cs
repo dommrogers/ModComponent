@@ -1,4 +1,7 @@
-﻿using Il2Cpp;
+using Harmony;
+using Il2Cpp;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using Il2CppTLD.Gear;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
@@ -28,10 +31,12 @@ internal static class CookableMapper
 		cookable.m_CookEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.CookingAudio, GetDefaultCookAudio(modCookableComponent)));
 		cookable.m_PutInPotEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.StartCookingAudio, GetDefaultStartCookingAudio(modCookableComponent)));
 
-		GameObject? cookableObject = AssetBundleUtils.LoadAsset<GameObject>("GEAR_PinnacleCanPeaches");
-		Cookable template = ModComponent.Utils.ComponentUtils.GetComponentSafe<Cookable>(cookableObject);
+		string templateSource = (cookable.m_CookableType == CookableType.Meat) ? "GEAR_RawMeatDeer" : "GEAR_PinnacleCanPeaches";
+		Cookable template = AssetBundleUtils.LoadAsset<GameObject>(templateSource).GetComponent<Cookable>();
 		cookable.m_MeshPotStyle = template?.m_MeshPotStyle;
 		cookable.m_MeshCanStyle = template?.m_MeshCanStyle;
+		cookable.m_MeshFryingPanStyle = template?.m_MeshFryingPanStyle;
+
 		cookable.m_LiquidMeshRenderer = template?.m_LiquidMeshRenderer;
 
 		// either just heat or convert, but not both

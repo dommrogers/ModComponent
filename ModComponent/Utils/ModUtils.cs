@@ -35,7 +35,7 @@ internal static class ModUtils
 
 	public static bool IsNonGameScene()
 	{
-		return string.IsNullOrEmpty(GameManager.m_ActiveScene) || GameManager.m_ActiveScene == "MainMenu" || GameManager.m_ActiveScene == "Boot" || GameManager.m_ActiveScene == "Empty";
+		return string.IsNullOrEmpty(GameManager.m_ActiveScene) || GameManager.m_ActiveScene.StartsWith("MainMenu") || GameManager.m_ActiveScene == "Boot" || GameManager.m_ActiveScene == "Empty";
 	}
 
 	public static T[] NotNull<T>(T[] array)

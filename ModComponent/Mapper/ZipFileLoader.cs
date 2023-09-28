@@ -207,6 +207,11 @@ internal static class ZipFileLoader
 				Logger.LogDebug($"Reading blueprint json from zip at '{internalPath}'");
 				CraftingRevisions.BlueprintManager.AddBlueprintFromJson(text);
 			}
+			else if (internalPath.StartsWith(@"recipes/"))
+			{
+				Logger.LogDebug($"Reading recipes json from zip at '{internalPath}'");
+				CraftingRevisions.RecipeManager.AddRecipeFromJson(text);
+			}
 			else if (internalPath.StartsWith(@"localizations/"))
 			{
 				// change emthod to ensure we go via the BOM fixed methods..
