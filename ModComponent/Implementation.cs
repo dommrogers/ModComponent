@@ -9,7 +9,7 @@ namespace ModComponent;
 internal class Implementation : MelonMod
 {
 
-	private static bool mapped = false;
+	internal static bool mapped = false;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 	internal static Implementation instance;

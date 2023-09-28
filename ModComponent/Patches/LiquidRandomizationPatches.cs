@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Il2Cpp;
+using Il2CppTLD.Gear;
 
 namespace ModComponent.Patches;
 
@@ -16,10 +17,10 @@ internal class LiquidItemPatch
 				return;
 			}
 
-			//if (__instance.m_MinimumLiters == 0f && __instance.m_LiquidType == GearLiquidTypeEnum.Water)
-			//{
-			//	__instance.m_LiquidLiters = ModComponent.Utils.RandomUtils.Range(__instance.m_LiquidCapacityLiters / 8f, __instance.m_LiquidCapacityLiters);
-			//}
+			if (__instance.m_MinimumLiters == 0f && __instance.m_LiquidType == LiquidType.GetPotableWater())
+			{
+				__instance.m_LiquidLiters = ModComponent.Utils.RandomUtils.Range(__instance.m_LiquidCapacityLiters / 8f, __instance.m_LiquidCapacityLiters);
+			}
 		}
 	}
 }

@@ -15,11 +15,11 @@ internal static class LiquidMapper
 			return;
 		}
 
-		string liquidtype = "LIQUID_" + modLiquidComponent.LiquidType;
-		LiquidType lt = Addressables.LoadAssetAsync<LiquidType>(liquidtype).WaitForCompletion();
+		string lts = modLiquidComponent.LiquidType.GetLiquidTypeString();
+		LiquidType lt = Addressables.LoadAssetAsync<LiquidType>(lts).WaitForCompletion();
 		if (lt == null)
 		{
-			Logger.LogError($"Invalid LiquidType LIQUID_{modLiquidComponent.LiquidType} for {modComponent.name}");
+			Logger.LogError($"Invalid LiquidType {lts} for {modComponent.name}");
 			return;
 		}
 
