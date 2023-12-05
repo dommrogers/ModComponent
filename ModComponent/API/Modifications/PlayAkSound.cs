@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ModComponent.API.Modifications;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class PlayAkSound : MonoBehaviour
 {
 	/// <summary>

@@ -2,7 +2,7 @@
 
 namespace ModComponent.API;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class AlcoholComponent : MonoBehaviour
 {
 	public float AmountTotal;

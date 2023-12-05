@@ -259,7 +259,7 @@ namespace ModComponent.Utils
 				try
 				{
 					string testAssetPath = catalogTestList[catalogFilePath];
-					string assetExtension = Path.GetExtension(testAssetPath);
+					string assetExtension = Path.GetExtension(testAssetPath).ToLowerInvariant();
 					string testAssetName = Path.GetFileNameWithoutExtension(testAssetPath);
 
 					if (assetExtension == ".mat")

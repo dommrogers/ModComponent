@@ -17,7 +17,10 @@ internal static class FoodMapper
 		}
 
 		FoodItem foodItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FoodItem>(modFoodComponent);
+		GearItem gearItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<GearItem>(modFoodComponent);
 
+
+		foodItem.m_Nutrients = new Il2CppSystem.Collections.Generic.List<FoodItem.Nutrient>();
 		foodItem.m_CaloriesTotal = modFoodComponent.Calories;
 		foodItem.m_CaloriesRemaining = modFoodComponent.Calories;
 		foodItem.m_ReduceThirst = modFoodComponent.ThirstEffect;
@@ -97,6 +100,18 @@ internal static class FoodMapper
 			alcohol.AmountRemaining = alcohol.AmountTotal;
 			alcohol.UptakeSeconds = modFoodComponent.AlcoholUptakeMinutes * 60;
 		}
+		if (modFoodComponent.Fish)
+		{
+			FoodWeight fw = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FoodWeight>(modFoodComponent);
+			fw.m_CaloriesPerKG = (foodItem.m_CaloriesTotal / gearItem.WeightKG);
+			fw.m_MaxWeightKG = gearItem.WeightKG * 1.2f;
+			fw.m_MinWeightKG = gearItem.WeightKG * 0.8f;
+			gearItem.m_FoodWeight = fw;
+			gearItem.WeightKG = 0;
+
+		}
+
+		gearItem.m_FoodItem = foodItem;
 
 		HoverIconsToShow hoverIconsToShow = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<HoverIconsToShow>(modFoodComponent);
 		hoverIconsToShow.m_HoverIcons = new HoverIconsToShow.HoverIcons[] { HoverIconsToShow.HoverIcons.Food };

@@ -2,6 +2,7 @@
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
+using static Il2Cpp.BodyHarvest;
 
 namespace ModComponent.Mapper.ComponentMappers;
 
@@ -19,7 +20,7 @@ internal static class BodyHarvestMapper
 		bodyHarvest.m_AllowDecay = false;
 //		bodyHarvest.m_CanCarry = modBodyHarvestComponent.CanCarry;
 		bodyHarvest.m_CanQuarter = modBodyHarvestComponent.CanQuarter;
-		bodyHarvest.m_DamageSide = BaseAi.DamageSide.DamageSideNone;
+		//bodyHarvest.time m_DamageSide = BaseAi.DamageSide.DamageSideNone;
 		bodyHarvest.m_GutAvailableUnits = modBodyHarvestComponent.GutQuantity;
 		bodyHarvest.m_GutPrefab = AssetBundleUtils.LoadAsset<GameObject>(modBodyHarvestComponent.GutPrefab);
 		bodyHarvest.m_GutWeightKgPerUnit = modBodyHarvestComponent.GutWeightKgPerUnit;

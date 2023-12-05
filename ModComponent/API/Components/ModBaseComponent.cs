@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ModComponent.API.Components;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public abstract partial class ModBaseComponent : MonoBehaviour
 {
 	/// <summary>

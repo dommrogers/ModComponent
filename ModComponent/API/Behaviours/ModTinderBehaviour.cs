@@ -3,7 +3,7 @@ using MelonLoader.TinyJSON;
 
 namespace ModComponent.API.Behaviours;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class ModTinderBehaviour : ModFireMakingBaseBehaviour
 {
 	public ModTinderBehaviour(System.IntPtr intPtr) : base(intPtr) { }

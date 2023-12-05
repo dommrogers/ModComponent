@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ModComponent.API.Components;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 internal class ModExplosiveComponent : ModBaseEquippableComponent
 {
 	public float killPlayerRange = 5;

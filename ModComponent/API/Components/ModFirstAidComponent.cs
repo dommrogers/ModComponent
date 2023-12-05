@@ -4,7 +4,7 @@ using ModComponent.Utils;
 
 namespace ModComponent.API.Components;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public partial class ModFirstAidComponent : ModBaseComponent
 {
 	/// <summary>

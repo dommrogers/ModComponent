@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace ModComponent.API.Components;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public partial class ModClothingComponent : ModBaseComponent
 {
 	/// <summary>

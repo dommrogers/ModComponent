@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ModComponent.API.Behaviours;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class ModStackableBehaviour : MonoBehaviour
 {
 	/// <summary>
@@ -41,9 +41,9 @@ public class ModStackableBehaviour : MonoBehaviour
 		StackableItem? stackable = gearItem?.GetComponent<StackableItem>();
 		if (stackable != null && gearItem != null && !gearItem.m_BeenInspected)
 		{
-			stackable.m_Units = stackable.m_UnitsPerItem == 1 || RandomUtils.RollChance(this.ChanceFull)
-				? stackable.m_UnitsPerItem
-				: RandomUtils.Range(1, stackable.m_UnitsPerItem);
+			stackable.m_Units = stackable.m_DefaultUnitsInItem == 1 || RandomUtils.RollChance(this.ChanceFull)
+				? stackable.m_DefaultUnitsInItem
+				: RandomUtils.Range(1, stackable.m_DefaultUnitsInItem);
 		}
 	}
 

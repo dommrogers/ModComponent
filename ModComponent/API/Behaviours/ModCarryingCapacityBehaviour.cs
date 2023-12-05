@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ModComponent.API.Behaviours;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class ModCarryingCapacityBehaviour : MonoBehaviour
 {
 	/// <summary>

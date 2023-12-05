@@ -48,6 +48,8 @@ internal static class ItemMapper
 		{
 			ConfigureBehaviours(modComponent);
 
+			ConfigureGearItem(modComponent);
+
 			EquippableMapper.Configure(modComponent);
 			LiquidMapper.Configure(modComponent);
 			PowderMapper.Configure(modComponent);
@@ -66,7 +68,6 @@ internal static class ItemMapper
 			BodyHarvestMapper.Configure(modComponent);
 
 			InspectMapper.Configure(modComponent);
-			ConfigureGearItem(modComponent);
 
 			mappedItems.Add(modComponent);
 
@@ -236,10 +237,10 @@ internal static class ItemMapper
 				{
 					eachMaterial.shader = meshRenderer.material.shader;
 					eachMaterial.shaderKeywords = meshRenderer.material.shaderKeywords;
-					if (eachMaterial.GetTexture("_dmg_texture") == null)
-					{
-						//eachMaterial.SetTexture("_dmg_texture", eachMaterial.GetTexture("_MainTex"));
-					}
+					//if (eachMaterial.GetTexture("_dmg_texture") == null)
+					//{
+					//	//eachMaterial.SetTexture("_dmg_texture", eachMaterial.GetTexture("_MainTex"));
+					//}
 				}
 			}
 		}

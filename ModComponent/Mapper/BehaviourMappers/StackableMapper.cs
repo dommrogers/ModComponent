@@ -27,6 +27,6 @@ internal static class StackableMapper
 
 		stackableItem.m_ShareStackWithGear = Array.Empty<StackableItem>();
 		stackableItem.m_Units = modStackableComponent.UnitsPerItem;
-		stackableItem.m_UnitsPerItem = modStackableComponent.UnitsPerItem;
+		stackableItem.m_DefaultUnitsInItem = modStackableComponent.UnitsPerItem;
 	}
 }

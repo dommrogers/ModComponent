@@ -4,7 +4,7 @@ using MelonLoader.TinyJSON;
 
 namespace ModComponent.API.Components;
 
-[MelonLoader.RegisterTypeInIl2Cpp]
+[MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class ModResearchComponent : ModBaseComponent
 {
 	public SkillType SkillType = SkillType.None;
