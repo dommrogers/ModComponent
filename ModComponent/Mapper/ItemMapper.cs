@@ -143,23 +143,11 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_StowAudio = ModUtils.MakeAudioEvent(modComponent.StowAudio);
 		gearItem.GearItemData.m_PutBackAudio = ModUtils.MakeAudioEvent(modComponent.PutBackAudio);
 		gearItem.GearItemData.m_WornOutAudio = ModUtils.MakeAudioEvent(modComponent.WornOutAudio);
-		Cookable? cookable = ModComponent.Utils.ComponentUtils.GetComponentSafe<Cookable>(modComponent);
-		if (cookable != null)
-		{
-			gearItem.GearItemData.m_CookingSlotPlacementAudio = cookable.m_PutInPotEvent;
-		}
+		gearItem.GearItemData.m_CookingSlotPlacementAudio = ModUtils.MakeAudioEvent(null);
 
 		gearItem.GearItemData.m_ConditionType = GetConditionTableType(modComponent);
 		gearItem.GearItemData.m_ScentIntensity = ScentMapper.GetScentIntensity(modComponent);
-
-		CookingPotItem? cookingPotItem = ModComponent.Utils.ComponentUtils.GetComponentSafe<CookingPotItem>(modComponent);
-		Bed? bed = ModComponent.Utils.ComponentUtils.GetComponentSafe<Bed>(modComponent);
-		if (cookingPotItem != null || bed != null)
-		{
-			gearItem.GearItemData.m_IsPlaceable = true;
-		}
-
-
+		gearItem.GearItemData.m_IsPlaceable = false;
 
 		gearItem.Awake();
 	}

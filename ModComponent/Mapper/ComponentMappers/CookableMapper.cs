@@ -19,7 +19,10 @@ internal static class CookableMapper
 			return;
 		}
 
+		GearItem gearItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<GearItem>(modCookableComponent);
 		Cookable cookable = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<Cookable>(modCookableComponent);
+
+
 
 		cookable.m_CookableType = modCookableComponent.Type;
 		cookable.m_CookTimeMinutes = modCookableComponent.CookingMinutes;
@@ -30,6 +33,7 @@ internal static class CookableMapper
 
 		cookable.m_CookEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.CookingAudio, GetDefaultCookAudio(modCookableComponent)));
 		cookable.m_PutInPotEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.StartCookingAudio, GetDefaultStartCookingAudio(modCookableComponent)));
+		gearItem.GearItemData.m_CookingSlotPlacementAudio = cookable.m_PutInPotEvent;
 
 		string templateSource = (cookable.m_CookableType == CookableType.Meat) ? "GEAR_RawMeatDeer" : "GEAR_PinnacleCanPeaches";
 		Cookable template = AssetBundleUtils.LoadAsset<GameObject>(templateSource).GetComponent<Cookable>();

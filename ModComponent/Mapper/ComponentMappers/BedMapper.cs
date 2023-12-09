@@ -36,8 +36,11 @@ internal static class BedMapper
 		DegradeOnUse degradeOnUse = ComponentUtils.GetOrCreateComponent<DegradeOnUse>(modBedComponent);
 		degradeOnUse.m_DegradeHP = Mathf.Max(degradeOnUse.m_DegradeHP, modBedComponent.DegradePerHour);
 
+		GearItem gearItem = ComponentUtils.GetOrCreateComponent<GearItem>(modBedComponent);
+		gearItem.GearItemData.m_IsPlaceable = true;
+
 		//PlaceableItem placeableItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<PlaceableItem>(modBedComponent);
-//		ComponentUtils.GetOrCreateComponent<PlaceableItem>(modBedComponent);
+		//		ComponentUtils.GetOrCreateComponent<PlaceableItem>(modBedComponent);
 		//placeableItem.m_Range = 4;
 		//m_prefab_name ???
 	}

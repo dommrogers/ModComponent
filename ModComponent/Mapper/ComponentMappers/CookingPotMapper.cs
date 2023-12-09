@@ -1,5 +1,6 @@
 ﻿using Il2Cpp;
 using ModComponent.API.Components;
+using ModComponent.Utils;
 using UnityEngine;
 
 namespace ModComponent.Mapper.ComponentMappers;
@@ -50,6 +51,9 @@ internal static class CookingPotMapper
 		GameObject grubMesh = UnityEngine.Object.Instantiate(template.m_GrubMeshFilter.gameObject, cookingPotItem.transform);
 		cookingPotItem.m_GrubMeshFilter = grubMesh.GetComponent<MeshFilter>();
 		cookingPotItem.m_GrubMeshRenderer = grubMesh.GetComponent<MeshRenderer>();
+
+		GearItem gearItem = ComponentUtils.GetOrCreateComponent<GearItem>(modComponent);
+		gearItem.GearItemData.m_IsPlaceable = true;
 
 		//PlaceableItem placeableItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<PlaceableItem>(modComponent);
 		//placeableItem.m_Range = template.GetComponent<PlaceableItem>()?.m_Range ?? 3; //<============================================
