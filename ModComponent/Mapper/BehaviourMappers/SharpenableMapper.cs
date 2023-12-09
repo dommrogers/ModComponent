@@ -26,5 +26,6 @@ internal static class SharpenableMapper
 
 		sharpenable.m_SharpenToolChoices = ModUtils.GetItems<ToolsItem>(modSharpenableComponent.Tools, prefab.name + ": Tools");
 		sharpenable.m_RequiresToolToSharpen = sharpenable.m_SharpenToolChoices.Count() > 0;
+		sharpenable.m_SharpenAudio = modSharpenableComponent.Audio;
 	}
 }
