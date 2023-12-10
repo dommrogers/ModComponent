@@ -38,6 +38,15 @@ internal static class ClothingMapper
 		clothingItem.m_SprintBarReductionPercent = modClothingItem.SprintBarReduction;
 		clothingItem.m_Toughness = modClothingItem.Toughness;
 
+		// FPS clothing
+		clothingItem.m_FirstPersonPrefabFemale = (string.IsNullOrEmpty(modClothingItem.FirstPersonPrefabMale)) ? null : new AssetReferenceFirstPersonClothing(modClothingItem.FirstPersonPrefabMale);
+		clothingItem.m_FirstPersonPrefabMale = (string.IsNullOrEmpty(modClothingItem.FirstPersonPrefabFemale)) ? null : new AssetReferenceFirstPersonClothing(modClothingItem.FirstPersonPrefabFemale);
+
+		// PreventAllDamageFromSource (DamageReason)
+		clothingItem.m_PreventAllDamageFromSource = modClothingItem.PreventAllDamageFromSource;
+
+
+
 		ConfigureWolfIntimidation(modClothingItem);
 	}
 

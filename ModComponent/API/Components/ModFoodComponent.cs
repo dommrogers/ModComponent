@@ -195,6 +195,12 @@ public class ModFoodComponent : ModCookableComponent
 	/// </summary>
 	public float AlcoholUptakeMinutes = 45;
 
+	/// <summary>
+	/// 
+	/// </summary>
+	public int VitaminC = 0;
+
+
 	void Awake()
 	{
 		CopyFieldHandler.UpdateFieldValues(this);
@@ -249,5 +255,8 @@ public class ModFoodComponent : ModCookableComponent
 		this.ContainsAlcohol = dict.GetVariant(className, "ContainsAlcohol");
 		this.AlcoholPercentage = dict.GetVariant(className, "AlcoholPercentage");
 		this.AlcoholUptakeMinutes = dict.GetVariant(className, "AlcoholUptakeMinutes");
+
+		// nutrients
+		this.VitaminC = dict.GetInt(className, "VitaminC");
 	}
 }

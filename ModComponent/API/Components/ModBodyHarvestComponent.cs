@@ -96,6 +96,10 @@ public class ModBodyHarvestComponent : ModBaseComponent
 
 	public float QuarterPrefabSpawnRadius;
 
+	public string? GutLabelOverride;
+	public string? HideLabelOverride;
+	public string? MeatLabelOverride;
+
 	void Awake()
 	{
 		CopyFieldHandler.UpdateFieldValues(this);
@@ -125,11 +129,15 @@ public class ModBodyHarvestComponent : ModBaseComponent
 		this.CanQuarter = false;
 		this.QuarterAudio = "";
 		this.QuarterBagMeatCapacityKG = 0f;
-		this.QuarterBagWasteMultiplier = 0f;
+		this.QuarterBagWasteMultiplier = 1f;
 		this.QuarterDurationMinutes = 1f;
 		this.QuarterObjectPrefab = "";
 		this.QuarterPrefabSpawnAngle = 0f;
 		this.QuarterPrefabSpawnRadius = 1f;
+
+		this.GutLabelOverride = dict.GetStringOrNull(className, "GutLabelOverride");
+		this.HideLabelOverride = dict.GetStringOrNull(className, "HideLabelOverride");
+		this.MeatLabelOverride = dict.GetStringOrNull(className, "MeatLabelOverride");
 
 	}
 }

@@ -1,8 +1,10 @@
 ﻿using Il2Cpp;
+using MelonLoader;
 using ModComponent.API;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace ModComponent.Mapper.ComponentMappers;
 
@@ -21,6 +23,14 @@ internal static class FoodMapper
 
 
 		foodItem.m_Nutrients = new Il2CppSystem.Collections.Generic.List<FoodItem.Nutrient>();
+		if(modFoodComponent.VitaminC > 0)
+		{
+			FoodItem.Nutrient vitc = new FoodItem.Nutrient();
+			vitc.m_Amount = modFoodComponent.VitaminC;
+			vitc.m_Nutrient = new Il2CppTLD.Gameplay.AssetReferenceNutrientDefinition("Nutrient_VitaminC");
+			foodItem.m_Nutrients.Add(vitc);
+		}
+
 		foodItem.m_CaloriesTotal = modFoodComponent.Calories;
 		foodItem.m_CaloriesRemaining = modFoodComponent.Calories;
 		foodItem.m_ReduceThirst = modFoodComponent.ThirstEffect;

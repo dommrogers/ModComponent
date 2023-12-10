@@ -151,6 +151,24 @@ public partial class ModClothingComponent : ModBaseComponent
 	/// </summary>
 	public Action? OnTakeOff;
 
+	// added 2.25
+
+	/// <summary>
+	/// Prefab name for ClothingItem.m_FirstPersonPrefabMale
+	/// </summary>
+	public string? FirstPersonPrefabMale = null;
+
+	/// <summary>
+	/// Prefab name for ClothingItem.m_FirstPersonPrefabFemale
+	/// </summary>
+	public string? FirstPersonPrefabFemale = null;
+
+	/// <summary>
+	/// Single string of "DamageReason"
+	/// </summary>
+	public DamageReason PreventAllDamageFromSource;
+
+
 	void Awake()
 	{
 		CopyFieldHandler.UpdateFieldValues(this);
@@ -210,5 +228,9 @@ public partial class ModClothingComponent : ModBaseComponent
 		this.BlendTexture = dict.GetVariant(className, "BlendTexture");
 		this.DrawLayer = dict.GetVariant(className, "DrawLayer");
 		this.ImplementationType = dict.GetVariant(className, "ImplementationType");
+		// added 2.25
+		this.FirstPersonPrefabMale = dict.GetStringOrNull(className, "FirstPersonPrefabMale");
+		this.FirstPersonPrefabFemale = dict.GetStringOrNull(className, "FirstPersonPrefabFemale");
+		this.PreventAllDamageFromSource = dict.GetEnum<DamageReason>(className, "PreventAllDamageFromSource");
 	}
 }

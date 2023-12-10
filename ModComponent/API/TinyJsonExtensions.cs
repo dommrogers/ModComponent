@@ -1,5 +1,6 @@
 ﻿using MelonLoader.TinyJSON;
 using ModComponent.Utils;
+using System.Globalization;
 using UnityEngine;
 
 namespace ModComponent.API;
@@ -39,9 +40,51 @@ internal static class TinyJsonExtensions
 		}
 	}
 
+	internal static string? GetStringOrNull(this ProxyObject dict, string className, string fieldName)
+	{
+		Variant subDict;
+		try
+		{
+			subDict = dict[className];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+		}
+		try
+		{
+			return subDict[fieldName].ToString();
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return null;
+		}
+	}
+
+	internal static int GetInt(this ProxyObject dict, string className, string fieldName, int _default = 0)
+	{
+		Variant subDict;
+		try
+		{
+			subDict = dict[className];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+		}
+		try
+		{
+			return int.Parse(subDict[fieldName], CultureInfo.InvariantCulture);
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return _default;
+		}
+	}
+
 	internal static T GetEnum<T>(this ProxyObject dict, string className, string fieldName) where T : Enum
 	{
-		return EnumUtils.ParseEnum<T>(dict.GetVariant(className, fieldName));
+		return EnumUtils.ParseEnum<T>(dict.GetStringOrNull(className, fieldName));
 	}
 
 	internal static ProxyArray GetProxyArray(this ProxyObject dict, string className, string fieldName)

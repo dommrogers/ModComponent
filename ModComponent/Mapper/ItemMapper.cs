@@ -49,6 +49,7 @@ internal static class ItemMapper
 			ConfigureBehaviours(modComponent);
 
 			ConfigureGearItem(modComponent);
+			InspectMapper.Configure(modComponent);
 
 			EquippableMapper.Configure(modComponent);
 			LiquidMapper.Configure(modComponent);
@@ -67,7 +68,6 @@ internal static class ItemMapper
 			BedMapper.Configure(modComponent);
 			BodyHarvestMapper.Configure(modComponent);
 
-			InspectMapper.Configure(modComponent);
 
 			mappedItems.Add(modComponent);
 

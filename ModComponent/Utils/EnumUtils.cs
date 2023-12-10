@@ -2,9 +2,9 @@
 
 internal static class EnumUtils
 {
-	public static T ParseEnum<T>(string text) where T : Enum
+	public static T ParseEnum<T>(string? text) where T : Enum
 	{
-		return (T)Enum.Parse(typeof(T), text, true);
+		return (string.IsNullOrEmpty(text)) ? default(T) : (T)Enum.Parse(typeof(T), text, true);
 	}
 
 	public static T TranslateEnumValue<T, E>(E value) where T : Enum where E : Enum
