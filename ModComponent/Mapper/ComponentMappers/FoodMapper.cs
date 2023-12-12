@@ -27,7 +27,7 @@ internal static class FoodMapper
 		{
 			FoodItem.Nutrient vitc = new FoodItem.Nutrient();
 			vitc.m_Amount = modFoodComponent.VitaminC;
-			vitc.m_Nutrient = new Il2CppTLD.Gameplay.AssetReferenceNutrientDefinition("Nutrient_VitaminC");
+			vitc.m_Nutrient = new Il2CppTLD.Gameplay.AssetReferenceNutrientDefinition("13a8bda1e12982e428b7551cc01b01df");
 			foodItem.m_Nutrients.Add(vitc);
 		}
 
