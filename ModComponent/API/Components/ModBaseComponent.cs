@@ -117,7 +117,12 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 	/// </summary>
 	public GameObject? NormalModel;
 
-	[HideFromIl2Cpp]
+    /// <summary>
+    /// The initial condition of the item when found or crafted.
+    /// </summary>
+    public HoverIconsToShow.HoverIcons HoverIconsToShow;
+
+    [HideFromIl2Cpp]
 	public string GetEffectiveConsoleName()
 	{
 		if (string.IsNullOrEmpty(this.ConsoleName))
@@ -153,5 +158,6 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 		this.InspectScale = dict.GetVector3(inheritanceName, "InspectScale");
 		this.NormalModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "NormalModel"));
 		this.InspectModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "InspectModel"));
-	}
+		this.HoverIconsToShow = dict.GetEnum<HoverIconsToShow.HoverIcons>(inheritanceName, "HoverIconsToShow");
+    }
 }

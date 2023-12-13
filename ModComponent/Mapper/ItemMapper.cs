@@ -67,9 +67,9 @@ internal static class ItemMapper
 			GenericEquippableMapper.Configure(modComponent);
 			BedMapper.Configure(modComponent);
 			BodyHarvestMapper.Configure(modComponent);
+            AmmoMapper.Configure(modComponent);
 
-
-			mappedItems.Add(modComponent);
+            mappedItems.Add(modComponent);
 
 			PostProcess(modComponent);
 		}
@@ -115,9 +115,10 @@ internal static class ItemMapper
 	private static void ConfigureGearItem(ModBaseComponent modComponent)
 	{
 		GearItem gearItem = ComponentUtils.GetOrCreateComponent<GearItem>(modComponent);
+        HoverIconsToShow hoverIconsToShow = ComponentUtils.GetOrCreateComponent<HoverIconsToShow>(modComponent);
 
-		// patch to add in gearItem.GearItemData
-		if (gearItem.GearItemData == null)
+        // patch to add in gearItem.GearItemData
+        if (gearItem.GearItemData == null)
 		{
 			Il2CppTLD.Gear.GearItemData gid = ScriptableObject.CreateInstance<GearItemData>();
 			gearItem.m_GearItemData = gid;
@@ -149,7 +150,9 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_ScentIntensity = ScentMapper.GetScentIntensity(modComponent);
 		gearItem.GearItemData.m_IsPlaceable = false;
 
-		gearItem.Awake();
+        hoverIconsToShow.m_HoverIcons = new[] { modComponent.HoverIconsToShow };
+
+        gearItem.Awake();
 	}
 
 	private static ConditionTableType GetConditionTableType(ModBaseComponent modComponent)

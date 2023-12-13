@@ -21,6 +21,7 @@
                                 "InspectScale" :  [1, 1, 1],
                                 "NormalModel" : "",
                                 "InspectModel" : "",
+                                "HoverIconsToShow" : "",
 
                                 "CanCarry" : true,
                                 "HarvestAudio" : "",

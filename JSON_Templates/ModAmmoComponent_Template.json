@@ -1,13 +1,13 @@
 {
-    "ModPowderComponent": {
+    "ModAmmoComponent": {
                                 "DisplayNameLocalizationId" : "GAMEPLAY_SampleItem",
                                 "DescriptionLocalizatonId" : "GAMEPLAY_SampleItemDescription",
                                 "InventoryActionLocalizationId" : "",
-                                "WeightKG": 0,
+                                "WeightKG": 0.1,
                                 "DaysToDecay" : 0,
                                 "MaxHP" : 100,
                                 "InitialCondition" : "Perfect",
-                                "InventoryCategory" : "Tool",
+                                "InventoryCategory" : "Material",
                                 "PickUpAudio" : "",
                                 "PutBackAudio" : "",
                                 "StowAudio" : "Play_InventoryStow",
@@ -19,10 +19,7 @@
                                 "InspectScale" :  [1, 1, 1],
                                 "NormalModel" : "",
                                 "InspectModel" : "",
-                                "HoverIconsToShow" : "",
 
-                                "PowderType" : "Gunpowder",
-                                "CapacityKG" : 0.2,
-                                "ChanceFull" : 75
+                                "AmmoForGunType" : "Rifle"
                             }
 }

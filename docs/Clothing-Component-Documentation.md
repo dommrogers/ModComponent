@@ -21,6 +21,7 @@
                             "InspectScale" :  [0.38, 0.38, 0.38],
                             "NormalModel" : "",
                             "InspectModel" : "",
+                            "HoverIconsToShow" : "Clothing",
 
                             "Region" : "Chest",
                             "MinLayer" : "Top",
