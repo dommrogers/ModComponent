@@ -6,7 +6,10 @@
                                 "MultipleUnitTextId" : "GAMEPLAY_HotCocoaBoxStackMultiple",
                                 "StackSprite" : "",
                                 "UnitsPerItem" : 8,
-                                "ChanceFull" : 80
+                                "ChanceFull" : 80,
+                                "ShareStackWithGear" : [""],
+                                "InstantiateStackItem" : "",
+                                "StackConditionDifferenceConstraint" : 0
                              }
 }
 ```
@@ -34,3 +37,15 @@ The default number of units to make a full stack. For example, Coffee tins and H
 ## ChanceFull
 *float*<br/>
 Percent chance of the item having a full stack.
+
+## ShareStackWithGear
+*string array*<br/>
+The items that can be stacked with this item.
+
+## InstantiateStackItem
+*string*<br/>
+The item to instantiate when the stack is split.
+
+## StackConditionDifferenceConstraint
+*float*<br/>
+The maximum difference in condition between items in a stack.

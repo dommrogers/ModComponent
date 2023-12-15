@@ -2,6 +2,7 @@
 using ModComponent.API.Behaviours;
 using ModComponent.API.Components;
 using ModComponent.Utils;
+using UnityEngine;
 
 namespace ModComponent.Mapper.BehaviourMappers;
 
@@ -25,8 +26,11 @@ internal static class StackableMapper
 
 		stackableItem.m_StackSpriteName = modStackableComponent.StackSprite;
 
-		stackableItem.m_ShareStackWithGear = Array.Empty<StackableItem>();
+		stackableItem.m_ShareStackWithGear = ModUtils.GetItems<StackableItem>(modStackableComponent.ShareStackWithGear, modStackableComponent.name);
 		stackableItem.m_Units = modStackableComponent.UnitsPerItem;
 		stackableItem.m_DefaultUnitsInItem = modStackableComponent.UnitsPerItem;
+
+		stackableItem.m_InstantiateStackItem = AssetBundleUtils.LoadAsset<GearItem>(modStackableComponent.InstantiateStackItem);
+		stackableItem.m_StackConditionDifferenceConstraint = modStackableComponent.StackConditionDifferenceConstraint;
 	}
 }

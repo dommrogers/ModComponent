@@ -1,271 +1,552 @@
-> Not a comprehensive list!
+> All items within The Long Dark as of version 2.26!
 
-* GEAR_Placeholder
-* GEAR_Accelerant
-* GEAR_AccelerantKerosene
-* GEAR_AccelerantMedium
-* GEAR_AirlineFoodChick
-* GEAR_AirlineFoodVeg
-* GEAR_Arrow
-* GEAR_ArrowHead
-* GEAR_ArrowShaft
-* GEAR_Balaclava
-* GEAR_BarkTinder
-* GEAR_BaseballCap
-* GEAR_BasicBoots
-* GEAR_BasicGloves
-* GEAR_BasicShoes
-* GEAR_BasicWinterCoat
-* GEAR_BasicWoolHat
-* GEAR_BasicWoolScarf
-* GEAR_BearHide
-* GEAR_BearHideDried
-* GEAR_BearQuarter
-* GEAR_BearSkinBedRoll
-* GEAR_BearSkinCoat
-* GEAR_BedRoll
-* GEAR_BeefJerky
-* GEAR_BirchbarkPrepared
-* GEAR_BirchbarkTea
-* GEAR_BirchSapling
-* GEAR_BirchSaplingDried
-* GEAR_BlueFlare
-* GEAR_BoltCutters
-* GEAR_BookA
-* GEAR_BookArchery
-* GEAR_BookB
-* GEAR_BookBopen
-* GEAR_BookC
-* GEAR_BookCarcassHarvesting
-* GEAR_BookCooking
-* GEAR_BookD
-* GEAR_BookE
-* GEAR_BookEopen
-* GEAR_BookF
-* GEAR_BookFireStarting
-* GEAR_BookFopen
-* GEAR_BookG
-* GEAR_BookGunsmithing
-* GEAR_BookH
-* GEAR_BookHopen
-* GEAR_BookI
-* GEAR_BookIceFishing
-* GEAR_BookLabE_01
-* GEAR_BookLabE_02
-* GEAR_BookLabE_03
-* GEAR_BookLabE_Open_01
-* GEAR_BookManual
-* GEAR_BookMending
-* GEAR_BookRevolverFirearm
-* GEAR_BookRifleFirearm
-* GEAR_BookRifleFirearmAdvanced
-* GEAR_BottleAntibiotics
-* GEAR_BottleHydrogenPeroxide
-* GEAR_BottlePainKillers
-* GEAR_Bow
-* GEAR_BrokenArrow
-* GEAR_Bullet
-* GEAR_CandyBar
-* GEAR_CannedBeans
-* GEAR_CannedSardines
-* GEAR_CanOpener
-* GEAR_CarBattery
-* GEAR_CargoPants
-* GEAR_CashBundle
-* GEAR_CattailPlant
-* GEAR_CattailStalk
-* GEAR_CattailTinder
-* GEAR_Charcoal
-* GEAR_ClimbingSocks
-* GEAR_Cloth
-* GEAR_ClothSheet
-* GEAR_Coal
-* GEAR_CoffeeCup
-* GEAR_CoffeeTin
-* GEAR_CombatBoots
-* GEAR_CombatPants
-* GEAR_CompressionBandage
-* GEAR_CondensedMilk
-* GEAR_CookedCohoSalmon
-* GEAR_CookedLakeWhiteFish
-* GEAR_CookedMeatBear
-* GEAR_CookedMeatDeer
-* GEAR_CookedMeatRabbit
-* GEAR_CookedMeatWolf
-* GEAR_CookedRainbowTrout
-* GEAR_CookedSmallMouthBass
-* GEAR_CookingPot
-* GEAR_CottonHoodie
-* GEAR_CottonScarf
-* GEAR_CottonShirt
-* GEAR_CottonSocks
-* GEAR_CowichanSweater
-* GEAR_Crackers
-* GEAR_Crampons
-* GEAR_CrowFeather
-* GEAR_DeerSkinBoots
-* GEAR_DeerSkinPants
-* GEAR_DogFood
-* GEAR_DownParka
-* GEAR_DownSkiJacket
-* GEAR_DownVest
-* GEAR_DustingSulfur
-* GEAR_EarMuffs
-* GEAR_EmergencyStim
-* GEAR_EnergyBar
-* GEAR_FireAxe
-* GEAR_Firelog
-* GEAR_Firestriker
-* GEAR_FishermanSweater
-* GEAR_FishingLine
-* GEAR_FlareA
-* GEAR_FlareGunAmmoSingle
-* GEAR_Flashlight
-* GEAR_FleeceMittens
-* GEAR_FleeceSweater
-* GEAR_FlintAndSteel
-* GEAR_Gauntlets
-* GEAR_GranolaBar
-* GEAR_GreenTeaCup
-* GEAR_GreenTeaPackage
-* GEAR_GunpowderCan
-* GEAR_Gut
-* GEAR_GutDried
-* GEAR_Hacksaw
-* GEAR_Hammer
-* GEAR_Hardwood
-* GEAR_Hatchet
-* GEAR_HatchetImprovised
-* GEAR_HeavyBandage
-* GEAR_HeavyParka
-* GEAR_HeavyWoolSweater
-* GEAR_HighQualityTools
-* GEAR_HomeMadeSoup
-* GEAR_Hook
-* GEAR_HookAndLine
-* GEAR_ImprovisedHat
-* GEAR_ImprovisedMittens
-* GEAR_InsulatedBoots
-* GEAR_InsulatedPants
-* GEAR_InsulatedVest
-* GEAR_Jeans
-* GEAR_JerrycanRusty
-* GEAR_KeroseneLampB
-* GEAR_KetchupChips
-* GEAR_Knife
-* GEAR_KnifeImprovised
-* GEAR_LampFuel
-* GEAR_LampFuelFull
-* GEAR_Leather
-* GEAR_LeatherDried
-* GEAR_LeatherHide
-* GEAR_LeatherHideDried
-* GEAR_LeatherShoes
-* GEAR_LeatherStrips
-* GEAR_LightParka
-* GEAR_Line
-* GEAR_LongUnderwear
-* GEAR_LongUnderwearWool
-* GEAR_MackinawJacket
-* GEAR_MagnifyingLens
-* GEAR_MapleSapling
-* GEAR_MapleSaplingDried
-* GEAR_MapleSyrup
-* GEAR_MilitaryParka
-* GEAR_Mittens
-* GEAR_MooseHide
-* GEAR_MooseHideBag
-* GEAR_MooseHideCloak
-* GEAR_MooseHideDried
-* GEAR_MooseQuarter
-* GEAR_MRE
-* GEAR_MuklukBoots
-* GEAR_Newsprint
-* GEAR_NewsprintRoll
-* GEAR_Nylon
-* GEAR_OldMansBeardDressing
-* GEAR_OldMansBeardHarvested
-* GEAR_PackMatches
-* GEAR_PaperStack
-* GEAR_PeanutButter
-* GEAR_PinnacleCanPeaches
-* GEAR_PlaidShirt
-* GEAR_PremiumWinterCoat
-* GEAR_Prybar
-* GEAR_QualityWinterCoat
-* GEAR_RabbitCarcass
-* GEAR_RabbitPelt
-* GEAR_RabbitPeltDried
-* GEAR_RabbitskinHat
-* GEAR_RabbitSkinMittens
-* GEAR_RawCohoSalmon
-* GEAR_RawLakeWhiteFish
-* GEAR_RawMeatBear
-* GEAR_RawMeatDeer
-* GEAR_RawMeatRabbit
-* GEAR_RawMeatWolf
-* GEAR_RawRainbowTrout
-* GEAR_RawSmallMouthBass
-* GEAR_ReclaimedWoodB
-* GEAR_RecycledCan
-* GEAR_ReishiMushroom
-* GEAR_ReishiPrepared
-* GEAR_ReishiTea
-* GEAR_Revolver
-* GEAR_RevolverAmmoBox
-* GEAR_RevolverAmmoCasing
-* GEAR_RevolverAmmoSingle
-* GEAR_Rifle
-* GEAR_RifleAmmoBox
-* GEAR_RifleAmmoCasing
-* GEAR_RifleAmmoSingle
-* GEAR_RifleCleaningKit
-* GEAR_Rope
-* GEAR_RoseHip
-* GEAR_RosehipsPrepared
-* GEAR_RoseHipTea
-* GEAR_ScrapLead
-* GEAR_ScrapMetal
-* GEAR_SewingKit
-* GEAR_SharpeningStone
-* GEAR_Shovel
-* GEAR_SimpleTools
-* GEAR_SkiBoots
-* GEAR_SkiGloves
-* GEAR_SkiJacket
-* GEAR_Snare
-* GEAR_Soda
-* GEAR_SodaEnergy
-* GEAR_SodaGrape
-* GEAR_SodaOrange
-* GEAR_Softwood
-* GEAR_SprayPaintCan
-* GEAR_StagQuarter
-* GEAR_Stick
-* GEAR_Stone
-* GEAR_StumpRemover
-* GEAR_TeeShirt
-* GEAR_TimberwolfQuarter
-* GEAR_Tinder
-* GEAR_TomatoSoupCan
-* GEAR_Toque
-* GEAR_Torch
-* GEAR_Water1000ml
-* GEAR_Water500ml
-* GEAR_WaterPurificationTablets
-* GEAR_WaterSupplyNotPotable
-* GEAR_WaterSupplyPotable
-* GEAR_WolfCarcass
-* GEAR_WolfPelt
-* GEAR_WolfPeltDried
-* GEAR_WolfQuarter
-* GEAR_WolfSkinCape
-* GEAR_WoodMatches
-* GEAR_WoolShirt
-* GEAR_WoolSocks
-* GEAR_WoolSweater
-* GEAR_WoolWrap
-* GEAR_WoolWrapCap
-* GEAR_WorkBoots
-* GEAR_WorkGloves
-* GEAR_WorkPants
+GEAR_Accelerant
+GEAR_AccelerantGunpowder
+GEAR_AccelerantKerosene
+GEAR_Acorn
+GEAR_AcornCoffeeCup
+GEAR_AcornCooked
+GEAR_AcornCookedBig
+GEAR_AcornGrounds
+GEAR_AcornShelled
+GEAR_AcornShelledBig
+GEAR_AirfieldCabinNote
+GEAR_AirfieldCargomasterNote
+GEAR_AirfieldControlNote
+GEAR_AirfieldGeologistNote1
+GEAR_AirfieldHangarNote
+GEAR_AirfieldJunkerNote
+GEAR_AirfieldSecChiefNote1
+GEAR_AirfieldTowerNote
+GEAR_AirlineFoodChick
+GEAR_AirlineFoodVeg
+GEAR_Arrow
+GEAR_ArrowHardened
+GEAR_ArrowHead
+GEAR_ArrowShaft
+GEAR_BackerNote1A
+GEAR_BackerNote1B
+GEAR_BackerNote1C
+GEAR_BackerNote2A
+GEAR_BackerNote2B
+GEAR_BackerNote2C
+GEAR_BackerNote3A
+GEAR_BackerNote3B
+GEAR_BackerNote3C
+GEAR_BackerNote4A
+GEAR_BackerNote4B
+GEAR_BackerNote4C
+GEAR_Balaclava
+GEAR_BallisticVest
+GEAR_BarkTinder
+GEAR_BaseballCap
+GEAR_BasicBoots
+GEAR_BasicGloves
+GEAR_BasicShoes
+GEAR_BasicWinterCoat
+GEAR_BasicWoolHat
+GEAR_BasicWoolScarf
+GEAR_BearHide
+GEAR_BearHideDried
+GEAR_BearQuarter
+GEAR_BearSkinBedRoll
+GEAR_BearSkinCoat
+GEAR_BearSpear
+GEAR_BearSpearBroken
+GEAR_BearSpearBrokenStory
+GEAR_BearSpearStory
+GEAR_BedRoll
+GEAR_BedRoll_Down
+GEAR_BeefJerky
+GEAR_BIKey1
+GEAR_BIKey2
+GEAR_BirchbarkPrepared
+GEAR_BirchbarkTea
+GEAR_BirchSapling
+GEAR_BirchSaplingDried
+GEAR_BlackrockAdminNote
+GEAR_BlackrockAmmoRoomNote
+GEAR_BlackrockCodeNote
+GEAR_BlackrockSecurityNote
+GEAR_BlackrockTowerNote
+GEAR_BlueFlare
+GEAR_BoltCutters
+GEAR_BookA
+GEAR_BookArchery
+GEAR_BookB
+GEAR_BookBopen
+GEAR_BookC
+GEAR_BookCarcassHarvesting
+GEAR_BookCooking
+GEAR_BookD
+GEAR_BookE
+GEAR_BookEopen
+GEAR_BookF
+GEAR_BookFireStarting
+GEAR_BookFopen
+GEAR_BookG
+GEAR_BookGunsmithing
+GEAR_BookH
+GEAR_BookHopen
+GEAR_BookI
+GEAR_BookIceFishing
+GEAR_BookLabE_01
+GEAR_BookLabE_02
+GEAR_BookLabE_03
+GEAR_BookLabE_Open_01
+GEAR_BookManual
+GEAR_BookMending
+GEAR_BookRevolverFirearm
+GEAR_BookRifleFirearm
+GEAR_BookRifleFirearmAdvanced
+GEAR_BottleAntibiotics
+GEAR_BottleHydrogenPeroxide
+GEAR_BottlePainKillers
+GEAR_Bow
+GEAR_Bow_Manufactured
+GEAR_Bow_Woodwrights
+GEAR_BRKey1
+GEAR_BRKey2
+GEAR_BrokenArrow
+GEAR_BrokenArrowHardened
+GEAR_Broth
+GEAR_Bullet
+GEAR_Burdock
+GEAR_BurdockPrepared
+GEAR_BurdockTea
+GEAR_CandyBar
+GEAR_Canister
+GEAR_CannedBeans
+GEAR_CannedCorn
+GEAR_CannedHam
+GEAR_CannedSardines
+GEAR_CanneryCodeNote
+GEAR_CanneryMemo
+GEAR_CannerySurvivalPath
+GEAR_CanOpener
+GEAR_CanyonClimbersCaveNote
+GEAR_CanyonDeadClimberNote
+GEAR_CanyonFishingHutJournal
+GEAR_CanyonMinersNote
+GEAR_CarBattery
+GEAR_CargoPants
+GEAR_Carrot
+GEAR_CashBundle
+GEAR_CattailPlant
+GEAR_CattailStalk
+GEAR_CattailTinder
+GEAR_Charcoal
+GEAR_ClimbersJournal
+GEAR_ClimbingSocks
+GEAR_ClipBoardTale2_A
+GEAR_ClipBoardTale2_B
+GEAR_ClipBoardTale2_C
+GEAR_ClipBoardTale2_D
+GEAR_Cloth
+GEAR_Coal
+GEAR_CoffeeCup
+GEAR_CoffeeTin
+GEAR_CombatBoots
+GEAR_CombatPants
+GEAR_CondensedMilk
+GEAR_CookedBannock
+GEAR_CookedBannockAcorn
+GEAR_CookedBurbot
+GEAR_CookedCohoSalmon
+GEAR_CookedFishcakes
+GEAR_CookedGoldeye
+GEAR_CookedLakeWhiteFish
+GEAR_CookedMeatBear
+GEAR_CookedMeatDeer
+GEAR_CookedMeatMoose
+GEAR_CookedMeatPtarmigan
+GEAR_CookedMeatRabbit
+GEAR_CookedMeatWolf
+GEAR_CookedPancake
+GEAR_CookedPancakeAcorn
+GEAR_CookedPancakePeach
+GEAR_CookedPieFishermans
+GEAR_CookedPieForagers
+GEAR_CookedPieMeat
+GEAR_CookedPiePeach
+GEAR_CookedPiePredator
+GEAR_CookedPiePtarmigan
+GEAR_CookedPieRabbit
+GEAR_CookedPieRoseHip
+GEAR_CookedPieVenison
+GEAR_CookedPorridge
+GEAR_CookedPorridgeFruit
+GEAR_CookedRainbowTrout
+GEAR_CookedRedIrishLord
+GEAR_CookedRockfish
+GEAR_CookedSmallMouthBass
+GEAR_CookedStewMeat
+GEAR_CookedStewPtarmigan
+GEAR_CookedStewRabbit
+GEAR_CookedStewTrout
+GEAR_CookedStewVegetables
+GEAR_CookedStewVenison
+GEAR_CookingOil
+GEAR_CookingPot
+GEAR_CookingPotDummy
+GEAR_CottonHoodie
+GEAR_CottonScarf
+GEAR_CottonShirt
+GEAR_CottonSocks
+GEAR_CowichanSweater
+GEAR_Crackers
+GEAR_Crampons
+GEAR_CrowFeather
+GEAR_DarkwalkerDiary1
+GEAR_DarkwalkerDiary10
+GEAR_DarkwalkerDiary11
+GEAR_DarkwalkerDiary2
+GEAR_DarkwalkerDiary3
+GEAR_DarkwalkerDiary4
+GEAR_DarkwalkerDiary5
+GEAR_DarkwalkerDiary6
+GEAR_DarkwalkerDiary7
+GEAR_DarkwalkerDiary8
+GEAR_DarkwalkerDiary9
+GEAR_DarkwalkerID
+GEAR_DeadmanNote1
+GEAR_DeadmanNote2
+GEAR_DeadmanNote3
+GEAR_DeadmanNote4
+GEAR_DeadmanNote5
+GEAR_DeerSkinBoots
+GEAR_DeerSkinPants
+GEAR_DogFood
+GEAR_DownParka
+GEAR_DownSkiJacket
+GEAR_DownVest
+GEAR_DustingSulfur
+GEAR_EarMuffs
+GEAR_EmergencyStim
+GEAR_EnergyBar
+GEAR_Firelog
+GEAR_Firestriker
+GEAR_FishermanSweater
+GEAR_FishingBaitA
+GEAR_FishingLine
+GEAR_FishingLureA
+GEAR_FishingLureB
+GEAR_FishingLureC
+GEAR_FishingLureD
+GEAR_FlareA
+GEAR_FlareGun
+GEAR_FlareGunAmmoSingle
+GEAR_Flashlight
+GEAR_Flashlight_LongLasting
+GEAR_FleeceMittens
+GEAR_FleeceSweater
+GEAR_Flour
+GEAR_Fuse
+GEAR_Gauntlets
+GEAR_GoldNugget
+GEAR_GranolaBar
+GEAR_GreenTeaCup
+GEAR_GreenTeaPackage
+GEAR_GunpowderCan
+GEAR_Gut
+GEAR_GutDried
+GEAR_Hacksaw
+GEAR_Hammer
+GEAR_HandheldShortwave
+GEAR_Hardwood
+GEAR_Hatchet
+GEAR_HatchetImprovised
+GEAR_HatGatorBalaclavaA
+GEAR_HatLeatherAviatorA
+GEAR_HeavyBandage
+GEAR_HeavyParka
+GEAR_HeavyWoolSweater
+GEAR_HighQualityTools
+GEAR_Hook
+GEAR_HookAndLine
+GEAR_ImprovisedCrampons
+GEAR_ImprovisedDownInsulation
+GEAR_ImprovisedHat
+GEAR_ImprovisedMittens
+GEAR_InsulatedBoots
+GEAR_InsulatedFlask_A
+GEAR_InsulatedPants
+GEAR_InsulatedVest
+GEAR_JacketLeatherFlightA
+GEAR_Jeans
+GEAR_JerrycanRusty
+GEAR_JerseyHockeyA
+GEAR_KeroseneLamp_Spelunkers
+GEAR_KeroseneLampB
+GEAR_KetchupChips
+GEAR_Knife
+GEAR_KnifeImprovised
+GEAR_LampFuel
+GEAR_LampFuelFull
+GEAR_LangstonMineKey1
+GEAR_LangstonMineLockboxKey1
+GEAR_Leather
+GEAR_LeatherDried
+GEAR_LeatherHide
+GEAR_LeatherHideDried
+GEAR_LeatherShoes
+GEAR_LightParka
+GEAR_Line
+GEAR_Logbook_A01
+GEAR_Logbook_A02
+GEAR_Logbook_A03
+GEAR_Logbook_A04
+GEAR_LogbookTale2_A01
+GEAR_LogbookTale2_A02
+GEAR_LogbookTale2_A03
+GEAR_LogbookTale2_A04
+GEAR_LongUnderwear
+GEAR_LongUnderwearWool
+GEAR_MackinawJacket
+GEAR_MagnifyingLens
+GEAR_MapleSapling
+GEAR_MapleSaplingDried
+GEAR_MapleSyrup
+GEAR_MilitaryParka
+GEAR_MineRegionBunkhouseNote
+GEAR_MineRegionPumphouseNote
+GEAR_MinersBoots
+GEAR_MinersHelmet
+GEAR_MinersJacket
+GEAR_MinersPants
+GEAR_Mittens
+GEAR_MooseHide
+GEAR_MooseHideBag
+GEAR_MooseHideCloak
+GEAR_MooseHideDried
+GEAR_MooseQuarter
+GEAR_MountainTownFarmKey
+GEAR_MRE
+GEAR_MuklukBoots
+GEAR_Newsprint
+GEAR_NewsprintBootStuffing
+GEAR_NewsprintInsulation
+GEAR_NewsprintRoll
+GEAR_NoiseMaker
+GEAR_OatsTin
+GEAR_OldMansBeardDressing
+GEAR_OldMansBeardHarvested
+GEAR_PackMatches
+GEAR_PaperStack
+GEAR_PeanutButter
+GEAR_PinnacleCanPeaches
+GEAR_PlaidShirt
+GEAR_PostCard_AC_CentralSpire
+GEAR_PostCard_AC_TopShelf
+GEAR_PostCard_BI_EchoOne-RadioTower
+GEAR_PostCard_BR_Canyon
+GEAR_PostCard_BR_Prison
+GEAR_PostCard_CR_AbandonedLookout
+GEAR_PostCard_FM_MuskegOverlook
+GEAR_PostCard_FM_ShortwaveTower
+GEAR_PostCard_ML_ForestryLookout
+GEAR_PostCard_ML_LakeOverlook
+GEAR_PostCard_MR_Settlement
+GEAR_PostCard_MR_Window
+GEAR_PostCard_MT_RadioTower
+GEAR_PostCard_PV_SignalHill
+GEAR_PostCard_RV_Pensive
+GEAR_PostCard_Tale02
+GEAR_PostCard_TM_AndresPeak
+GEAR_PostCard_TM_TailSection
+GEAR_Potato
+GEAR_PotatoCooked
+GEAR_PremiumWinterCoat
+GEAR_Prybar
+GEAR_PtarmiganCarcass
+GEAR_PtarmiganFeathers
+GEAR_QualityWinterCoat
+GEAR_RabbitCarcass
+GEAR_RabbitPelt
+GEAR_RabbitPeltDried
+GEAR_RabbitskinHat
+GEAR_RabbitSkinMittens
+GEAR_RawBurbot
+GEAR_RawCohoSalmon
+GEAR_RawGoldeye
+GEAR_RawLakeWhiteFish
+GEAR_RawMeatBear
+GEAR_RawMeatDeer
+GEAR_RawMeatMoose
+GEAR_RawMeatPtarmigan
+GEAR_RawMeatRabbit
+GEAR_RawMeatWolf
+GEAR_RawRainbowTrout
+GEAR_RawRedIrishLord
+GEAR_RawRockfish
+GEAR_RawSmallMouthBass
+GEAR_RecipeCardFishcakes
+GEAR_RecipeCardPancakePeach
+GEAR_RecipeCardPieFishermans
+GEAR_RecipeCardPieForagers
+GEAR_RecipeCardPieMeat
+GEAR_RecipeCardPiePredator
+GEAR_RecipeCardPorridgeFruit
+GEAR_RecipeCardStewMeat
+GEAR_RecipeCardStewVegetables
+GEAR_ReclaimedWoodB
+GEAR_RecycledCan
+GEAR_ReishiMushroom
+GEAR_ReishiPrepared
+GEAR_ReishiTea
+GEAR_Respirator
+GEAR_Revolver
+GEAR_RevolverAmmoBox
+GEAR_RevolverAmmoCasing
+GEAR_RevolverAmmoSingle
+GEAR_RevolverFancy
+GEAR_RevolverGreen
+GEAR_RevolverStubNosed
+GEAR_Rifle
+GEAR_Rifle_Barbs
+GEAR_Rifle_Curators
+GEAR_Rifle_Vaughns
+GEAR_RifleAmmoBox
+GEAR_RifleAmmoBoxAP
+GEAR_RifleAmmoCasing
+GEAR_RifleAmmoSingle
+GEAR_RifleAmmoSingleAP
+GEAR_RifleCleaningKit
+GEAR_RifleScabbardA
+GEAR_Rope
+GEAR_RoseHip
+GEAR_RosehipsPrepared
+GEAR_RoseHipTea
+GEAR_Salt
+GEAR_ScrapLead
+GEAR_ScrapMetal
+GEAR_SewingKit
+GEAR_SharpeningStone
+GEAR_SimpleTools
+GEAR_SkiBoots
+GEAR_SkiGloves
+GEAR_SkiJacket
+GEAR_Skillet
+GEAR_Snare
+GEAR_Soda
+GEAR_SodaEnergy
+GEAR_SodaGrape
+GEAR_SodaOrange
+GEAR_Softwood
+GEAR_SpearHead
+GEAR_SprayPaintCan
+GEAR_SprayPaintCanGlyphA
+GEAR_StagQuarter
+GEAR_Stick
+GEAR_Stone
+GEAR_StumpRemover
+GEAR_SurvivalElevatorCrank
+GEAR_Tale1ChiefNote1
+GEAR_Tale1ChiefNote2
+GEAR_Tale1ChiefNote3
+GEAR_Tale1ChiefNote4
+GEAR_Tale1ChiefNote5
+GEAR_Tale1Transcript1
+GEAR_Tale1Transcript2
+GEAR_Tale1Transcript3
+GEAR_Tale1Transcript4
+GEAR_Tale2_CorpseKey
+GEAR_Tale2_LockerKey
+GEAR_Tale2GeologistNote1
+GEAR_Tale2RudigerNote1
+GEAR_Tale2SecurityChiefBones
+GEAR_TechnicalBackpack
+GEAR_TeeShirt
+GEAR_TimberwolfQuarter
+GEAR_Tinder
+GEAR_TipUp
+GEAR_TomatoSoupCan
+GEAR_ToolBelt
+GEAR_Toque
+GEAR_Torch
+GEAR_Travois
+GEAR_UncookedBannock
+GEAR_UncookedBannockAcorn
+GEAR_UncookedBroth
+GEAR_UncookedFishcakes
+GEAR_UncookedPancake
+GEAR_UncookedPancakeAcorn
+GEAR_UncookedPancakePeach
+GEAR_UncookedPieFishermans
+GEAR_UncookedPieForagers
+GEAR_UncookedPieMeat
+GEAR_UncookedPiePeach
+GEAR_UncookedPiePredator
+GEAR_UncookedPiePtarmigan
+GEAR_UncookedPieRabbit
+GEAR_UncookedPieRoseHip
+GEAR_UncookedPieVenison
+GEAR_UncookedPorridge
+GEAR_UncookedPorridgeFruit
+GEAR_UncookedStewMeat
+GEAR_UncookedStewPtarmigan
+GEAR_UncookedStewRabbit
+GEAR_UncookedStewTrout
+GEAR_UncookedStewVegetables
+GEAR_UncookedStewVenison
+GEAR_VisorNoteAC1
+GEAR_VisorNoteAC2
+GEAR_VisorNoteAC3
+GEAR_VisorNoteACKey1
+GEAR_VisorNoteBI1
+GEAR_VisorNoteBI2
+GEAR_VisorNoteBI3
+GEAR_VisorNoteBlackrock1
+GEAR_VisorNoteBlackrock2
+GEAR_VisorNoteBlackrock3
+GEAR_VisorNoteBlackrockKey3
+GEAR_VisorNoteBR1
+GEAR_VisorNoteBR2
+GEAR_VisorNoteBR3
+GEAR_VisorNoteCH1
+GEAR_VisorNoteCH2
+GEAR_VisorNoteDP1
+GEAR_VisorNoteDP2
+GEAR_VisorNoteDP3
+GEAR_VisorNoteDPKey1
+GEAR_VisorNoteFM1
+GEAR_VisorNoteFM2
+GEAR_VisorNoteFM3
+GEAR_VisorNoteHRV1
+GEAR_VisorNoteHRV2
+GEAR_VisorNoteHRV3
+GEAR_VisorNoteHRVKey1
+GEAR_VisorNoteML1
+GEAR_VisorNoteML2
+GEAR_VisorNoteML3
+GEAR_VisorNoteMLKey2
+GEAR_VisorNoteMLKey3
+GEAR_VisorNoteMT1
+GEAR_VisorNoteMT2
+GEAR_VisorNoteMT3
+GEAR_VisorNoteMTKey1
+GEAR_VisorNotePV1
+GEAR_VisorNotePV2
+GEAR_VisorNotePV3
+GEAR_VisorNoteTWM1
+GEAR_VisorNoteTWM2
+GEAR_Water1000ml
+GEAR_Water500ml
+GEAR_WaterPurificationTablets
+GEAR_WaterSupplyNotPotable
+GEAR_WaterSupplyPotable
+GEAR_WireBundle
+GEAR_WolfCarcass
+GEAR_WolfPelt
+GEAR_WolfPeltDried
+GEAR_WolfQuarter
+GEAR_WolfSkinCape
+GEAR_WoodMatches
+GEAR_WoolShirt
+GEAR_WoolSocks
+GEAR_WoolSweater
+GEAR_WoolWrap
+GEAR_WoolWrapCap
+GEAR_WorkBoots
+GEAR_WorkGloves
+GEAR_WorkPants

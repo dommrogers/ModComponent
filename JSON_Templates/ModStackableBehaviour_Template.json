@@ -4,6 +4,9 @@
                                 "MultipleUnitTextId" : "GAMEPLAY_HotCocoaBoxStackMultiple",
                                 "StackSprite" : "",
                                 "UnitsPerItem" : 8,
-                                "ChanceFull" : 80
+                                "ChanceFull" : 80,
+                                "ShareStackWithGear" : [""],
+                                "InstantiateStackItem" : "",
+                                "StackConditionDifferenceConstraint" : 0
                              }
 }
