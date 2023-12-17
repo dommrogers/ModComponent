@@ -238,7 +238,6 @@ internal static class ItemMapper
 
 		ConsoleWaitlist.MaybeRegisterConsoleGearName(modComponent.GetEffectiveConsoleName(), modComponent.name, gearItem.GearItemData.m_Type);
 
-		UnityEngine.Object.DontDestroyOnLoad(modComponent.gameObject);
+		// UnityEngine.Object.DontDestroyOnLoad(modComponent.gameObject);
 	}
-
 }
