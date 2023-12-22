@@ -1,5 +1,6 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.Attributes;
+using Il2CppTLD.Gear;
 using MelonLoader.TinyJSON;
 using ModComponent.Utils;
 using UnityEngine;
@@ -117,11 +118,6 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 	/// </summary>
 	public GameObject? NormalModel;
 
-    /// <summary>
-    /// The initial condition of the item when found or crafted.
-    /// </summary>
-    public HoverIconsToShow.HoverIcons HoverIconsToShow;
-
     [HideFromIl2Cpp]
 	public string GetEffectiveConsoleName()
 	{
@@ -158,6 +154,5 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 		this.InspectScale = dict.GetVector3(inheritanceName, "InspectScale");
 		this.NormalModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "NormalModel"));
 		this.InspectModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "InspectModel"));
-		this.HoverIconsToShow = dict.GetEnum<HoverIconsToShow.HoverIcons>(inheritanceName, "HoverIconsToShow");
     }
 }

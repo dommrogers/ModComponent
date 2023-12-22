@@ -1,4 +1,5 @@
 ﻿using Il2Cpp;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppTLD.Gear;
 using ModComponent.API.Behaviours;
 using ModComponent.API.Components;
@@ -7,6 +8,7 @@ using ModComponent.Mapper.ComponentMappers;
 using ModComponent.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static Il2Cpp.HoverIconsToShow;
 
 namespace ModComponent.Mapper;
 
@@ -150,12 +152,45 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_ScentIntensity = ScentMapper.GetScentIntensity(modComponent);
 		gearItem.GearItemData.m_IsPlaceable = false;
 
-        hoverIconsToShow.m_HoverIcons = new[] { modComponent.HoverIconsToShow };
+		hoverIconsToShow.m_HoverIcons = GetHoverIconsToShow(modComponent);
 
         gearItem.Awake();
 	}
 
-	private static ConditionTableType GetConditionTableType(ModBaseComponent modComponent)
+    private static Il2CppStructArray<HoverIcons> GetHoverIconsToShow(ModBaseComponent modComponent)
+    {
+        var iconsArray = new Il2CppStructArray<HoverIcons>(1);
+
+        switch (modComponent.InventoryCategory)
+        {
+            case ModBaseComponent.ItemCategory.Tool:
+                iconsArray[0] = HoverIcons.Tool;
+                break;
+            case ModBaseComponent.ItemCategory.Firestarting:
+                iconsArray[0] = HoverIcons.Firestarting;
+                break;
+            case ModBaseComponent.ItemCategory.FirstAid:
+                iconsArray[0] = HoverIcons.FirstAid;
+                break;
+            case ModBaseComponent.ItemCategory.Food:
+                iconsArray[0] = HoverIcons.Food;
+                break;
+            case ModBaseComponent.ItemCategory.Clothing:
+                iconsArray[0] = HoverIcons.Clothing;
+                break;
+            case ModBaseComponent.ItemCategory.Material:
+				iconsArray[0] = HoverIcons.RawMaterial;
+                break;
+            case ModBaseComponent.ItemCategory.Auto:
+                return new Il2CppStructArray<HoverIcons>(0);
+            default:
+                return new Il2CppStructArray<HoverIcons>(0);
+        }
+
+        return iconsArray;
+    }
+
+    private static ConditionTableType GetConditionTableType(ModBaseComponent modComponent)
 	{
 		ModFoodComponent modFoodComponent = modComponent.TryCast<ModFoodComponent>();
 		if (modFoodComponent != null)
@@ -176,6 +211,12 @@ internal static class ItemMapper
 			}
 
 			return ConditionTableType.Unknown;
+		}
+
+		ModAmmoComponent modAmmoComponent = modComponent.TryCast<ModAmmoComponent>();
+		if (modAmmoComponent != null)
+		{
+			return ConditionTableType.Ammunition;
 		}
 
 		return ConditionTableType.Unknown;

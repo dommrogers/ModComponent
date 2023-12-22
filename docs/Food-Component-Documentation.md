@@ -23,7 +23,6 @@
                             "InspectScale" :  [1, 1, 1],
                             "NormalModel" : "",
                             "InspectModel" : "",
-                            "HoverIconsToShow" : "Food",
 
                             "Cooking" : true,
                             "CookingMinutes" : 8,

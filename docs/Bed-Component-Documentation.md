@@ -21,7 +21,6 @@
                             "InspectScale" :  [1, 1, 1],
                             "NormalModel" : "",
                             "InspectModel" : "",
-                            "HoverIconsToShow" : "",
                             
                             "ConditionGainPerHour" : 1,
                             "AdditionalConditionGainPerHour" : 0,

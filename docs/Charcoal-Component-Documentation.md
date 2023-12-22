@@ -21,7 +21,6 @@
                                 "InspectScale" :  [1, 1, 1],
                                 "NormalModel" : "",
                                 "InspectModel" : "",
-                                "HoverIconsToShow" : "",
 
                                 "SurveyGameMinutes" : 15,
                                 "SurveyRealSeconds" : 3,

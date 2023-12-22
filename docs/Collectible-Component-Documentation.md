@@ -21,7 +21,6 @@
                                 "InspectScale" :  [1, 1, 1],
                                 "NormalModel" : "",
                                 "InspectModel" : "",
-                                "HoverIconsToShow" : "",
 
                                 "HudMessageLocalizationId" : "GAMEPLAY_SampleNoteHudMessage",
                                 "NarrativeTextLocalizationId" : "GAMEPLAY_SampleNoteNarrativeText",
