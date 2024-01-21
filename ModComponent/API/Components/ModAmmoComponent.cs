@@ -6,12 +6,15 @@ using ModComponent.Utils;
 namespace ModComponent.API.Components;
 
 [MelonLoader.RegisterTypeInIl2Cpp(false)]
-public partial class ModAmmoComponent(IntPtr intPtr) : ModBaseComponent(intPtr)
+public class ModAmmoComponent : ModBaseComponent
 {
-    /// <summary>
-    /// The type of gun this bullet is compatible with.
-    /// </summary>
-    public GunType AmmoForGunType;
+
+	public ModAmmoComponent(IntPtr intPtr) : base(intPtr) { }
+
+	/// <summary>
+	/// The type of gun this bullet is compatible with.
+	/// </summary>
+	public GunType AmmoForGunType;
 
     void Awake()
     {

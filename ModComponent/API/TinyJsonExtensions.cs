@@ -1,6 +1,7 @@
 ﻿using MelonLoader.TinyJSON;
 using ModComponent.Utils;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace ModComponent.API;
@@ -19,7 +20,7 @@ internal static class TinyJsonExtensions
 		return false;
 	}
 
-	internal static Variant GetVariant(this ProxyObject dict, string className, string fieldName)
+	internal static Variant? GetVariant(this ProxyObject dict, string className, string fieldName)
 	{
 		Variant subDict;
 		try
@@ -28,7 +29,9 @@ internal static class TinyJsonExtensions
 		}
 		catch (KeyNotFoundException ex)
 		{
-			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+			Logger.LogError($"The json doesn't have an entry for '{className}'");
+			//			throw new Exception(, ex);
+			return null;
 		}
 		try
 		{
@@ -36,7 +39,30 @@ internal static class TinyJsonExtensions
 		}
 		catch (KeyNotFoundException ex)
 		{
-			throw new Exception($"The '{className}' entry in the json doesn't have a field for '{fieldName}'", ex);
+			Logger.LogError($"The '{className}' entry in the json doesn't have a field for '{fieldName}'");
+			//			throw new Exception($"The '{className}' entry in the json doesn't have a field for '{fieldName}'", ex);
+			return null;
+		}
+	}
+
+	internal static Variant? GetVariantOrNull(this ProxyObject dict, string className, string fieldName)
+	{
+		Variant subDict;
+		try
+		{
+			subDict = dict[className];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return null;
+		}
+		try
+		{
+			return subDict[fieldName];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return null;
 		}
 	}
 
@@ -49,7 +75,9 @@ internal static class TinyJsonExtensions
 		}
 		catch (KeyNotFoundException ex)
 		{
-			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+			Logger.LogError($"The json doesn't have an entry for '{className}'");
+			return null;
+			//			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
 		}
 		try
 		{
@@ -70,7 +98,32 @@ internal static class TinyJsonExtensions
 		}
 		catch (KeyNotFoundException ex)
 		{
-			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+			Logger.LogError($"The json doesn't have an entry for '{className}'");
+			//			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+			return _default;
+		}
+		try
+		{
+			return int.Parse(subDict[fieldName], CultureInfo.InvariantCulture);
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return _default;
+		}
+	}
+
+	internal static float GetFloat(this ProxyObject dict, string className, string fieldName, float _default = 0f)
+	{
+		Variant subDict;
+		try
+		{
+			subDict = dict[className];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			Logger.LogError($"The json doesn't have an entry for '{className}'");
+			//			throw new Exception($"The json doesn't have an entry for '{className}'", ex);
+			return _default;
 		}
 		try
 		{
@@ -89,8 +142,27 @@ internal static class TinyJsonExtensions
 
 	internal static ProxyArray GetProxyArray(this ProxyObject dict, string className, string fieldName)
 	{
-		return dict.GetVariant(className, fieldName) as ProxyArray
-			   ?? throw new Exception($"The field '{fieldName}' in entry '{className}' is not an array");
+		ProxyArray array = dict.GetVariant(className, fieldName) as ProxyArray;
+		if (array == null)
+		{
+			Logger.LogError($"The field '{fieldName}' in entry '{className}' is not an array");
+			return new ProxyArray();
+		}
+
+		return array;
+	}
+
+	internal static ProxyArray GetProxyArrayOrEmpty(this ProxyObject dict, string className, string fieldName)
+	{
+		var checkArray = dict.GetVariantOrNull(className, fieldName);
+		if (checkArray == null)
+		{
+			return new ProxyArray();
+		}
+
+		ProxyArray array = checkArray as ProxyArray;
+
+		return array;
 	}
 
 	private static float[] ConvertToFloatArray(this ProxyArray proxy)
@@ -136,6 +208,11 @@ internal static class TinyJsonExtensions
 	internal static string[] GetStringArray(this ProxyObject dict, string className, string fieldName)
 	{
 		return dict.GetProxyArray(className, fieldName).ConvertToStringArray();
+	}
+
+	internal static string[] GetStringArrayOrEmpty(this ProxyObject dict, string className, string fieldName)
+	{
+		return dict.GetProxyArrayOrEmpty(className, fieldName).ConvertToStringArray();
 	}
 
 	private static Vector3 ConvertToVector3(this Variant array)

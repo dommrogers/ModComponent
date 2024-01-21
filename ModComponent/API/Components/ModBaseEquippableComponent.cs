@@ -16,7 +16,7 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 	/// The position, rotation and scale of this prefab will be used for rendering. <br/>
 	/// Use the 'Weapon Camera' to tune the values.
 	/// </summary>
-	public string EquippedModelPrefabName = "";
+	public string? EquippedModelPrefabName { get; set; } = null;
 
 	/// <summary>
 	/// The name of the type implementing the specific game logic of this item.<br/>
@@ -24,12 +24,12 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 	/// If the assembly is omitted (Namespace.TypeName), the type will be loaded from the first assembly that contains a type with the given name.<br/>
 	/// Leave empty if this item needs no special game logic.
 	/// </summary>
-	public string ImplementationType = "";
+	public string? ImplementationType { get; set; } = null;
 
 	/// <summary>
 	/// The audio that plays when this item is equipped.
 	/// </summary>
-	public string EquippingAudio = "";
+	public string? EquippingAudio { get; set; } = null;
 
 	/// <summary>
 	/// The model shown while the item is equipped.
@@ -113,6 +113,7 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 		{
 			return null;
 		}
+		Logger.LogDebug($"CreateImplementationActionDelegate {methodInfo.Name}");
 
 		return (Action)Delegate.CreateDelegate(typeof(Action), Implementation, methodInfo);
 	}
@@ -124,6 +125,7 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 			return;
 		}
 
+		Logger.LogDebug($"Awake ImplementationType {ImplementationType}");
 		//ignoring monobehaviour
 		Type? implementationTypeMono = TypeResolver.Resolve(ImplementationType, true);
 		this.Implementation = Activator.CreateInstance(implementationTypeMono);
@@ -144,6 +146,8 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 		{
 			return;
 		}
+
+		Logger.LogDebug($"Awake Implementation {Implementation.ToString()}");
 
 		OnEquipped = CreateImplementationActionDelegate("OnEquipped");
 		OnUnequipped = CreateImplementationActionDelegate("OnUnequipped");
@@ -168,6 +172,7 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 
 		if (OnAwake != null)
 		{
+			Logger.LogDebug($"Awake OnAwake.Invoke");
 			OnAwake.Invoke();
 		}
 	}
@@ -216,8 +221,8 @@ public abstract class ModBaseEquippableComponent : ModBaseComponent
 	internal override void InitializeComponent(ProxyObject dict, string inheritanceName)
 	{
 		base.InitializeComponent(dict, inheritanceName);
-		this.EquippedModelPrefabName = dict.GetVariant(inheritanceName, "EquippedModelPrefab");
-		this.ImplementationType = dict.GetVariant(inheritanceName, "ImplementationType");
-		this.EquippingAudio = dict.GetVariant(inheritanceName, "EquippingAudio");
+		this.EquippedModelPrefabName = dict.GetStringOrNull(inheritanceName, "EquippedModelPrefab");
+		this.ImplementationType = dict.GetStringOrNull(inheritanceName, "ImplementationType");
+		this.EquippingAudio = dict.GetStringOrNull(inheritanceName, "EquippingAudio");
 	}
 }

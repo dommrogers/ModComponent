@@ -14,15 +14,11 @@ internal static class GearEquipper
 			return;
 		}
 
-		GameObject? equippedModelPrefab = AssetBundleUtils.LoadAsset<GameObject>(equippable.EquippedModelPrefabName);
-		if (equippedModelPrefab != null)
+		if (!string.IsNullOrEmpty(equippable.EquippedModelPrefabName))
 		{
+			GameObject? equippedModelPrefab = AssetBundleUtils.LoadAsset<GameObject>(equippable.EquippedModelPrefabName);
 			equippable.EquippedModel = UnityEngine.Object.Instantiate(equippedModelPrefab, GameManager.GetWeaponCamera().transform);
 			equippable.EquippedModel.layer = vp_Layer.Weapon;
-		}
-		else
-		{
-			Logger.Log($"The equippedModelPrefab for '{equippable.EquippedModelPrefabName}' was null.");
 		}
 
 		equippable.OnEquipped?.Invoke();
