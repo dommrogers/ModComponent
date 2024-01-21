@@ -105,3 +105,7 @@ Model to show when not inspecting the item. Leave empty to have the normal model
 ## InspectModel
 *string*<br/>
 Model to show when inspecting the item. Leave empty to have the normal model and inspect model be the same.
+
+## HoverIconsToShow
+`Firestarting`, `Food`, `RawMaterial`, `Tool`, `Clothing`, `FirstAid`, or `Locked`<br/>
+The category of an item which will display an icon above the name in the inspect menu. Set it to the same as your InventoryCategory or leave it blank.

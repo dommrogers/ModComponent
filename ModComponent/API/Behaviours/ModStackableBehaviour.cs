@@ -34,6 +34,21 @@ public class ModStackableBehaviour : MonoBehaviour
 	/// </summary>
 	public float ChanceFull = 100f;
 
+	/// <summary>
+	/// The items that can be stacked with this item.
+	/// </summary>
+	public string[] ShareStackWithGear = [];
+
+	/// <summary>
+	/// The item to instantiate when the stack is split.
+	/// </summary>
+	public string InstantiateStackItem = "";
+
+	/// <summary>
+	/// The maximum difference in condition between items in a stack.
+	/// </summary>
+	public float StackConditionDifferenceConstraint = 0.01f;
+
 	void Awake()
 	{
 		CopyFieldHandler.UpdateFieldValues(this);
@@ -57,5 +72,8 @@ public class ModStackableBehaviour : MonoBehaviour
 		this.SingleUnitTextID = dict.GetVariant(className, "SingleUnitTextId");
 		this.UnitsPerItem = dict.GetVariant(className, "UnitsPerItem");
 		this.ChanceFull = dict.GetVariant(className, "ChanceFull");
+		this.ShareStackWithGear = dict.GetStringArray(className, "ShareStackWithGear");
+		this.InstantiateStackItem = dict.GetVariant(className, "InstantiateStackItem");
+		this.StackConditionDifferenceConstraint = dict.GetVariant(className, "StackConditionDifferenceConstraint");
 	}
 }

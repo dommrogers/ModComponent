@@ -74,7 +74,9 @@
 
                             "ContainsAlcohol" : false,
                             "AlcoholPercentage" : 0,
-                            "AlcoholUptakeMinutes" : 45
+                            "AlcoholUptakeMinutes" : 45,
+
+                            "VitaminC" : 100
                         }
 }
 ```
@@ -218,3 +220,7 @@ How much of the item's weight is alcohol?
 ## AlcoholUptakeMinutes
 *float*<br/>
 How many in-game minutes does it take for the alcohol to be fully absorbed? This is scaled by current hunger level (the hungrier the faster). The simulated blood alcohol level will slowly raise over this time. Real-life value is around 45 mins for liquids.
+
+## VitaminC
+*int*<br/>
+How much Vitmain C will be added to the player once consumed?

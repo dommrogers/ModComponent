@@ -20,7 +20,6 @@
                                 "InspectOffset" : [0, 0, 0],
                                 "InspectScale" :  [1, 1, 1],
                                 "NormalModel" : "",
-                                "InspectModel" : "",
                                 
                                 "ItemNames" : [],
                                 "ItemWeights" : []

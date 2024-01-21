@@ -153,10 +153,15 @@ internal static class ComponentJson
 			ModToolComponent newComponent = ComponentUtils.GetOrCreateComponent<ModToolComponent>(prefab);
 			newComponent.InitializeComponent(dict);
 		}
-		#endregion
+        else if (dict.ContainsKey("ModAmmoComponent"))
+        {
+            ModAmmoComponent newComponent = ComponentUtils.GetOrCreateComponent<ModAmmoComponent>(prefab);
+            newComponent.InitializeComponent(dict);
+        }
+        #endregion
 
-		#region Behaviour Components
-		if (dict.ContainsKey("ModAccelerantBehaviour"))
+        #region Behaviour Components
+        if (dict.ContainsKey("ModAccelerantBehaviour"))
 		{
 			ModAccelerantBehaviour newComponent = ComponentUtils.GetOrCreateComponent<ModAccelerantBehaviour>(prefab);
 			newComponent.InitializeBehaviour(dict);

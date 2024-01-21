@@ -1,9 +1,9 @@
 {
-    "ModRandomWeightedItemComponent": {
+    "ModAmmoComponent": {
                                 "DisplayNameLocalizationId" : "GAMEPLAY_SampleItem",
                                 "DescriptionLocalizatonId" : "GAMEPLAY_SampleItemDescription",
                                 "InventoryActionLocalizationId" : "",
-                                "WeightKG": 0,
+                                "WeightKG": 0.1,
                                 "DaysToDecay" : 0,
                                 "MaxHP" : 100,
                                 "InitialCondition" : "Perfect",
@@ -20,7 +20,6 @@
                                 "NormalModel" : "",
                                 "InspectModel" : "",
 
-                                "ItemNames" : [],
-                                "ItemWeights" : []
+                                "AmmoForGunType" : "Rifle"
                             }
 }

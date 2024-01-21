@@ -1,5 +1,6 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.Attributes;
+using Il2CppTLD.Gear;
 using MelonLoader.TinyJSON;
 using ModComponent.Utils;
 using UnityEngine;
@@ -117,7 +118,7 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 	/// </summary>
 	public GameObject? NormalModel;
 
-	[HideFromIl2Cpp]
+    [HideFromIl2Cpp]
 	public string GetEffectiveConsoleName()
 	{
 		if (string.IsNullOrEmpty(this.ConsoleName))
@@ -153,5 +154,5 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 		this.InspectScale = dict.GetVector3(inheritanceName, "InspectScale");
 		this.NormalModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "NormalModel"));
 		this.InspectModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "InspectModel"));
-	}
+    }
 }
