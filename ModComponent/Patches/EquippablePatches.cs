@@ -55,9 +55,11 @@ internal static class PlayerManagerSetControlModePatch
 		}
 
 		lastMode = mode;
-
 		ModBaseEquippableComponent equippable = ComponentUtils.GetEquippableModComponent(__instance.m_ItemInHands);
-		equippable?.OnControlModeChangedWhileEquipped?.Invoke();
+		if (equippable != null && !string.IsNullOrEmpty(equippable.ImplementationType))
+		{
+			equippable?.OnControlModeChangedWhileEquipped?.Invoke();
+		}
 
 	}
 }
@@ -175,7 +177,7 @@ internal static class PlayerManager_ItemCanEquipInHands
 		}
 
 		ModBaseEquippableComponent equippable = ComponentUtils.GetEquippableModComponent(gi);
-		if (equippable != null)
+		if (equippable != null && !string.IsNullOrEmpty(equippable.ImplementationType))
 		{
 			__result = true;
 		}
