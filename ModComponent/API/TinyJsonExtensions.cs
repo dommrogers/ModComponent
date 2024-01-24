@@ -127,7 +127,7 @@ internal static class TinyJsonExtensions
 		}
 		try
 		{
-			return int.Parse(subDict[fieldName], CultureInfo.InvariantCulture);
+			return float.Parse(subDict[fieldName], CultureInfo.InvariantCulture);
 		}
 		catch (KeyNotFoundException ex)
 		{

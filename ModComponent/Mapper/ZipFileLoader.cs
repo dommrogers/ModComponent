@@ -45,6 +45,8 @@ internal static class ZipFileLoader
 	private static void LoadZipFile(string zipFilePath)
 	{
 		string zipFileName = Path.GetFileName(zipFilePath);
+		string zipFileNameNoExt = Path.GetFileNameWithoutExtension(zipFilePath);
+
 		Logger.Log($"Reading zip file at: '{zipFileName}'");
 		FileStream fileStream = File.OpenRead(zipFilePath);
 

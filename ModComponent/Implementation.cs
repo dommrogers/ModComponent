@@ -9,6 +9,7 @@ namespace ModComponent;
 internal class Implementation : MelonMod
 {
 
+	internal static bool initialized = false;
 	internal static bool mapped = false;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
@@ -26,13 +27,24 @@ internal class Implementation : MelonMod
 		Logger.LogNotDebug("Release Compilation");
 
 		Settings.instance.AddToModSettings("ModComponent");
+	}
 
-		AssetBundleProcessor.Initialize();
+	[HarmonyPatch(typeof(GameManager), nameof(GameManager.Awake))]
+	internal static class MC_Initialize
+	{
+		internal static void Prefix()
+		{
+			if (!initialized)
+			{
+				AssetBundleProcessor.Initialize();
+				initialized = true;
+			}
+		}
 	}
 
 	// change to gamemanager awake or sceneload MainMenu ?
 	[HarmonyPatch(typeof(Panel_Crafting), nameof(Panel_Crafting.Initialize))]
-	internal static class Panel_Crafting_Initialize
+	internal static class MC_MapPrefabs
 	{
 		internal static void Prefix()
 		{

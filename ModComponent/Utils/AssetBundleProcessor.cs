@@ -23,6 +23,9 @@ namespace ModComponent.Utils
 
 		internal static void Initialize()
 		{
+			// run the dependency checks
+			DependencyChecker.RunChecks();
+
 			// ensure temp foler exists
 			InitTempFolder();
 
@@ -45,6 +48,8 @@ namespace ModComponent.Utils
 
 		internal static void InitTempFolder()
 		{
+			CleanupTempFolder();
+
 			if (!Directory.Exists(tempFolderPath))
 			{
 				Logger.LogDebug("Creating temp folder (" + tempFolderName + ")");
@@ -98,6 +103,7 @@ namespace ModComponent.Utils
 				if (bundleFilePath != null && File.Exists(bundleFilePath))
 				{
 					string bundleFileName = Path.GetFileName(bundleFilePath);
+					string bundleFileNameNoExt = Path.GetFileNameWithoutExtension(bundleFilePath);
 					Logger.LogDebug("Preloading (" + bundleFileName + ")");
 
 					List<string> assetList = new();
@@ -107,7 +113,7 @@ namespace ModComponent.Utils
 						assetList.Add(assetName);
 					}
 					bundleAssetList.Add(bundleFilePath, assetList);
-					bundleNames.Add(ab.name);
+					bundleNames.Add(bundleFileNameNoExt);
 					ab.Unload(true);
 				}
 			}
