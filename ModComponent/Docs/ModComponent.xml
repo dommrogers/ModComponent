@@ -1509,13 +1509,19 @@
         </member>
         <member name="M:ModComponent.Public.IsLoaded">
             <summary>
-            Returns True|False if MC is loaded and ready
+            [Obsolete] Please use IsReady()<br/>(bool) Check if ModComponent is finished loading
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:ModComponent.Public.IsReady">
+            <summary>
+            (bool) Check if ModComponent is finished loading
             </summary>
             <returns>bool</returns>
         </member>
         <member name="M:ModComponent.Public.IsGameScene">
             <summary>
-            Returns True|False if the current scene is a valid "Game" scene
+            (bool) Check if the current scene is a playable game scene
             </summary>
             <returns>bool</returns>
         </member>
@@ -1524,9 +1530,9 @@
             Add a DependencyChecker entry, MC filenames should not include the extension
             (should be called OnInitializeMelon, does not require MC to be ready)
             </summary>
-            <param name="MCFileName"></param>
-            <param name="RequiresMCFileNames"></param>
-            <param name="RequiresDlc"></param>
+            <param name="MCFileName">The name of the ModComponent file the dependency is for</param>
+            <param name="RequiresMCFileNames">Array of ModComponent filenames required</param>
+            <param name="RequiresDlc">Does this ModComponent file require the DLC to be loaded</param>
         </member>
     </members>
 </doc>

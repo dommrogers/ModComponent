@@ -3,7 +3,7 @@
 
 ## Public.IsLoaded() Method
 
-Returns True|False if MC is loaded and ready
+[Obsolete] Please use IsReady()<br/>(bool) Check if ModComponent is finished loading
 
 ```csharp
 public static bool IsLoaded();

@@ -1,12 +1,12 @@
 #### [ModComponent](index.md 'index')
 ### [ModComponent](index.md#ModComponent 'ModComponent').[Public](Public.md 'ModComponent.Public')
 
-## Public.IsGameScene() Method
+## Public.IsReady() Method
 
-(bool) Check if the current scene is a playable game scene
+(bool) Check if ModComponent is finished loading
 
 ```csharp
-public static bool IsGameScene();
+public static bool IsReady();
 ```
 
 #### Returns
