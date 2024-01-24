@@ -1,0 +1,1532 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ModComponent</name>
+    </assembly>
+    <members>
+        <member name="T:ModComponent.API.Behaviours.ModAccelerantBehaviour">
+            <summary>
+            Adds the Accelerant Behaviour
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModAccelerantBehaviour.DestroyedOnUse">
+            <summary>
+            (bool:false) Is the item destroyed immediately after use
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModBurnableBehaviour.BurningMinutes">
+            <summary>
+            Number of minutes this item adds to the remaining burn time of the fire.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModBurnableBehaviour.BurningMinutesBeforeAllowedToAdd">
+            <summary>
+            How long must a fire be burning before this item can be added?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModBurnableBehaviour.TempIncrease">
+            <summary>
+            Temperature increase in °C when added to the fire.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModCarryingCapacityBehaviour.MaxCarryCapacityKGBuff">
+            <summary>
+            The maximum buff to the carrying capacity from this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModEvolveBehaviour.TargetItemName">
+            <summary>
+            Name of the item into which this item will. E.g. 'GEAR_GutDried'
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModEvolveBehaviour.IndoorsOnly">
+            <summary>
+            Does this item only evolve when it is stored indoors?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModEvolveBehaviour.EvolveHours">
+            <summary>
+            How many in-game hours does this item take to evolve from 0% to 100%?
+            </summary>
+        </member>
+        <member name="T:ModComponent.API.Behaviours.ModFireMakingBaseBehaviour">
+            <summary>
+            The base class for all modded components involved in making fires
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireMakingBaseBehaviour.SuccessModifier">
+            <summary>
+            Does this item affect the chance for success? Represents percentage points.<br/>
+            Positive values increase the chance, negative values reduce it.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireMakingBaseBehaviour.DurationOffset">
+            <summary>
+            In-game seconds offset for fire starting duration from this accelerant.<br/>
+            NOT scaled by fire starting skill. Positive values mean 'slower', negative values mean 'faster'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.SecondsToIgniteTinder">
+            <summary>
+            How many in-game seconds this item will take to ignite tinder.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.SecondsToIgniteTorch">
+            <summary>
+            How many in-game seconds this item will take to ignite a torch.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.NumberOfUses">
+            <summary>
+            How many times can this item be used?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.RequiresSunLight">
+            <summary>
+            Does the item require sunlight to work?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.OnUseSoundEvent">
+            <summary>
+            What sound to play during usage. Not used for accelerants.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.RuinedAfterUse">
+            <summary>
+            Set the condition to 0% after the fire starting finished (either successful or not).
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModFireStarterBehaviour.DestroyedOnUse">
+            <summary>
+            Is the item destroyed immediately after use?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModHarvestableBehaviour.Audio">
+            <summary>
+            The audio to play while harvesting
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModHarvestableBehaviour.Minutes">
+            <summary>
+            How many in-game minutes does it take to harvest this item?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModHarvestableBehaviour.YieldNames">
+            <summary>
+            The names of the GearItems harvesting will yield
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModHarvestableBehaviour.YieldCounts">
+            <summary>
+            The number of the GearItems harvesting will yield
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModHarvestableBehaviour.RequiredToolNames">
+            <summary>
+            The names of the ToolItems that can be used to harvest. Leave empty for harvesting by hand.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.CanRestoreFromWornOut">
+            <summary>
+            Can this item be restored from a ruined condition?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RecoveryDurationMinutes">
+            <summary>
+            The number of minutes it takes to restore this item from a ruined condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RestoreRequiredGear">
+            <summary>
+            The gear required to restore this item from a ruined condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RestoreRequiredGearUnits">
+            <summary>
+            The units of the gear required to restore this item from a ruined condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RepairDurationMinutes">
+            <summary>
+            The number of minutes it takes to repair this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RepairRequiredGear">
+            <summary>
+            The gear required to repair this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.RepairRequiredGearUnits">
+            <summary>
+            The units of the gear required to repair this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModMillableBehaviour.Skill">
+            <summary>
+            The skill associated with repairing this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.Audio">
+            <summary>
+            The audio to play while repairing.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.Minutes">
+            <summary>
+            How many in-game minutes does it take to repair this item?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.Condition">
+            <summary>
+            How much condition does repairing restore?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.RequiredTools">
+            <summary>
+            The name of the tools suitable for repair. At least one of those will be required for repairing.<br/>
+            Leave empty, if this item should be repairable without tools.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.MaterialNames">
+            <summary>
+            The name of the materials required for repair.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModRepairableBehaviour.MaterialCounts">
+            <summary>
+            The number of the materials required for repair.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModScentBehaviour.scentCategory">
+            <summary>
+            What type of smell does this item have? Affects wildlife detection radius and smell strength.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.Tools">
+            <summary>
+            Which tools can be used to sharpen this item, e.g. 'GEAR_SharpeningStone'. <br/>
+            Leave empty to make this sharpenable without tools.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.MinutesMin">
+            <summary>
+            How many in-game minutes does it take to sharpen this item at minimum skill.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.MinutesMax">
+            <summary>
+            How many in-game minutes does it take to sharpen this item at maximum skill.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.ConditionMin">
+            <summary>
+            How much condition is restored to this item at minimum skill.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.ConditionMax">
+            <summary>
+            How much condition is restored to this item at maximum skill.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModSharpenableBehaviour.Audio">
+            <summary>
+            The sound to play while sharpening. Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.SingleUnitTextID">
+            <summary>
+            Localization key to be used for stacks with a singular item. E.g. '1 arrow'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.MultipleUnitTextID">
+            <summary>
+            Localization key to be used for stacks with multiple items. E.g. '2 arrows'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.StackSprite">
+            <summary>
+            An optional sprite name (from a UIAtlas) that will be add to the stack.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.UnitsPerItem">
+            <summary>
+            The default number of units to make a full stack.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.ChanceFull">
+            <summary>
+            Percent chance of the item having a full stack.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.ShareStackWithGear">
+            <summary>
+            The items that can be stacked with this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.InstantiateStackItem">
+            <summary>
+            The item to instantiate when the stack is split.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Behaviours.ModStackableBehaviour.StackConditionDifferenceConstraint">
+            <summary>
+            The maximum difference in condition between items in a stack.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModAmmoComponent.AmmoForGunType">
+            <summary>
+            (Il2Cpp.GunType) The type of gun this bullet is compatible with.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.ConsoleName">
+            <summary>
+            How this item will be called in the DeveloperConsole. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.DisplayNameLocalizationId">
+            <summary>
+            Localization key to be used for the in-game name of the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.DescriptionLocalizatonId">
+            <summary>
+            Localization key to be used for the in-game description of the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InventoryCategory">
+            <summary>
+            The inventory category to be used for this item. <br/>
+            Leave at 'Auto' for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InventoryActionLocalizationId">
+            <summary>
+            Localization key to be used for the 'Action' (e.g. 'Equip', 'Eat', ...) button in the inventory.<br/>
+            The text is purely cosmetic and will not influcence the action the button triggers. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.PickUpAudio">
+            <summary>
+            Sound to play when the item is picked up.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.StowAudio">
+            <summary>
+            Sound to play when the item is holstered.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.PutBackAudio">
+            <summary>
+            Sound to play when the item is dropped.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.WornOutAudio">
+            <summary>
+            Sound to play when the item wore out during an action.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.WeightKG">
+            <summary>
+            The weight of the item in kilograms.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.MaxHP">
+            <summary>
+            The maximum hit points of the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.DaysToDecay">
+            <summary>
+            The number of days it takes for this item to decay - without use - from 100% to 0%. <br/>
+            Leave at 0 if the item should not decay over time.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InitialCondition">
+            <summary>
+            The initial condition of the item when found or crafted.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectOnPickup">
+            <summary>
+            Will the item be inspected when picked up? <br/>
+            If not enabled, the item will go straight to the inventory.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectDistance">
+            <summary>
+            Distance from the camera during inspect.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectScale">
+            <summary>
+            Scales the item during inspect.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectAngles">
+            <summary>
+            Each vector component stands for a rotation by the given degrees around the corresponding axis.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectOffset">
+            <summary>
+            Offset from the center during inspect.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.InspectModel">
+            <summary>
+            Model to show during inspect mode. <br/>
+            NOTE: You must either set BOTH models or NO models.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseComponent.NormalModel">
+            <summary>
+            Model to show when not inspecting the item. <br/>
+            NOTE: You must either set BOTH models or NO models.
+            </summary>
+        </member>
+        <member name="P:ModComponent.API.Components.ModBaseEquippableComponent.EquippedModelPrefabName">
+            <summary>
+            The GameObject to be used for representing the item while it is equipped.<br/>
+            The position, rotation and scale of this prefab will be used for rendering. <br/>
+            Use the 'Weapon Camera' to tune the values.
+            </summary>
+        </member>
+        <member name="P:ModComponent.API.Components.ModBaseEquippableComponent.ImplementationType">
+            <summary>
+            The name of the type implementing the specific game logic of this item.<br/>
+            If this is an assembly-qualified name (Namespace.TypeName,Assembly) it will be loaded from the given assembly.<br/>
+            If the assembly is omitted (Namespace.TypeName), the type will be loaded from the first assembly that contains a type with the given name.<br/>
+            Leave empty if this item needs no special game logic.
+            </summary>
+        </member>
+        <member name="P:ModComponent.API.Components.ModBaseEquippableComponent.EquippingAudio">
+            <summary>
+            The audio that plays when this item is equipped.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.EquippedModel">
+            <summary>
+            The model shown while the item is equipped.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.Implementation">
+            <summary>
+            The object containing any specific game logic for this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnEquipped">
+            <summary>
+            Ran when the item is equipped.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnUnequipped">
+            <summary>
+            Ran when the item is unequipped.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnPrimaryAction">
+            <summary>
+            Ran when the left mouse button is pressed.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnSecondaryAction">
+            <summary>
+            Ran when the right mouse button is pressed.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnControlModeChangedWhileEquipped">
+            <summary>
+            This runs when the player does certain things like enter/exit a car.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnAwake">
+            <summary>
+            According to the Unity documentation, Awake is the first script to run.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnEnabled">
+            <summary>
+            OnEnable is called whenever the game object is enabled.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnStart">
+            <summary>
+            Start is only ever called once.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnUpdate">
+            <summary>
+            Executes every frame.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnLateUpdate">
+            <summary>
+            Executes after all the Update calls
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBaseEquippableComponent.OnDisabled">
+            <summary>
+            Executes when the gameobject is disabled
+            </summary>
+        </member>
+        <member name="M:ModComponent.API.Components.ModBaseEquippableComponent.CreateImplementationActionDelegate(System.String)">
+            <summary>
+            Creates an action delegate from a method in the loaded Implementation.
+            </summary>
+            <param name="methodName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ModComponent.API.Components.ModBedComponent">
+            <summary>
+            Component to define a Bed Item (inherits ModBaseComponent)
+            </summary>
+            <seealso cref="T:ModComponent.API.Components.ModBaseComponent"/>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.ConditionGainPerHour">
+            <summary>
+            How many condition points are restored per hour by sleeping in this bed?<br/>
+            This is the base rate and applied for the first hour.<br/>
+            The second and following hours will benefit from 'AdditionalConditionGainPerHour'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.AdditionalConditionGainPerHour">
+            <summary>
+            Additionally restored condition points restored per hour.<br/>
+            The n-th hour of sleeping gives (n - 1) * AdditionalConditionGainPerHour additional health points.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.WarmthBonusCelsius">
+            <summary>
+            Warmth bonus of the bed in °C.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.DegradePerHour">
+            <summary>
+            How much condition does this bed item lose per hour of use?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.BearAttackModifier">
+            <summary>
+            Modifier for the chance of bear encounters during sleep. <br/>
+            Positive values decrease the chance; negative values increase the chance.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.WolfAttackModifier">
+            <summary>
+            Modifier for the chance of wolf encounters during sleep. <br/>
+            Positive values decrease the chance; negative values increase the chance.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.OpenAudio">
+            <summary>
+            Sound to be played when beginning to sleep in this bed. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.CloseAudio">
+            <summary>
+            Sound to be played when ending to sleep in this bed. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.PackedMesh">
+            <summary>
+            Optional game object to be used for representing the bed in a 'packed' state.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBedComponent.UsableMesh">
+            <summary>
+            Optional game object to be used for representing the bed in a 'usable' state.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.CanCarry">
+            <summary>
+            Can this be carried like a rabbit carcass?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.HarvestAudio">
+            <summary>
+            The id for the sound to be played while harvesting.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.GutPrefab">
+            <summary>
+            The name of the object prefab for the guts.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.GutQuantity">
+            <summary>
+            The number of guts in each harvest.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.GutWeightKgPerUnit">
+            <summary>
+            The weight of the gut before the player harvests it.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.HidePrefab">
+            <summary>
+            The name of the object prefab for the hide.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.HideQuantity">
+            <summary>
+            The number of hides in each harvest.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.HideWeightKgPerUnit">
+            <summary>
+            The weight of the hide before the player harvests it.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.MeatPrefab">
+            <summary>
+            The name of the object prefab for the raw meat.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.MeatAvailableMinKG">
+            <summary>
+            The minimum amount of meat in each harvest.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.MeatAvailableMaxKG">
+            <summary>
+            The maximum amount of meat in each harvest.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.CanQuarter">
+            <summary>
+            Can this be quartered?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.QuarterAudio">
+            <summary>
+            The id for the sound to be played while quartering.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.QuarterBagMeatCapacityKG">
+            <summary>
+            The maximum meat capacity of a quarter bag.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.QuarterBagWasteMultiplier">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.QuarterDurationMinutes">
+            <summary>
+            How long does it take to quarter?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModBodyHarvestComponent.QuarterObjectPrefab">
+            <summary>
+            The name of the object prefab for the quarter bag.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Region">
+            <summary>
+            The body region this clothing item can be worn.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.MinLayer">
+            <summary>
+            The innermost layer at which the clothing item can be worn.<br/>
+            From innermost to outermost: Base, Mid, Top, Top2.<br/>
+            Examples: Legs + Base = Longjohns, Legs + Top = Pants; Feet + Mid = Socks, Feet + Top = Boots
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.MaxLayer">
+            <summary>
+            The outermost layer at which the clothing item can be worn.<br/>
+            From innermost to outermost: Base, Mid, Top, Top2.<br/>
+            Examples: Legs + Base = Longjohns, Legs + Top = Pants; Feet + Mid = Socks, Feet + Top = Boots
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.MovementSound">
+            <summary>
+            The type of sound to make when moving while wearing this clothing item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.DaysToDecayWornOutside">
+            <summary>
+            Number of days it takes for this clothing item to decay from 100% to 0% while being worn and outside. 0 means 'Does not decay from being worn'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.DaysToDecayWornInside">
+            <summary>
+            Number of days it takes for this clothing item to decay from 100% to 0% while being worn and inside. 0 means 'Does not decay from being worn'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Warmth">
+            <summary>
+            Warmth bonus in degrees celsius when the clothing item is in perfect condition and completely dry.<br/>
+            The actual bonus value will scale with condition and wetness.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.WarmthWhenWet">
+            <summary>
+            Warmth bonus in degrees celsius when the clothing item is in perfect condition and completely wet.<br/>
+            The actual bonus value will scale with condition and wetness.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Windproof">
+            <summary>
+            Windproof bonus in degrees celsius when the clothing item is in perfect condition and completely wet.<br/>
+            The actual bonus value will scale with condition and wetness.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Toughness">
+            <summary>
+            Damage reduction in per cent when receiving certain types of damage (e.g. a coat protects against wolves, but not falling).<br/>
+            100 means 'Receive no damage', 0 means 'Receive full damage'. Actual bonus will scale with condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.SprintBarReduction">
+            <summary>
+            Sprint stamina reduction in per cent. 100 means 'No sprint stamina', 0 means 'Full sprint stamina'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Waterproofness">
+            <summary>
+            How much water is repelled by this clothing item? 100 means 'never gets wet'
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.DecreaseAttackChance">
+            <summary>
+            Decreases the chance that a wolf will attack. Only applies in certain situations.<br/>
+            100 means 'guaranteed not to attack'; 0 means 'same as without the buff'
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.IncreaseFleeChance">
+            <summary>
+            Increases the chance that a wolf will flee immediately when spotting the player.<br/>
+            100 means 'guaranteed to flee'; 0 means 'same as without the buff'
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.HoursToDryNearFire">
+            <summary>
+            Hours required to dry this clothing item next to a fire when it is completely wet.<br/>
+            That's the same amount of time it takes to unfreeze, so a completely frozen item will take twice this time to be completely dry again.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.HoursToDryWithoutFire">
+            <summary>
+            Hours required to dry this clothing item without a fire when it is completely wet.<br/>
+            That's the same amount of time it takes to unfreeze, so a completely frozen item will take twice this time to be completely dry again.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.HoursToFreeze">
+            <summary>
+            Hours required for this clothing to completely freeze once it got wet.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.MainTexture">
+            <summary>
+            Base name of the texture to represent this clothing item in the paper doll view.<br/>
+            All required actual texture paths will be derived from this name.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.BlendTexture">
+            <summary>
+            Name of the blend texture used for the paper doll view.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.DrawLayer">
+            <summary>
+            Drawing layer (as in drawing order) to be used for this clothing item.<br/>
+            Items with higher values are drawn over items with lower values.<br/>
+            Set to zero for the default value on that slot.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.ImplementationType">
+            <summary>
+            The name of the type implementing the specific game logic of this item.<br/>
+            Use 'Namespace.TypeName,AssemblyName', e.g. 'ClothingPack.SkiGogglesImplementation,Clothing-Pack'.<br/>
+            Leave empty if this item needs no special game logic.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.Implementation">
+            <summary>
+            An instance of the implementation that contains OnPutOn and OnTakeOff.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.OnPutOn">
+            <summary>
+            The action that runs when a custom clothing item is put on.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.OnTakeOff">
+            <summary>
+            The action that runs when a custom clothing item is taken off.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.FirstPersonPrefabMale">
+            <summary>
+            Prefab name for ClothingItem.m_FirstPersonPrefabMale
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.FirstPersonPrefabFemale">
+            <summary>
+            Prefab name for ClothingItem.m_FirstPersonPrefabFemale
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModClothingComponent.PreventAllDamageFromSource">
+            <summary>
+            Single string of "DamageReason"
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCollectibleComponent.HudMessageLocalizationId">
+            <summary>
+            The localization id for the hud message displayed after this item is picked up.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCollectibleComponent.NarrativeTextLocalizationId">
+            <summary>
+            The localization id for the narrative content of the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCollectibleComponent.TextAlignment">
+            <summary>
+            The alignment of the narrative text. Options are "Automatic", "Left", "Center", "Right", and "Justified"
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.Cooking">
+            <summary>
+            Can this be cooked/heated?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.Type">
+            <summary>
+            What type of cookable is this? <br/>
+            Affects where and how this item can be cooked.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.CookingMinutes">
+            <summary>
+            How many in-game minutes does it take to cook/heat this item?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.BurntMinutes">
+            <summary>
+            How many in-game minutes until this items becomes burnt after being 'cooked'?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.CookingWaterRequired">
+            <summary>
+            How many liters of water are required for cooking this item? Only potable water applies.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.CookingUnitsRequired">
+            <summary>
+            How many units of this item are required for cooking?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.CookingResult">
+            <summary>
+            Convert the item into this item when cooking completes. <br/>
+            Leave empty to only heat the item without converting it.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.CookingAudio">
+            <summary>
+            Sound to use when cooking/heating the item. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookableComponent.StartCookingAudio">
+            <summary>
+            Sound to use when putting the item into a pot or on a stove. <br/>
+            Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookingPotComponent.CanCookLiquid">
+            <summary>
+            Can the item cook liquids?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookingPotComponent.CanCookGrub">
+            <summary>
+            Can the item cook grub? <br/>
+            Cookable canned food counts as grub.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookingPotComponent.CanCookMeat">
+            <summary>
+            Can the item cook meat?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookingPotComponent.Capacity">
+            <summary>
+            The total water capacity of the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModCookingPotComponent.Template">
+            <summary>
+            Template item to be used in the mapping process.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.ProgressBarMessage">
+            <summary>
+            Localization key to be used to show a description text while using the item. <br/>
+            Should be something like 'Taking Antibiotics', 'Applying Bandage', etc.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.RemedyText">
+            <summary>
+            Localization key to be used to indicate what action is possible with this item. <br/>
+            E.g 'Take Antibiotics', 'Apply Bandage'. This is probably not used.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.InstantHealing">
+            <summary>
+            Amount of condition instantly restored after using this item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.FirstAidType">
+            <summary>
+            What type of treatment does this item provide?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.TimeToUseSeconds">
+            <summary>
+            Time in seconds to use this item. <br/>
+            Most vanilla items use 2 or 3 seconds.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.UnitsPerUse">
+            <summary>
+            How many items are required for one dose or application?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFirstAidComponent.UseAudio">
+            <summary>
+            Sound to play when using the item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.DaysToDecayOutdoors">
+            <summary>
+            0 means 'Never'.<br/>
+            This overrides the Basic Property 'DaysToDecay'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.DaysToDecayIndoors">
+            <summary>
+            0 means 'Never'.<br/>
+            This overrides the Basic Property 'DaysToDecay'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Calories">
+            <summary>
+            For one complete item with all servings.<br/>
+            Calories remaining will scale with weight.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.EatingTime">
+            <summary>
+            Realtime seconds it takes to eat one item.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.EatingAudio">
+            <summary>
+            Sound to use when the item is either unpackaged or already open.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.EatingPackagedAudio">
+            <summary>
+            Sound to use when the item is still packaged and unopened.<br/>
+            Leave empty for unpackaged food.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ThirstEffect">
+            <summary>
+            How does this affect your thirst?<br/>
+            Represents change in percentage points.<br/>
+            Negative values increase thirst; positive values reduce thirst.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.FoodPoisoning">
+            <summary>
+            Chance in percent to contract food poisoning from an item above 20% condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.FoodPoisoningLowCondition">
+            <summary>
+            Chance in percent to contract food poisoning from an item below 20% condition.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ParasiteRiskIncrements">
+            <summary>
+            Parasite Risk increments in percent for each unit eaten.<br/>
+            Leave empty for no parasite risk.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Natural">
+            <summary>
+            Is the food item naturally occurring meat or plant?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Raw">
+            <summary>
+            Is the food item raw or cooked?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Drink">
+            <summary>
+            Is the food item something to drink?<br/>
+            (This mainly affects the names of actions and position in the radial menu)
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Meat">
+            <summary>
+            Is the food item meat directly from an animal?<br/>
+            (E.g. wolf steak, but not beef jerky - mainly for statistics)
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Fish">
+            <summary>
+            Is the food item fish directly from an animal?<br/>
+            (E.g. salmon, but not canned sardines - mainly for statistics)
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Canned">
+            <summary>
+            Is the food item canned?<br/>
+            Canned items will yield a 'Recycled Can' when opened properly.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.Opening">
+            <summary>
+            Does this item require a tool for opening it?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.OpeningWithCanOpener">
+            <summary>
+            Can it be opened with a can opener?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.OpeningWithKnife">
+            <summary>
+            Can it be opened with a knife?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.OpeningWithHatchet">
+            <summary>
+            Can it be opened with a hatchet?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.OpeningWithSmashing">
+            <summary>
+            Can it be opened by smashing?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.AffectCondition">
+            <summary>
+            Does this item affect 'Condition' while sleeping?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ConditionRestBonus">
+            <summary>
+            How much additional condition is restored per hour?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ConditionRestMinutes">
+            <summary>
+            Amount of in-game minutes the 'ConditionRestBonus' will be applied.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.AffectRest">
+            <summary>
+            Does this item affect 'Rest'?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.InstantRestChange">
+            <summary>
+            How much 'Rest' is restored/drained immediately after consuming the item.<br/>
+            Represents change in percentage points.<br/>
+            Negative values drain rest; positive values restore rest
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.RestFactorMinutes">
+            <summary>
+            Amount of in-game minutes the 'RestFactor' will be applied.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.AffectCold">
+            <summary>
+            Does this item affect 'Cold'?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.InstantColdChange">
+            <summary>
+            How much 'Cold' is restored/drained immediately after consuming the item.<br/>
+            Represents change in percentage points.<br/>
+            Negative values make it feel colder; positive values make it feel warmer.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ColdFactorMinutes">
+            <summary>
+            Amount of in-game minutes the 'ColdFactor' will be applied.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.ContainsAlcohol">
+            <summary>
+            Does this item contain Alcohol?<br/>
+            If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.AlcoholPercentage">
+            <summary>
+            How much of the item's weight is alcohol?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.AlcoholUptakeMinutes">
+            <summary>
+            How many in-game minutes does it take for the alcohol to be fully absorbed?<br/>
+            This is scaled by current hunger level (the hungrier the faster).<br/>
+            The simulated blood alcohol level will slowly raise over this time.<br/>
+            Real-life value is around 45 mins for liquids.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModFoodComponent.VitaminC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModLiquidComponent.LiquidType">
+            <summary>
+            The type of liquid this item contains.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModLiquidComponent.LiquidCapacityLiters">
+            <summary>
+            The capacity of this container in liters
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModLiquidComponent.RandomizeQuantity">
+            <summary>
+            If true, this container will have a random initial quantity.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModLiquidComponent.LiquidLiters">
+            <summary>
+            If initial quantity not randomized, it will have this amount initially.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModPowderComponent.ModPowderType">
+            <summary>
+            The type of powder this container holds. "Gunpowder"
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModPowderComponent.CapacityKG">
+            <summary>
+            The maximum weight this container can hold.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModPowderComponent.ChanceFull">
+            <summary>
+            The percent probability that this container will be found full.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModRandomItemComponent.ItemNames">
+            <summary>
+            The names of the gear items that this could spawn.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModRandomWeightedItemComponent.ItemNames">
+            <summary>
+            The names of the gear items that this could spawn. Must be the same length as "ItemWeights"
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModRandomWeightedItemComponent.ItemWeights">
+            <summary>
+            The integer weights of the gear items that this could spawn. Must be the same length as "ItemNames"
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.ToolType">
+            <summary>
+            The type of the tool item. This determines for which actions it can be used.
+            E.g. 'Knife' for cutting, 'Hammer' for pounding, etc.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.DegradeOnUse">
+            <summary>
+            How many condition points per use does this tool item lose?
+            Certains actions have their own time driven degrade value, e.g. DegradePerHourCrafting, which applies only for those actions.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.Usage">
+            <summary>
+            Can this item be used for crafting, repairing or both?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.SkillBonus">
+            <summary>
+            Bonus to the relevant skill when using this item. E.g. the sewing kit gives a bonus of +20.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.CraftingTimeMultiplier">
+            <summary>
+            Multiplier for crafting and repair times. Represents percent. 0% means 'finishes instantly'; 100% means 'same time as without tool'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.DegradePerHourCrafting">
+            <summary>
+            How many condition points does the tool degrade while being used for crafting?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.BreakDown">
+            <summary>
+            Can this tool be used to break down items? If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.BreakDownTimeMultiplier">
+            <summary>
+            Multiplier for the time required to break down an item.
+            Represents percent. 0% means 'finishes instantly'; 100% means 'same time as without tool'.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.ForceLocks">
+            <summary>
+            Can this tool item be used to open locked containers? If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.ForceLockAudio">
+            <summary>
+            Sound to play while forcing a lock. Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.IceFishingHole">
+            <summary>
+            Can this tool item be used to clear ice fishing holes? If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.IceFishingHoleDegradeOnUse">
+            <summary>
+            How many condition points does the tool lose when completely clearing an ice fishing hole?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.IceFishingHoleMinutes">
+            <summary>
+            How many in-game minutes does it take to completely clear an ice fishing hole?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.IceFishingHoleAudio">
+            <summary>
+            Sound to play while clearing an ice fishing hole. Leave empty for a sensible default.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.CarcassHarvesting">
+            <summary>
+            Can this tool item be used to harvest carcasses? If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.MinutesPerKgMeat">
+            <summary>
+            How many in-game minutes does it take to harvest one kg of unfrozen meat?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.MinutesPerKgFrozenMeat">
+            <summary>
+            How many in-game minutes does it take to harvest one kg of frozen meat?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.MinutesPerHide">
+            <summary>
+            How many in-game minutes does it take to harvest one hide?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.MinutesPerGut">
+            <summary>
+            How many in-game minutes does it take to harvest one gut?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.DegradePerHourHarvesting">
+            <summary>
+            How many condition points does the tool degrade while being used for harvesting carcasses?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.StruggleBonus">
+            <summary>
+            Can this tool item be used during a struggle with wildlife? If not enabled, the other settings in this section will be ignored.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.DamageMultiplier">
+            <summary>
+            Multiplier for the damage dealt.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.FleeChanceMultiplier">
+            <summary>
+            Multiplier for the chance the animal will flee (breaking the struggle before the 'struggle bar' is filled).
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.TapMultiplier">
+            <summary>
+            Multiplier for the amount of the 'struggle bar' that is filled with each hit.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.CanPuncture">
+            <summary>
+            Can this tool cause a puncture wound? If enabled, this will cause the animal to bleed out.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Components.ModToolComponent.BleedoutMultiplier">
+            <summary>
+            Multiplier for the time it takes the animal to bleed out after receiving a puncture wound.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Modifications.AttachBehaviour.BehaviourName">
+            <summary>
+            The name of the class to be attached.<br/>
+            This class must extend `UnityEngine.MonoBehaviour`.<br/>
+            If this is an assembly-qualified name (Namespace.TypeName,Assembly) it will be loaded from the given assembly.<br/>
+            If the assembly is omitted (Namespace.TypeName), the type will be loaded from the first assembly that contains a type with the given name.
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Modifications.AttachBehaviour.ThrowOnError">
+            <summary>
+            Should this throw an exception if the behaviour cannot be loaded or attached?
+            </summary>
+        </member>
+        <member name="F:ModComponent.API.Modifications.PlayAkSound.SoundName">
+            <summary>
+            The name of the sound (the wwise event loaded from a sound bank with AssetLoader) to be played when this item is enabled or triggered.
+            </summary>
+        </member>
+        <member name="T:ModComponent.AssetLoader.ModAssetBundleManager">
+            <exclude/>
+        </member>
+        <member name="F:ModComponent.AssetLoader.ModAssetBundleManager.knownAssetBundles">
+            <summary>
+            Key: The relative path within the Mods folder to the asset bundle file<br/>
+            Value: The cooresponding loaded asset bundle
+            </summary>
+        </member>
+        <member name="F:ModComponent.AssetLoader.ModAssetBundleManager.knownAssetMappedNames">
+            <summary>
+            Key: A short asset name such as "gear_gascan.prefab"<br/>
+            Value: The cooresponding full asset name such as "assets/prefabs/gear_gascan.prefab"
+            </summary>
+        </member>
+        <member name="F:ModComponent.AssetLoader.ModAssetBundleManager.knownAssetNames">
+            <summary>
+            Key: A full asset name such as "assets/prefabs/gear_gascan.prefab"<br/>
+            Value: The asset bundle containing the asset
+            </summary>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.GetAssetBundle(System.String)">
+            <summary>
+            Gets the asset bundle from the bank of loaded asset bundles
+            </summary>
+            <param name="relativePath">The relative path within the Mods folder to the asset bundle file</param>
+            <returns></returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.RegisterAssetBundle(System.String)">
+            <summary>
+            Registers an asset bundle with AssetLoader to insert bundled assets into the game
+            </summary>
+            <param name="relativePath">The relative path within the Mods folder to the asset bundle file</param>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.RegisterAssetBundle(System.String,UnityEngine.AssetBundle)">
+            <summary>
+            Registers an asset bundle with AssetLoader to insert bundled assets into the game
+            </summary>
+            <param name="relativePath">The identifier of this asset bundle. Must be unique</param>
+            <param name="assetBundle">The AssetBundle instance to be registered</param>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.GetAssetName(System.String)">
+            <summary>
+            Takes an asset or file path and returns the name of the file without any file extensions
+            </summary>
+            <param name="assetPath">The path to the file. It can be relative or absolute</param>
+            <returns></returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.GetAssetName(System.String,System.Boolean)">
+            <summary>
+            Takes an asset or file path and returns the name of the file
+            </summary>
+            <param name="assetPath">The path to the file. It can be relative or absolute</param>
+            <param name="removeFileExtension">Should this remove the file extension from the result?</param>
+            <returns></returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.GetFullAssetName(System.String)">
+            <summary>
+            Retrieves the asset's full name from the dictionary
+            </summary>
+            <param name="name"></param>
+            <returns>a full asset</returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.GetAssetBundleFromFile(System.String)">
+            <summary>
+            Gets a file's asset bundle data and returns an AssetBundle instance containing that data
+            </summary>
+            <param name="fullPath">The entire system file path to the Asset Bundle</param>
+            <returns>A loaded instance of the asset bundle from the file</returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.LoadAssetBundle(System.String,System.String)">
+            <summary>
+            Loads an asset bundle into the AssetLoader bank where it can be obtain with Resources.Load or AssetBundle.LoadAsset
+            </summary>
+            <param name="relativePath">The relative path to the asset bundle from within the mods folder</param>
+            <param name="fullPath">The absolute to the asset bundle on the machine executing</param>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.LoadAssetBundle(System.String,UnityEngine.AssetBundle)">
+            <summary>
+            Loads an AssetBundle instance into the AssetLoader bank where it can be obtain with Resources.Load or AssetBundle.LoadAsset
+            </summary>
+            <param name="relativePath">The relative path to the asset bundle, or the id to identify it</param>
+            <param name="assetBundle">The AssetBundle instance to be loaded</param>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.StripResourceFolder(System.String)">
+            <summary>
+            Removes the resource prefixes from an asset path
+            </summary>
+            <param name="assetPath">The path to the asset within the asset bundle</param>
+            <returns>A string without any of the resource folder prefixes</returns>
+        </member>
+        <member name="M:ModComponent.AssetLoader.ModAssetBundleManager.Trim(System.String[])">
+            <summary>
+            Returns an array of string variables without any leading or trailing whitespace
+            </summary>
+            <param name="values">An array of string variables.</param>
+            <returns>A new array containing the trimmed values.</returns>
+        </member>
+        <member name="F:ModComponent.Mapper.AutoMapper.pendingAssetBundles">
+            <summary>
+            Relative Paths
+            </summary>
+        </member>
+        <member name="F:ModComponent.Mapper.AutoMapper.pendingAssetBundleZipFileMap">
+            <summary>
+            Relative Paths : Zip Paths
+            </summary>
+        </member>
+        <member name="M:ModComponent.Mapper.AutoMapper.AddAssetBundle(System.String)">
+            <summary>
+            Add an asset bundle to the list of pending bundles
+            </summary>
+            <param name="relativePath">The relative path to the asset bundle from within the mods folder</param>
+        </member>
+        <member name="M:ModComponent.Mapper.AutoMapper.AddAssetBundle(System.String,System.String)">
+            <summary>
+            Add an asset bundle to the list of pending bundles
+            </summary>
+            <param name="relativePath">The relative path to the asset bundle from within the mods folder</param>
+            <param name="zipFilePath">The full path to the zip file containing the asset bundle</param>
+        </member>
+        <member name="M:ModComponent.Mapper.AutoMapper.LoadPendingAssetBundles">
+            <summary>
+            Load all the asset bundles and map their assets
+            </summary>
+        </member>
+        <member name="P:ModComponent.SceneLoader.Shaders.ShaderList.DummyShaderReplacements">
+            <summary>
+            Dummy : Actual
+            </summary>
+        </member>
+        <member name="M:ModComponent.SceneLoader.Shaders.ShaderSubstitutionManager.ReplaceDummyShaders(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            Replaces dummy shaders on the object with in-game equivalents.
+            </summary>
+        </member>
+        <member name="T:ModComponent.Utils.AssetBundleUtils">
+            <summary>
+            Alternative asset loading methods to avoid triggering the AssetLoader patches
+            </summary>
+        </member>
+        <member name="M:ModComponent.Utils.AssetBundleUtils.LoadAsset(UnityEngine.AssetBundle,System.String)">
+            <summary>
+            Loads an asset without triggering the AssetLoader patches
+            </summary>
+        </member>
+        <member name="M:ModComponent.Utils.AssetBundleUtils.LoadAsset``1(UnityEngine.AssetBundle,System.String)">
+            <summary>
+            Loads an asset without triggering the AssetLoader patches
+            </summary>
+        </member>
+        <member name="M:ModComponent.Utils.AssetBundleUtils.LoadAsset(UnityEngine.AssetBundle,System.String,Il2CppSystem.Type)">
+            <summary>
+            Loads an asset without triggering the AssetLoader patches
+            </summary>
+        </member>
+        <member name="M:ModComponent.Utils.AssetBundleUtils.LoadAsset``1(System.String)">
+            <summary>
+            Load an asset from Addressables
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ModComponent.Utils.ModUtils.GetInChildren(UnityEngine.GameObject,System.String)">
+            <summary>
+            Recursively finds the first child object with that name
+            </summary>
+            <param name="parent"></param>
+            <param name="childName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ModComponent.Utils.NameUtils.RemoveGearPrefix(System.String)">
+            <summary>
+            Returns a string with the 'GEAR_' prefix removed.
+            </summary>
+            <param name="gearName">The gear's name, ie 'GEAR_SampleItem'</param>
+        </member>
+        <member name="M:ModComponent.Utils.NameUtils.NormalizeName(System.String)">
+            <summary>
+            Removes "(Clone)" from the name and trims any whitespace
+            </summary>
+            <param name="name"></param>
+            <returns>Returns a new string without "(Clone)" or the whitespace</returns>
+        </member>
+        <member name="M:ModComponent.Utils.RandomUtils.Range(System.Int32,System.Int32)">
+            <summary>
+            Uniformly chooses a random integer in a given range.
+            </summary>
+            <param name="min">inclusive</param>
+            <param name="max">exclusive</param>
+            <returns>A random integer between the min and the max.</returns>
+        </member>
+        <member name="M:ModComponent.Utils.RandomUtils.RollChance(System.Single)">
+            <summary>
+            Rolls the chance that an action is successful.
+            </summary>
+            <param name="percent">Chance of success between 0 and 100</param>
+            <returns>True if successful and false otherwise.</returns>
+        </member>
+        <member name="M:ModComponent.Utils.RandomUtils.RandomDouble">
+            <summary>
+            Returns a random double precision number
+            </summary>
+            <returns>A double between 0 and 1 inclusive</returns>
+        </member>
+        <member name="M:ModComponent.Public.IsLoaded">
+            <summary>
+            Returns True|False if MC is loaded and ready
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:ModComponent.Public.IsGameScene">
+            <summary>
+            Returns True|False if the current scene is a valid "Game" scene
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:ModComponent.Public.AddDependencyEntry(System.String,System.String[],System.Boolean)">
+            <summary>
+            Add a DependencyChecker entry, MC filenames should not include the extension
+            (should be called OnInitializeMelon, does not require MC to be ready)
+            </summary>
+            <param name="MCFileName"></param>
+            <param name="RequiresMCFileNames"></param>
+            <param name="RequiresDlc"></param>
+        </member>
+    </members>
+</doc>
