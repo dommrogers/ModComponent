@@ -1,4 +1,4 @@
-﻿using Il2CppInterop.Runtime.Attributes;
+using Il2CppInterop.Runtime.Attributes;
 using MelonLoader.TinyJSON;
 
 namespace ModComponent.API.Behaviours;
@@ -17,6 +17,6 @@ public class ModAccelerantBehaviour : ModFireMakingBaseBehaviour
 	internal override void InitializeBehaviour(ProxyObject dict, string className = "ModAccelerantBehaviour")
 	{
 		base.InitializeBehaviour(dict, className);
-		this.DestroyedOnUse = dict.GetVariant(className, "DestroyedOnUse");
+		this.DestroyedOnUse = dict.GetBool(className, "DestroyedOnUse", false);
 	}
 }

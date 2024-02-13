@@ -4,7 +4,8 @@ using UnityEngine;
 namespace ModComponent.API.Modifications;
 
 [MelonLoader.RegisterTypeInIl2Cpp(false)]
-public class PlayAkSound : MonoBehaviour
+/// <exclude/>
+internal class PlayAkSound : MonoBehaviour
 {
 	/// <summary>
 	/// The name of the sound (the wwise event loaded from a sound bank with AssetLoader) to be played when this item is enabled or triggered.

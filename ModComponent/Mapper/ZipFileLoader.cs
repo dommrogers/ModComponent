@@ -14,21 +14,21 @@ internal static class ZipFileLoader
 
 	internal static void Initialize()
 	{
-		LoadZipFilesInDirectory(MelonEnvironment.ModsDirectory, false);
+		LoadMCFilesInDirectory(MelonEnvironment.ModsDirectory, false);
 	}
 
-	private static void LoadZipFilesInDirectory(string directory, bool recursive)
+	private static void LoadMCFilesInDirectory(string directory, bool recursive)
 	{
 		if (recursive)
 		{
 			string[] directories = Directory.GetDirectories(directory);
 			foreach (string eachDirectory in directories)
 			{
-				LoadZipFilesInDirectory(eachDirectory, true);
+				LoadMCFilesInDirectory(eachDirectory, true);
 			}
 		}
 
-		string[] files = Directory.GetFiles(directory,"*.modcomponent");
+		string[] files = Directory.GetFiles(directory, "*.modcomponent");
 
 		Array.Sort(files);
 
@@ -37,52 +37,85 @@ internal static class ZipFileLoader
 			if (eachFile.ToLower().EndsWith(".modcomponent"))
 			{
 				//PageManager.AddToItemPacksPage(new ItemPackData(eachFile));
-				LoadZipFile(eachFile);
+				try
+				{
+					LoadMCFile(eachFile);
+				}
+				catch (Exception e)
+				{
+					Logger.LogError($"Error Loading .modcomponent file\n'{e}'");
+				}
 			}
 		}
 	}
 
-	private static void LoadZipFile(string zipFilePath)
+	private static void LoadMCFile(string MCFilePath)
 	{
-		string zipFileName = Path.GetFileName(zipFilePath);
-		string zipFileNameNoExt = Path.GetFileNameWithoutExtension(zipFilePath);
+		string MCFileName = Path.GetFileName(MCFilePath);
+		string MCFileNameNoExt = Path.GetFileNameWithoutExtension(MCFilePath);
 
-		Logger.Log($"Reading zip file at: '{zipFileName}'");
-		FileStream fileStream = File.OpenRead(zipFilePath);
-
-		hashes.Add(SHA256.Create().ComputeHash(fileStream));
-		fileStream.Position = 0;
-
-		ZipInputStream zipInputStream = new ZipInputStream(fileStream);
-		ZipEntry entry;
-		while ((entry = zipInputStream.GetNextEntry()) != null)
+		using (FileStream fileStream = File.OpenRead(MCFilePath))
 		{
-			string internalPath = entry.Name;
-			string filename = Path.GetFileName(internalPath);
-			FileType fileType = GetFileType(filename);
-			if (fileType == FileType.other)
+
+			string? zipType = FileUtils.DetectZipFileType(fileStream);
+			if (string.IsNullOrEmpty(zipType))
 			{
-				continue;
+				Logger.LogError($"Unknown file compression {MCFileName}");
+				fileStream.Dispose();
+				return;
 			}
 
-			using MemoryStream unzippedFileStream = new MemoryStream();
-			int size = 0;
-			byte[] buffer = new byte[4096];
-			while (true)
+			hashes.Add(SHA256.Create().ComputeHash(fileStream));
+			fileStream.Seek(0, 0);
+
+			switch (zipType)
 			{
-				size = zipInputStream.Read(buffer, 0, buffer.Length);
-				if (size > 0)
-				{
-					unzippedFileStream.Write(buffer, 0, size);
-				}
-				else
-				{
+				case "zip":
+					Logger.Log($"Reading zip file: '{MCFileName}'");
+					LoadZipFile(MCFilePath, fileStream);
 					break;
-				}
+				default:
+					Logger.LogError($"Unsupported compression type '{zipType}' for '{MCFileName}'");
+					return;
 			}
-			if (!TryHandleFile(zipFilePath, internalPath, fileType, unzippedFileStream))
+
+		}
+	}
+
+	private static void LoadZipFile(string MCFilePath, FileStream fileStream)
+	{
+		using (ZipInputStream zipInputStream = new ZipInputStream(fileStream))
+		{
+			ZipEntry entry;
+			while ((entry = zipInputStream.GetNextEntry()) != null)
 			{
-				return;
+				string internalPath = entry.Name;
+				string filename = Path.GetFileName(internalPath);
+				FileType fileType = GetFileType(filename);
+				if (fileType == FileType.other)
+				{
+					continue;
+				}
+
+				using MemoryStream unzippedFileStream = new MemoryStream();
+				int size = 0;
+				byte[] buffer = new byte[4096];
+				while (true)
+				{
+					size = zipInputStream.Read(buffer, 0, buffer.Length);
+					if (size > 0)
+					{
+						unzippedFileStream.Write(buffer, 0, size);
+					}
+					else
+					{
+						break;
+					}
+				}
+				if (!TryHandleFile(MCFilePath, internalPath, fileType, unzippedFileStream))
+				{
+					return;
+				}
 			}
 		}
 	}
@@ -217,6 +250,7 @@ internal static class ZipFileLoader
 			else if (internalPath.StartsWith(@"localizations/"))
 			{
 				// change emthod to ensure we go via the BOM fixed methods..
+				Logger.LogDebug($"Reading localization json from zip at {zipFilePath} {internalPath} {text.Length}");
 				LocalizationUtilities.LocalizationManager.LoadJsonLocalization(text);
 			}
 			else if (internalPath.StartsWith(@"bundle/"))
@@ -249,9 +283,11 @@ internal static class ZipFileLoader
 		string modName = dict["Name"];
 		string version = dict["Version"];
 		Variant author;
-		if (dict.TryGetValue("Author", out author)) {
+		if (dict.TryGetValue("Author", out author))
+		{
 			Logger.LogGreen($"Found: {modName} {version} by {author}");
-		} else
+		}
+		else
 		{
 			Logger.LogGreen($"Found: {modName} {version}");
 		}

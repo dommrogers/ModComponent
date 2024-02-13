@@ -154,5 +154,12 @@ public abstract partial class ModBaseComponent : MonoBehaviour
 		this.InspectScale = dict.GetVector3(inheritanceName, "InspectScale");
 		this.NormalModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "NormalModel"));
 		this.InspectModel = ModUtils.GetChild(this.gameObject, dict.GetVariant(inheritanceName, "InspectModel"));
+		this.Validate();
+
     }
+
+	internal virtual void Validate()
+	{
+
+	}
 }

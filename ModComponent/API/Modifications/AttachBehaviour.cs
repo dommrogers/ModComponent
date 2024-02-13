@@ -4,7 +4,9 @@ using UnityEngine;
 namespace ModComponent.API.Modifications;
 
 [MelonLoader.RegisterTypeInIl2Cpp(false)]
-public class AttachBehaviour : MonoBehaviour
+
+/// <exclude />
+internal class AttachBehaviour : MonoBehaviour
 {
 	/// <summary>
 	/// The name of the class to be attached.<br/>

@@ -11,4 +11,4 @@ public ItemCategory InventoryCategory;
 ```
 
 #### Field Value
-[ModComponent.API.Components.ModBaseComponent.ItemCategory](https://docs.microsoft.com/en-us/dotnet/api/ModComponent.API.Components.ModBaseComponent.ItemCategory 'ModComponent.API.Components.ModBaseComponent.ItemCategory')
+[ItemCategory](ModBaseComponent.ItemCategory.md 'ModComponent.API.Components.ModBaseComponent.ItemCategory')

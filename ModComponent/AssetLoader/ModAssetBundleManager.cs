@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ModComponent.AssetLoader;
 
+/// <exclude/>
 internal static class ModAssetBundleManager
 {
 	private const string ASSET_NAME_LOCALIZATION = "localization";
@@ -42,18 +43,18 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="relativePath">The relative path within the Mods folder to the asset bundle file</param>
 	/// <returns></returns>
-	public static AssetBundle GetAssetBundle(string relativePath)
+	internal static AssetBundle GetAssetBundle(string relativePath)
 	{
 		knownAssetBundles.TryGetValue(relativePath, out AssetBundle result);
 		return result;
 	}
 
-	public static bool IsKnownAsset(string? name)
+	internal static bool IsKnownAsset(string? name)
 	{
 		return !string.IsNullOrEmpty(GetFullAssetName(name));
 	}
 
-	public static UnityEngine.Object LoadAsset(string name)
+	internal static UnityEngine.Object LoadAsset(string name)
 	{
 		string fullAssetName = GetFullAssetName(name);
 
@@ -70,7 +71,7 @@ internal static class ModAssetBundleManager
 	/// Registers an asset bundle with AssetLoader to insert bundled assets into the game
 	/// </summary>
 	/// <param name="relativePath">The relative path within the Mods folder to the asset bundle file</param>
-	public static void RegisterAssetBundle(string relativePath)
+	internal static void RegisterAssetBundle(string relativePath)
 	{
 		if (string.IsNullOrEmpty(relativePath))
 		{
@@ -101,7 +102,7 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="relativePath">The identifier of this asset bundle. Must be unique</param>
 	/// <param name="assetBundle">The AssetBundle instance to be registered</param>
-	public static void RegisterAssetBundle(string relativePath, AssetBundle assetBundle)
+	internal static void RegisterAssetBundle(string relativePath, AssetBundle assetBundle)
 	{
 		if (string.IsNullOrEmpty(relativePath))
 		{
@@ -121,7 +122,7 @@ internal static class ModAssetBundleManager
 		}
 	}
 
-	public static string GetAssetMappedName(string assetPath, string assetName)
+	internal static string GetAssetMappedName(string assetPath, string assetName)
 	{
 		if (assetName.StartsWith(ASSET_NAME_PREFIX_GEAR) && assetPath.EndsWith(ASSET_PATH_SUFFIX_PREFAB))
 		{
@@ -146,7 +147,7 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="assetPath">The path to the file. It can be relative or absolute</param>
 	/// <returns></returns>
-	public static string GetAssetName(string assetPath) => GetAssetName(assetPath, true);
+	internal static string GetAssetName(string assetPath) => GetAssetName(assetPath, true);
 
 	/// <summary>
 	/// Takes an asset or file path and returns the name of the file
@@ -154,7 +155,7 @@ internal static class ModAssetBundleManager
 	/// <param name="assetPath">The path to the file. It can be relative or absolute</param>
 	/// <param name="removeFileExtension">Should this remove the file extension from the result?</param>
 	/// <returns></returns>
-	public static string GetAssetName(string assetPath, bool removeFileExtension)
+	internal static string GetAssetName(string assetPath, bool removeFileExtension)
 	{
 		string result = assetPath;
 		int index = System.Math.Max(assetPath.LastIndexOf('/'), assetPath.LastIndexOf('\\'));
@@ -182,7 +183,7 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="name"></param>
 	/// <returns>a full asset</returns>
-	public static string GetFullAssetName(string? name)
+	internal static string GetFullAssetName(string? name)
 	{
 		if (string.IsNullOrEmpty(name))
 		{
@@ -208,7 +209,7 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="fullPath">The entire system file path to the Asset Bundle</param>
 	/// <returns>A loaded instance of the asset bundle from the file</returns>
-	public static AssetBundle GetAssetBundleFromFile(string fullPath)
+	internal static AssetBundle GetAssetBundleFromFile(string fullPath)
 	{
 		AssetBundle assetBundle = AssetBundle.LoadFromFile(fullPath);
 		if (assetBundle)
@@ -312,7 +313,7 @@ internal static class ModAssetBundleManager
 	/// </summary>
 	/// <param name="values">An array of string variables.</param>
 	/// <returns>A new array containing the trimmed values.</returns>
-	public static string[] Trim(string[] values)
+	internal static string[] Trim(string[] values)
 	{
 		string[] result = new string[values.Length];
 

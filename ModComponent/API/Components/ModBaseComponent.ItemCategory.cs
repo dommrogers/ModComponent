@@ -2,6 +2,9 @@
 
 public abstract partial class ModBaseComponent
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public enum ItemCategory
 	{
 		Auto,

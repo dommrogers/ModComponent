@@ -22,6 +22,9 @@
 		<!--embedded has the pdb data embedded within the dll. This is useful because bug reports will then have line numbers.-->
 		<!--none skips creation of pdb data.-->
 		<DebugType>embedded</DebugType>
+
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile>Docs\ModComponent.xml</DocumentationFile>
 	</PropertyGroup>
 	
 	<!--This is for NuGet.-->
@@ -38,21 +41,27 @@
 		<Description>Library for The Long Dark that allows for asset bundle loading, blueprints and item spawns.</Description>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DocumentationFile>bin\ModComponent.xml</DocumentationFile>
+
 		<NoWarn>1591</NoWarn>
 		<BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</BaseOutputPath>
 		<PackageOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</PackageOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="bin\**" />
+	  <Compile Remove="Docs\**" />
 	  <EmbeddedResource Remove="bin\**" />
+	  <EmbeddedResource Remove="Docs\**" />
 	  <None Remove="bin\**" />
+	  <None Remove="Docs\**" />
 	</ItemGroup>
 
 	<!--This is the of packages that the mod references.-->
 	<ItemGroup>
 		<!--This package contains almost everything a person could possibly need to reference while modding.-->
+		<PackageReference Include="DefaultDocumentation" Version="0.8.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.2.3" />
 		<PackageReference Include="STBlade.Modding.TLD.GearSpawner" Version="2.3.1" />
 		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.25.0" />

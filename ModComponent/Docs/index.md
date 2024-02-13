@@ -17,7 +17,7 @@
 
 | Classes | |
 | :--- | :--- |
-| [ModAccelerantBehaviour](ModAccelerantBehaviour.md 'ModComponent.API.Behaviours.ModAccelerantBehaviour') | Adds the Accelerant Behaviour |
+| [ModAccelerantBehaviour](ModAccelerantBehaviour.md 'ModComponent.API.Behaviours.ModAccelerantBehaviour') | |
 | [ModBurnableBehaviour](ModBurnableBehaviour.md 'ModComponent.API.Behaviours.ModBurnableBehaviour') | |
 | [ModCarryingCapacityBehaviour](ModCarryingCapacityBehaviour.md 'ModComponent.API.Behaviours.ModCarryingCapacityBehaviour') | |
 | [ModEvolveBehaviour](ModEvolveBehaviour.md 'ModComponent.API.Behaviours.ModEvolveBehaviour') | |
@@ -52,3 +52,7 @@
 | [ModRandomItemComponent](ModRandomItemComponent.md 'ModComponent.API.Components.ModRandomItemComponent') | |
 | [ModRandomWeightedItemComponent](ModRandomWeightedItemComponent.md 'ModComponent.API.Components.ModRandomWeightedItemComponent') | |
 | [ModToolComponent](ModToolComponent.md 'ModComponent.API.Components.ModToolComponent') | |
+
+| Enums | |
+| :--- | :--- |
+| [ModBaseComponent.ItemCategory](ModBaseComponent.ItemCategory.md 'ModComponent.API.Components.ModBaseComponent.ItemCategory') | |

@@ -12,7 +12,7 @@ public class ModAmmoComponent : ModBaseComponent
 	public ModAmmoComponent(IntPtr intPtr) : base(intPtr) { }
 
 	/// <summary>
-	/// The type of gun this bullet is compatible with.
+	/// (Il2Cpp.GunType) The type of gun this bullet is compatible with.
 	/// </summary>
 	public GunType AmmoForGunType;
 

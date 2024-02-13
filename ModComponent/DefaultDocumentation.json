@@ -1,0 +1,29 @@
+﻿{
+	"GeneratedAccessModifiers": "Public",
+	"GeneratedPages": "Types,Members",
+	"FileNameFactory": "Name",
+	"NamespaceDocItem": {
+		"Sections": [
+			"Header",
+			"Title",
+			"Classes",
+			"Enums",
+		]
+	},
+	"ClassDocItem": {
+		"Sections": [
+			"Header",
+			"Title",
+			"Methods",
+			"summary",
+			"seealso",
+			"Inheritance",
+			"Derived",
+			"Definition",
+			"Fields",
+		],
+		"Markdown.TableOfContentsModes":"IncludeKind,IncludeSummary"
+	}
+
+	
+}

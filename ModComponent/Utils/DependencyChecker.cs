@@ -37,7 +37,6 @@ namespace ModComponent.Utils
 		{
 			MCFileName = MCFileName.Replace(".modcomponent", null).ToLowerInvariant();
 			RequiresMCFileNames = RequiresMCFileNames.Select(x => x.Replace(".modcomponent", null).ToLowerInvariant()).ToArray();
-
 			DepEntry newDepEntry = new DepEntry() { Mod = MCFileName, RequiresDLC = RequiresDlc, Requires = RequiresMCFileNames };
 			UserDepEntries.Add(newDepEntry);
 		}
@@ -89,15 +88,24 @@ namespace ModComponent.Utils
 			string[] mcfiles = Directory.GetFiles(MelonEnvironment.ModsDirectory, "*.modcomponent");
 			foreach (string mcfile in mcfiles)
 			{
-				string fileName = Path.GetFileNameWithoutExtension(mcfile).ToLowerInvariant();
+				string fileNameNoExt = Path.GetFileNameWithoutExtension(mcfile).ToLowerInvariant();
 				filePaths.Add(mcfile);
-				fileNames.Add(fileName);
+				fileNames.Add(fileNameNoExt);
 			}
 
 			foreach (string filePath in filePaths)
 			{
 				using (var fileStream = new FileStream(filePath, FileMode.Open))
 				{
+					string fileName = Path.GetFileName(filePath);
+					string? zipType = FileUtils.DetectZipFileType(fileStream);
+
+					if (zipType != "zip")
+					{
+						fileStream.Dispose();
+						return;
+					}
+
 					using (var zipArchive = new ZipArchive(fileStream, ZipArchiveMode.Read))
 					{
 						ZipArchiveEntry? buildEntry = null;

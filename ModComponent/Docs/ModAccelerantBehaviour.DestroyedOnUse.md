@@ -3,7 +3,7 @@
 
 ## ModAccelerantBehaviour.DestroyedOnUse Field
 
-(bool:false) Is the item destroyed immediately after use
+Is the item destroyed immediately after use?
 
 ```csharp
 public bool DestroyedOnUse;

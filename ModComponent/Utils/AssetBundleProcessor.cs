@@ -23,8 +23,6 @@ namespace ModComponent.Utils
 
 		internal static void Initialize()
 		{
-			// run the dependency checks
-			DependencyChecker.RunChecks();
 
 			// ensure temp foler exists
 			InitTempFolder();

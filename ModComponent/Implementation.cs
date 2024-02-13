@@ -9,8 +9,8 @@ namespace ModComponent;
 internal class Implementation : MelonMod
 {
 
-	internal static bool initialized = false;
-	internal static bool mapped = false;
+	internal static bool runDeps = true;
+	internal static bool isReady = false;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 	internal static Implementation instance;
@@ -27,6 +27,8 @@ internal class Implementation : MelonMod
 		Logger.LogNotDebug("Release Compilation");
 
 		Settings.instance.AddToModSettings("ModComponent");
+
+		AssetBundleProcessor.Initialize();
 	}
 
 	[HarmonyPatch(typeof(GameManager), nameof(GameManager.Awake))]
@@ -34,10 +36,11 @@ internal class Implementation : MelonMod
 	{
 		internal static void Prefix()
 		{
-			if (!initialized)
+			if (runDeps)
 			{
-				AssetBundleProcessor.Initialize();
-				initialized = true;
+				// run the dependency checks (once)
+				DependencyChecker.RunChecks();
+				runDeps = false;
 			}
 		}
 	}
@@ -49,10 +52,10 @@ internal class Implementation : MelonMod
 		internal static void Prefix()
 		{
 			Logger.LogNotDebug("Panel_Crafting_Initialize");
-			if (mapped == false)
+			if (isReady == false)
 			{
 				AssetBundleProcessor.MapPrefabs();
-				mapped = true;
+				isReady = true;
 			}
 		}
 	}

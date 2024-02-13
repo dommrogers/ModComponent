@@ -89,6 +89,28 @@ internal static class TinyJsonExtensions
 		}
 	}
 
+	internal static bool GetBool(this ProxyObject dict, string className, string fieldName, bool _default = false)
+	{
+		Variant subDict;
+		try
+		{
+			subDict = dict[className];
+		}
+		catch (KeyNotFoundException ex)
+		{
+			Logger.LogError($"The json doesn't have an entry for '{className}'");
+			return _default;
+		}
+		try
+		{
+			return bool.Parse(subDict[fieldName]);
+		}
+		catch (KeyNotFoundException ex)
+		{
+			return _default;
+		}
+	}
+
 	internal static int GetInt(this ProxyObject dict, string className, string fieldName, int _default = 0)
 	{
 		Variant subDict;

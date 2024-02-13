@@ -4,14 +4,9 @@
         <name>ModComponent</name>
     </assembly>
     <members>
-        <member name="T:ModComponent.API.Behaviours.ModAccelerantBehaviour">
-            <summary>
-            Adds the Accelerant Behaviour
-            </summary>
-        </member>
         <member name="F:ModComponent.API.Behaviours.ModAccelerantBehaviour.DestroyedOnUse">
             <summary>
-            (bool:false) Is the item destroyed immediately after use
+            Is the item destroyed immediately after use?
             </summary>
         </member>
         <member name="F:ModComponent.API.Behaviours.ModBurnableBehaviour.BurningMinutes">
@@ -384,6 +379,11 @@
             <summary>
             Model to show when not inspecting the item. <br/>
             NOTE: You must either set BOTH models or NO models.
+            </summary>
+        </member>
+        <member name="T:ModComponent.API.Components.ModBaseComponent.ItemCategory">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:ModComponent.API.Components.ModBaseEquippableComponent.EquippedModelPrefabName">

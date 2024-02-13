@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace ModComponent.API.Components;
 
+/// <summary>
+/// Component to define a Bed Item (inherits ModBaseComponent)
+/// </summary>
+/// <seealso cref="ModBaseComponent"/>
 [MelonLoader.RegisterTypeInIl2Cpp(false)]
 public class ModBedComponent : ModBaseComponent
 {
