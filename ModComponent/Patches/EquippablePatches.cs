@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Il2Cpp;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Components;
 using ModComponent.Mapper;
 using ModComponent.Utils;
@@ -64,7 +65,8 @@ internal static class PlayerManagerSetControlModePatch
 	}
 }
 
-[HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.UseInventoryItem))]//Exists
+//[HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.UseInventoryItem))]//Exists
+[HarmonyLib.HarmonyPatch(typeof(PlayerManager), "UseInventoryItem", new Type[] { typeof(GearItem), typeof(bool) })]
 internal static class PlayerManagerUseInventoryItemPatch
 {
 	internal static bool Prefix(PlayerManager __instance, GearItem gi)
@@ -93,6 +95,37 @@ internal static class PlayerManagerUseInventoryItemPatch
 
 		return false;
 	}
+}
+
+[HarmonyLib.HarmonyPatch(typeof(PlayerManager), "UseInventoryItem", new Type[] { typeof(GearItem),typeof(ItemLiquidVolume), typeof(bool) })]
+internal static class PlayerManagerUseInventoryItemPatch2
+{
+    internal static bool Prefix(PlayerManager __instance, GearItem gi)
+    {
+        if (ComponentUtils.GetComponentSafe<FirstPersonItem>(gi) != null)
+        {
+            return true;
+        }
+
+        if (ComponentUtils.GetEquippableModComponent(gi) == null)
+        {
+            return true;
+        }
+
+        GearItem? currentGi = __instance.m_ItemInHands;
+
+        if (currentGi != null)
+        {
+            __instance.UnequipItemInHands();
+        }
+
+        if (gi != currentGi)
+        {
+            __instance.EquipItem(gi, false);
+        }
+
+        return false;
+    }
 }
 
 [HarmonyPatch(typeof(InputManager), nameof(InputManager.ProcessFireAction))]

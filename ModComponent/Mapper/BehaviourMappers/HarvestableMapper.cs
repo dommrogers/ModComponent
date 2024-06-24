@@ -1,4 +1,5 @@
 ﻿using Il2Cpp;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using ModComponent.API.Behaviours;
 using ModComponent.API.Components;
 using ModComponent.Utils;
@@ -31,6 +32,10 @@ internal static class HarvestableMapper
 
 		harvest.m_AppliedSkillType = SkillType.None;
 		harvest.m_RequiredTools = ModUtils.GetItems<ToolsItem>(modHarvestableComponent.RequiredToolNames, modHarvestableComponent.name);
-		harvest.m_GunpowderYield = 0f;
+		
+		//harvest.m_GunpowderYield = 0f;
+		
+		Il2CppStructArray<Il2CppTLD.IntBackedUnit.ItemWeight> weightStructArray = new Il2CppStructArray<Il2CppTLD.IntBackedUnit.ItemWeight>(0);
+		harvest.m_YieldPowderAmount = weightStructArray;
 	}
 }

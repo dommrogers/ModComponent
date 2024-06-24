@@ -1,5 +1,9 @@
-﻿using Il2CppInterop.Runtime.Attributes;
+﻿using Il2Cpp;
+using Il2CppInterop.Runtime.Attributes;
+using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using MelonLoader.TinyJSON;
+using ModComponent.Utils;
 using UnityEngine;
 
 namespace ModComponent.API.Behaviours;
@@ -14,7 +18,8 @@ public class ModCarryingCapacityBehaviour : MonoBehaviour
 
 	public ModCarryingCapacityBehaviour(System.IntPtr intPtr) : base(intPtr) { }
 
-	[HideFromIl2Cpp]
+    
+    [HideFromIl2Cpp]
 	internal void InitializeBehaviour(ProxyObject dict, string className = "ModCarryingCapacityBehaviour")
 	{
 		this.MaxCarryCapacityKGBuff = dict.GetVariant(className, "MaxCarryCapacityKGBuff");

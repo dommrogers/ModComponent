@@ -3,6 +3,7 @@ using Il2CppTLD.Gear;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine.AddressableAssets;
+using Il2CppTLD.IntBackedUnit;
 
 namespace ModComponent.Mapper.ComponentMappers;
 
@@ -18,7 +19,7 @@ internal static class PowderMapper
 
 		PowderItem powderItem = ComponentUtils.GetOrCreateComponent<PowderItem>(modComponent);
 		powderItem.m_Type = Addressables.LoadAssetAsync<PowderType>("POWDER_Gunpowder").WaitForCompletion();
-		powderItem.m_WeightLimitKG = modPowderComponent.CapacityKG;
-		powderItem.m_WeightKG = modPowderComponent.CapacityKG;
+		powderItem.m_WeightLimit = new ItemWeight((long)modPowderComponent.CapacityKG);
+		powderItem.m_Weight = new ItemWeight((long)modPowderComponent.CapacityKG);
 	}
 }

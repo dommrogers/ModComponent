@@ -1,5 +1,6 @@
 ﻿using Il2Cpp;
 using ModComponent.API.Components;
+using Il2CppTLD.IntBackedUnit;
 
 namespace ModComponent.Mapper.ComponentMappers;
 
@@ -17,6 +18,6 @@ internal static class PurificationMapper
 		purificationItem.m_LocalizedProgressBarMessage = new LocalizedString() { m_LocalizationID = modPurification.ProgressBarLocalizationID };
 		purificationItem.m_ProgressBarDurationSeconds = modPurification.ProgressBarDurationSeconds;
 		purificationItem.m_PurifyAudio = modPurification.PurifyAudio;
-		purificationItem.m_LitersPurify = modPurification.LitersPurify;
+		purificationItem.m_LitersPurify = new ItemLiquidVolume((long)modPurification.LitersPurify);
 	}
 }

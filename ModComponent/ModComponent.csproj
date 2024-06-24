@@ -43,8 +43,8 @@
 
 
 		<NoWarn>1591</NoWarn>
-		<BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</BaseOutputPath>
-		<PackageOutputPath>C:\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\_BUILDS\</PackageOutputPath>
+		<BaseOutputPath>W:\Unity\repos\TLD\ModComponent\BUILDS</BaseOutputPath>
+		<PackageOutputPath>W:\Unity\repos\TLD\ModComponent\BUILDS</PackageOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="bin\**" />
@@ -64,7 +64,7 @@
 		</PackageReference>
 		<PackageReference Include="STBlade.Modding.TLD.CraftingRevisions" Version="2.2.3" />
 		<PackageReference Include="STBlade.Modding.TLD.GearSpawner" Version="2.3.1" />
-		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.25.0" />
+		<PackageReference Include="STBlade.Modding.TLD.Il2CppAssemblies.Windows" Version="2.28.0" />
 		<PackageReference Include="STBlade.Modding.TLD.LocalizationUtilities" Version="2.0.0" />
 		<PackageReference Include="STBlade.Modding.TLD.ModSettings" Version="1.9.0" />
 		<!--The package version here in this template may be outdated and need to be updated. Visual Studio can update package versions automatically.-->

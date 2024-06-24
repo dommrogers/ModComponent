@@ -9,6 +9,7 @@ using ModComponent.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static Il2Cpp.HoverIconsToShow;
+using Il2CppTLD.IntBackedUnit;
 
 namespace ModComponent.Mapper;
 
@@ -133,13 +134,14 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_CoverFlowMainTexture = new AssetReferenceTexture2D(modComponent.name);
 		gearItem.GearItemData.m_CoverFlowOpenedTexture = new AssetReferenceTexture2D(modComponent.name);
 		gearItem.GearItemData.m_Type = GetGearType(modComponent);
-		gearItem.GearItemData.m_BaseWeightKG = modComponent.WeightKG;
+		gearItem.GearItemData.m_BaseWeight = new ItemWeight((long)modComponent.WeightKG);
 		gearItem.GearItemData.m_MaxHP = modComponent.MaxHP;
 		gearItem.GearItemData.m_DailyHPDecay = GetDecayPerStep(modComponent.DaysToDecay, modComponent.MaxHP);
-		gearItem.OverrideGearCondition(modComponent.InitialCondition, false);
-		// OverrideGearCondition wanted to know if the item had been picked up yet; since Awake hadn't been called yet, I put false
+		gearItem.m_StartCondition = modComponent.InitialCondition;
+        //gearItem.OverrideGearCondition(modComponent.InitialCondition, false);
+        // OverrideGearCondition wanted to know if the item had been picked up yet; since Awake hadn't been called yet, I put false
 
-		gearItem.GearItemData.m_LocalizedName = NameUtils.CreateLocalizedString(modComponent.DisplayNameLocalizationId);
+        gearItem.GearItemData.m_LocalizedName = NameUtils.CreateLocalizedString(modComponent.DisplayNameLocalizationId);
 		gearItem.GearItemData.m_LocalizedDescription = NameUtils.CreateLocalizedString(modComponent.DescriptionLocalizatonId);
 
 		gearItem.GearItemData.m_PickupAudio = ModUtils.MakeAudioEvent(modComponent.PickUpAudio);

@@ -3,6 +3,7 @@ using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Il2CppTLD.IntBackedUnit;
 using static Il2Cpp.BodyHarvest;
 
 namespace ModComponent.Mapper.ComponentMappers;
@@ -53,20 +54,20 @@ internal static class BodyHarvestMapper
 
 		bodyHarvest.m_GutAvailableUnits = modBodyHarvestComponent.GutQuantity;
 		bodyHarvest.m_GutPrefab = AssetBundleUtils.LoadAsset<GameObject>(modBodyHarvestComponent.GutPrefab);
-		bodyHarvest.m_GutWeightKgPerUnit = modBodyHarvestComponent.GutWeightKgPerUnit;
+		bodyHarvest.m_GutWeightKgPerUnit = new ItemWeight((long)modBodyHarvestComponent.GutWeightKgPerUnit);
 
 		bodyHarvest.m_HideAvailableUnits = modBodyHarvestComponent.HideQuantity;
 		bodyHarvest.m_HidePrefab = AssetBundleUtils.LoadAsset<GameObject>(modBodyHarvestComponent.HidePrefab);
-		bodyHarvest.m_HideWeightKgPerUnit = modBodyHarvestComponent.HideWeightKgPerUnit;
-
-		bodyHarvest.m_MeatAvailableMaxKG = modBodyHarvestComponent.MeatAvailableMaxKG;
-		bodyHarvest.m_MeatAvailableMinKG = modBodyHarvestComponent.MeatAvailableMinKG;
-		bodyHarvest.m_MeatAvailableKG = UnityEngine.Random.Range(modBodyHarvestComponent.MeatAvailableMinKG, modBodyHarvestComponent.MeatAvailableMaxKG);
+		bodyHarvest.m_HideWeightKgPerUnit = new ItemWeight((long)modBodyHarvestComponent.HideWeightKgPerUnit);
+			
+        bodyHarvest.m_MeatAvailableMax = new ItemWeight((long)modBodyHarvestComponent.MeatAvailableMaxKG);
+        bodyHarvest.m_MeatAvailableMin = new ItemWeight((long)modBodyHarvestComponent.MeatAvailableMinKG);
+		bodyHarvest.m_MeatAvailableKG = new ItemWeight((long)UnityEngine.Random.Range(modBodyHarvestComponent.MeatAvailableMinKG, modBodyHarvestComponent.MeatAvailableMaxKG));
 		bodyHarvest.m_MeatPrefab = AssetBundleUtils.LoadAsset<GameObject>(modBodyHarvestComponent.MeatPrefab);
 
 		bodyHarvest.m_CanQuarter = modBodyHarvestComponent.CanQuarter;
 		bodyHarvest.m_QuarterAudio = modBodyHarvestComponent.QuarterAudio;
-		bodyHarvest.m_QuarterBagMeatCapacityKG = modBodyHarvestComponent.QuarterBagMeatCapacityKG;
+		bodyHarvest.m_QuarterBagMeatCapacity = new ItemWeight((long)modBodyHarvestComponent.QuarterBagMeatCapacityKG);
 		bodyHarvest.m_QuarterBagWasteMultiplier = modBodyHarvestComponent.QuarterBagWasteMultiplier;
 		bodyHarvest.m_QuarterDurationMinutes = modBodyHarvestComponent.QuarterDurationMinutes;
 		bodyHarvest.m_QuarterObjectPrefab = AssetBundleUtils.LoadAsset<GameObject>(modBodyHarvestComponent.QuarterObjectPrefab);

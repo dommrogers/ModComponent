@@ -1,4 +1,6 @@
 ﻿using Il2Cpp;
+using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Behaviours;
 using ModComponent.API.Components;
 using ModComponent.Utils;
@@ -24,7 +26,7 @@ internal static class CarryingCapacityMapper
 
 		capacityBuff.m_CarryingCapacityBuffValues = new CarryingCapacityBuff.BuffValues()
 		{
-			m_MaxCarryCapacityKGBuff = capacityComponent.MaxCarryCapacityKGBuff
-		};
+            m_MaxCarryCapacityBuff = new ItemWeight((long)capacityComponent.MaxCarryCapacityKGBuff)
+        };
 	}
 }
