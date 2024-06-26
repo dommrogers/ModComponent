@@ -1,6 +1,7 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.Attributes;
 using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using MelonLoader.TinyJSON;
 using ModComponent.Utils;
 using UnityEngine;
@@ -35,7 +36,7 @@ public partial class ModPowderComponent : ModBaseComponent
 		{
 			if (!RandomUtils.RollChance(ChanceFull))
 			{
-				powderItem.m_WeightKG = powderItem.m_WeightLimitKG * RandomUtils.Range(0.125f, 1f);
+				powderItem.m_Weight = new ItemWeight((long)(powderItem.m_WeightLimit.m_Units * RandomUtils.Range(0.125f, 1f)));
 			}
 		}
 	}

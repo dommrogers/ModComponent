@@ -2,6 +2,7 @@
 using Il2Cpp;
 using Il2CppTLD.OptionalContent;
 using MelonLoader;
+using ModComponent.API.Components;
 using ModComponent.Utils;
 
 namespace ModComponent;
@@ -59,6 +60,21 @@ internal class Implementation : MelonMod
 			}
 		}
 	}
+
+
+	[HarmonyPatch(typeof(GearItem), nameof(GearItem.SetDamageBlendValue))]
+	internal static class gisetdmg
+	{
+		internal static void Prefix(GearItem __instance, float blendVal, ref bool __runOriginal)
+		{
+			ModBaseComponent modComponent = ModComponent.Utils.ComponentUtils.GetModComponent(__instance);
+			if (modComponent != null)
+			{
+				__runOriginal = false;
+			}
+		}
+	}
+
 
 	public override void OnApplicationQuit()
 	{

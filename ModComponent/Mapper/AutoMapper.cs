@@ -71,7 +71,13 @@ internal static class AutoMapper
 		}
 
 		Logger.LogDebug($"Mapping {prefab.name}");
-		ItemMapper.Map(prefab);
+		try
+		{
+			ItemMapper.Map(prefab);
+		} catch (Exception e)
+		{
+			Logger.LogWarning(e.ToString());
+		}
 	}
 
 	/// <summary>

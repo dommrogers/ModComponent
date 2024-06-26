@@ -1,6 +1,7 @@
 ﻿using Il2Cpp;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Behaviours;
 using ModComponent.API.Components;
 using ModComponent.Mapper.BehaviourMappers;
@@ -133,10 +134,10 @@ internal static class ItemMapper
 		gearItem.GearItemData.m_CoverFlowMainTexture = new AssetReferenceTexture2D(modComponent.name);
 		gearItem.GearItemData.m_CoverFlowOpenedTexture = new AssetReferenceTexture2D(modComponent.name);
 		gearItem.GearItemData.m_Type = GetGearType(modComponent);
-		gearItem.GearItemData.m_BaseWeightKG = modComponent.WeightKG;
+		gearItem.GearItemData.m_BaseWeight = ItemWeight.FromKilograms(modComponent.WeightKG);
 		gearItem.GearItemData.m_MaxHP = modComponent.MaxHP;
 		gearItem.GearItemData.m_DailyHPDecay = GetDecayPerStep(modComponent.DaysToDecay, modComponent.MaxHP);
-		gearItem.OverrideGearCondition(modComponent.InitialCondition, false);
+		gearItem.m_StartCondition = modComponent.InitialCondition;
 		// OverrideGearCondition wanted to know if the item had been picked up yet; since Awake hadn't been called yet, I put false
 
 		gearItem.GearItemData.m_LocalizedName = NameUtils.CreateLocalizedString(modComponent.DisplayNameLocalizationId);

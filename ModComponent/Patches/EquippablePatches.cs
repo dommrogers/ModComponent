@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Il2Cpp;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Components;
 using ModComponent.Mapper;
 using ModComponent.Utils;
@@ -64,7 +65,7 @@ internal static class PlayerManagerSetControlModePatch
 	}
 }
 
-[HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.UseInventoryItem))]//Exists
+[HarmonyPatch(typeof(PlayerManager), nameof(PlayerManager.UseInventoryItem), new Type[] { typeof(GearItem) , typeof(ItemLiquidVolume) , typeof(bool) })]//Exists
 internal static class PlayerManagerUseInventoryItemPatch
 {
 	internal static bool Prefix(PlayerManager __instance, GearItem gi)

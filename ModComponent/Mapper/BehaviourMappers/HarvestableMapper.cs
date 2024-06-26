@@ -31,6 +31,6 @@ internal static class HarvestableMapper
 
 		harvest.m_AppliedSkillType = SkillType.None;
 		harvest.m_RequiredTools = ModUtils.GetItems<ToolsItem>(modHarvestableComponent.RequiredToolNames, modHarvestableComponent.name);
-		harvest.m_GunpowderYield = 0f;
+//		harvest.m_GunpowderYield = 0f;
 	}
 }

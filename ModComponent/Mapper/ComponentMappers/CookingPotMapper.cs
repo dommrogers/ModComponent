@@ -1,4 +1,5 @@
 ﻿using Il2Cpp;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
@@ -17,7 +18,7 @@ internal static class CookingPotMapper
 
 		CookingPotItem cookingPotItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<CookingPotItem>(modComponent);
 
-		cookingPotItem.m_WaterCapacityLiters = modCookingPotComponent.Capacity;
+		cookingPotItem.m_WaterCapacity = ItemLiquidVolume.FromLiters(modCookingPotComponent.Capacity);
 		cookingPotItem.m_CanCookGrub = modCookingPotComponent.CanCookGrub;
 		cookingPotItem.m_CanCookLiquid = modCookingPotComponent.CanCookLiquid;
 		cookingPotItem.m_CanCookMeat = modCookingPotComponent.CanCookMeat;

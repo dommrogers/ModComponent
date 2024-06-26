@@ -2,6 +2,7 @@ using Harmony;
 using Il2Cpp;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Components;
 using ModComponent.Utils;
 using UnityEngine;
@@ -28,7 +29,7 @@ internal static class CookableMapper
 		cookable.m_CookTimeMinutes = modCookableComponent.CookingMinutes;
 		cookable.m_ReadyTimeMinutes = modCookableComponent.BurntMinutes;
 		cookable.m_NumUnitsRequired = modCookableComponent.CookingUnitsRequired;
-		cookable.m_PotableWaterRequiredLiters = modCookableComponent.CookingWaterRequired;
+		cookable.m_PotableWaterRequired = ItemLiquidVolume.FromLiters(modCookableComponent.CookingWaterRequired);
 		cookable.m_WarmUpNearFireRange = 1.5f;
 
 		cookable.m_CookEvent = ModUtils.MakeAudioEvent(ModUtils.DefaultIfEmpty(modCookableComponent.CookingAudio, GetDefaultCookAudio(modCookableComponent)));

@@ -1,5 +1,6 @@
 ﻿using Il2Cpp;
 using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using ModComponent.API.Components;
 using UnityEngine.AddressableAssets;
 
@@ -24,14 +25,14 @@ internal static class LiquidMapper
 		}
 
 		LiquidItem liquidItem = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<LiquidItem>(modComponent);
-		liquidItem.m_LiquidCapacityLiters = modLiquidComponent.LiquidCapacityLiters;
+		liquidItem.m_LiquidCapacity = ItemLiquidVolume.FromLiters(modLiquidComponent.LiquidCapacityLiters);
 		liquidItem.m_LiquidType = lt;
-		liquidItem.m_LiquidLiters = modLiquidComponent.LiquidLiters;
-		liquidItem.m_MaximumLiters = modLiquidComponent.LiquidLiters;
-		liquidItem.m_MinimumLiters = modLiquidComponent.LiquidLiters;
+		liquidItem.m_Liquid = ItemLiquidVolume.FromLiters(modLiquidComponent.LiquidLiters);
+		liquidItem.m_Maximum = ItemLiquidVolume.FromLiters(modLiquidComponent.LiquidLiters);
+		liquidItem.m_Minimum = ItemLiquidVolume.FromLiters(modLiquidComponent.LiquidLiters);
 		if (modLiquidComponent.RandomizeQuantity)
 		{
-			liquidItem.m_MinimumLiters = liquidItem.m_LiquidCapacityLiters / 8f;
+			liquidItem.m_Minimum = ItemLiquidVolume.FromLiters(modLiquidComponent.LiquidCapacityLiters / 8f);
 		}
 		//		liquidItem.m_DrinkingAudio = "Play_DrinkWater";
 		//		liquidItem.m_TimeToDrinkSeconds = 4;

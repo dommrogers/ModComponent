@@ -1,4 +1,5 @@
 ﻿using Il2Cpp;
+using Il2CppTLD.IntBackedUnit;
 using MelonLoader;
 using ModComponent.API;
 using ModComponent.API.Components;
@@ -113,11 +114,11 @@ internal static class FoodMapper
 		if (modFoodComponent.Fish)
 		{
 			FoodWeight fw = ModComponent.Utils.ComponentUtils.GetOrCreateComponent<FoodWeight>(modFoodComponent);
-			fw.m_CaloriesPerKG = (foodItem.m_CaloriesTotal / gearItem.WeightKG);
-			fw.m_MaxWeightKG = gearItem.WeightKG * 1.2f;
-			fw.m_MinWeightKG = gearItem.WeightKG * 0.8f;
+			fw.m_CaloriesPerKG = (foodItem.m_CaloriesTotal / gearItem.WeightKG.m_Units);
+			fw.m_MaxWeight = gearItem.WeightKG * 1.2f;
+			fw.m_MinWeight = gearItem.WeightKG * 0.8f;
 			gearItem.m_FoodWeight = fw;
-			gearItem.WeightKG = 0;
+			gearItem.WeightKG = ItemWeight.Zero;
 
 		}
 
