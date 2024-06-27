@@ -127,12 +127,18 @@ internal static class ItemMapper
 			gearItem.m_GearItemData = gid;
 		}
 
+		GearItemInventoryIconSimpleData iconData = ScriptableObject.CreateInstance<GearItemInventoryIconSimpleData>();
+		iconData.name = modComponent.name.Replace("GEAR_", "ico_GearItem__");
+		iconData.m_Icon = Addressables.LoadAssetAsync<Texture2D>(iconData.name).WaitForCompletion();
+
+
 		gearItem.GearItemData.m_PrefabReference = new AssetReferenceGearItem(modComponent.name);
 
-		gearItem.GearItemData.m_CoverFlowBlendTexture = new AssetReferenceTexture2D(modComponent.name);
-		gearItem.GearItemData.m_CoverFlowDamageTexture = new AssetReferenceTexture2D(modComponent.name);
-		gearItem.GearItemData.m_CoverFlowMainTexture = new AssetReferenceTexture2D(modComponent.name);
-		gearItem.GearItemData.m_CoverFlowOpenedTexture = new AssetReferenceTexture2D(modComponent.name);
+		gearItem.GearItemData.m_CoverFlowBlendTexture = new AssetReferenceTexture2D(iconData.name);
+		gearItem.GearItemData.m_CoverFlowDamageTexture = new AssetReferenceTexture2D(iconData.name);
+		gearItem.GearItemData.m_CoverFlowMainTexture = new AssetReferenceTexture2D(iconData.name);
+		gearItem.GearItemData.m_CoverFlowOpenedTexture = new AssetReferenceTexture2D(iconData.name);
+		gearItem.GearItemData.m_IconData = iconData;
 		gearItem.GearItemData.m_Type = GetGearType(modComponent);
 		gearItem.GearItemData.m_BaseWeight = ItemWeight.FromKilograms(modComponent.WeightKG);
 		gearItem.GearItemData.m_MaxHP = modComponent.MaxHP;
